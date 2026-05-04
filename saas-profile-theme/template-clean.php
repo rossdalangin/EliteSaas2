@@ -5,23 +5,25 @@
 
 get_header(); ?>
 
-<main id="clean-layout" class="site-main clean-layout-container">
-    <?php
-    while ( have_posts() ) :
-        the_post();
-        ?>
-        <article id="post-<?php the_ID(); ?>" <?php post_class('clean-layout-article'); ?>>
-            <header class="clean-header clean-layout-header">
-                <?php the_title( '<h1 class="clean-title clean-layout-title">', '</h1>' ); ?>
-            </header>
-
-            <div class="clean-content clean-layout-content">
-                <?php the_content(); ?>
-            </div>
-        </article>
+<main id="clean-layout" class="site-main bg-light p-64">
+    <div class="clean-layout-container mx-auto">
         <?php
-    endwhile;
-    ?>
+        while ( have_posts() ) :
+            the_post();
+            ?>
+            <article id="post-<?php the_ID(); ?>" <?php post_class('clean-layout-article bg-white shadow-soft radius-xl p-64'); ?>>
+                <header class="clean-header clean-layout-header mb-40 text-center">
+                    <?php the_title( '<h1 class="clean-title clean-layout-title text-5xl font-black tracking-tight">', '</h1>' ); ?>
+                </header>
+
+                <div class="clean-content clean-layout-content lh-1-8 text-lg color-light">
+                    <?php the_content(); ?>
+                </div>
+            </article>
+            <?php
+        endwhile;
+        ?>
+    </div>
 </main>
 
 <style>
