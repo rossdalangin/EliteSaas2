@@ -15,8 +15,9 @@ get_header();
     </div>
 
     <div class="landing-content auth-card bg-white radius-xl shadow-xl">
-        <div class="mb-32">
-            <h1 class="text-4xl font-black mb-0"><?php the_title(); ?></h1>
+        <div class="mb-32 text-center">
+            <h1 class="text-5xl font-black mb-10 tracking-tight"><?php the_title(); ?></h1>
+            <p class="color-light">The Elite Standard in Digital Identity</p>
         </div>
 
         <div class="auth-form-container text-left">

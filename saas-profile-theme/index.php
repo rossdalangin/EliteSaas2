@@ -131,7 +131,7 @@ include __DIR__ . '/header.php';
         <?php else : ?>
             <img src="https://via.placeholder.com/150" alt="Avatar">
         <?php endif; ?>
-        <h1>
+        <h1 class="text-4xl font-black mb-10 tracking-tight">
             <?php echo esc_html( $profile->post_title ); ?>
             <?php
                 $is_verified = $is_pro && get_post_meta($profile_id, '_saas_verified_badge', true);

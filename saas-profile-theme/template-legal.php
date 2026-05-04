@@ -8,18 +8,20 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 get_header();
 ?>
 
-<main id="legal-page" class="site-main site-container legal-main-container">
-    <div class="legal-inner-card">
-        <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-            <header class="entry-header mb-40 text-center">
-                <?php the_title( '<h1 class="entry-title text-5xl font-black">', '</h1>' ); ?>
-                <p class="color-lighter">Last Updated: <?php echo get_the_modified_date(); ?></p>
-            </header>
+<main id="legal-page" class="site-main bg-light p-64">
+    <div class="legal-main-container mx-auto">
+        <div class="legal-inner-card bg-white shadow-soft radius-xl p-64">
+            <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+                <header class="entry-header mb-60 text-center">
+                    <?php the_title( '<h1 class="entry-title text-6xl font-black tracking-tight mb-20">', '</h1>' ); ?>
+                    <p class="color-light font-bold">Last Updated: <?php echo get_the_modified_date(); ?></p>
+                </header>
 
-            <div class="entry-content">
-                <?php the_content(); ?>
-            </div>
-        <?php endwhile; endif; ?>
+                <div class="entry-content lh-1-8 text-lg color-light">
+                    <?php the_content(); ?>
+                </div>
+            <?php endwhile; endif; ?>
+        </div>
     </div>
 </main>
 
