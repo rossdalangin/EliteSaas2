@@ -12,8 +12,8 @@ if ( ! get_query_var( 'saas_profile' ) ) : ?>
     <div class="footer-container">
         <!-- Column 1: Branding -->
         <div class="footer-branding">
-            <div class="footer-logo-text"><?php echo get_bloginfo('name'); ?></div>
-            <p class="footer-tagline">The conversion-first digital business card for elite creators and consultants.</p>
+            <div class="footer-logo-text font-black tracking-tight"><?php echo get_bloginfo('name'); ?></div>
+            <p class="footer-tagline">The conversion-first digital identity engine for elite creators and top performers.</p>
             <div class="footer-social-links">
                 <a href="#" class="footer-social-icon">𝕏</a>
                 <a href="#" class="footer-social-icon">📸</a>
