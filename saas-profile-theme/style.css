@@ -1083,17 +1083,19 @@ body.theme-midnight-neon .saas-link-btn:hover {
 /* --- Specific Components --- */
 .card-white {
     background: #fff;
-    padding: 40px;
+    padding: 64px 48px;
     border-radius: var(--radius-xl);
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-soft);
+    transition: var(--transition-bounce);
 }
 
 .card-light {
     background: #f8fafc;
-    padding: 40px;
+    padding: 64px 48px;
     border-radius: var(--radius-xl);
     border: 1px solid var(--border-color);
+    transition: var(--transition-bounce);
 }
 
 .status-message {
@@ -1696,7 +1698,7 @@ input, select, textarea, button, .saas-link-btn, .hero-claim-btn {
 .gap-80 { gap: 80px; }
 .flex-1 { flex: 1; }
 .min-w-320 { min-width: 320px; }
-.mx-auto { margin-left: auto; margin-right: auto; }
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
 .max-w-600 { max-width: 600px; }
 .lh-1-6 { line-height: 1.6; }
 .border-t { border-top: 1px solid var(--border-color); }
