@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 if ( ! get_query_var( 'saas_profile' ) ) : ?>
 
 <footer id="colophon" class="footer-main">
-    <div class="footer-container">
+    <div class="footer-container mx-auto">
         <!-- Column 1: Branding -->
         <div class="footer-branding">
             <div class="footer-logo-text font-black tracking-tight"><?php echo get_bloginfo('name'); ?></div>
@@ -53,7 +53,7 @@ if ( ! get_query_var( 'saas_profile' ) ) : ?>
     </div>
 
     <!-- Bottom Bar -->
-    <div class="footer-bottom">
+    <div class="footer-bottom mx-auto">
         <div class="footer-copyright">
             &copy; <?php echo date('Y'); ?> <?php echo get_bloginfo('name'); ?>. All rights reserved.
         </div>

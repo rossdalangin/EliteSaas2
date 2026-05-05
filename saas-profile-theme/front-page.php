@@ -19,7 +19,7 @@ $h_img   = get_option('saas_home_image');
         <div class="mesh-circle-2"></div>
     </div>
 
-    <div class="landing-content">
+    <div class="landing-content mx-auto">
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); the_content(); endwhile; endif; ?>
 
         <h1 class="landing-title">

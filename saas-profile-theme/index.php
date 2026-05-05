@@ -114,7 +114,7 @@ include __DIR__ . '/header.php';
     </script>
 <?php endif; ?>
 
-<div id="profile-container">
+<div id="profile-container" class="mx-auto">
     <!-- Cover Banner -->
     <?php
     $cover_id = get_post_meta($profile_id, '_saas_cover_id', true);
