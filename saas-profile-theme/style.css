@@ -364,7 +364,7 @@ body.theme-midnight-neon .saas-link-btn:hover {
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    padding: 40px;
+    padding: 64px 48px;
     border-radius: var(--radius-xl);
     border: 1px solid var(--glass-border);
     box-shadow: var(--shadow-soft);
@@ -993,7 +993,7 @@ body.theme-midnight-neon .saas-link-btn:hover {
 }
 
 .pricing-plan-card {
-    padding: 60px 48px;
+    padding: 64px 48px;
     border-radius: var(--radius-xl);
     display: flex;
     flex-direction: column;
@@ -1313,8 +1313,10 @@ body.theme-midnight-neon .saas-link-btn:hover {
         width: 100%;
         max-width: 300px;
         justify-content: center;
-        min-height: 54px;
-        font-size: 1.1rem;
+        min-height: 60px;
+        font-size: 1.25rem;
+        font-weight: 900;
+        box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
     }
 
     body.menu-open {
@@ -1786,7 +1788,7 @@ input, select, textarea, button, .saas-link-btn, .hero-claim-btn {
 
 .iphone-mockup-progress-vibrant {
     height: 8px;
-    background: #39e09b;
+    background: var(--accent-color);
     border-radius: 10px;
     width: 80%;
     margin: 0 auto;
@@ -1877,7 +1879,7 @@ input, select, textarea, button, .saas-link-btn, .hero-claim-btn {
 .bg-grey-medium { background: #ddd; }
 
 .stat-glow-orange { background: linear-gradient(135deg, #f59e0b, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.badge-pro-price { background: #39e09b; color: #1e2329; padding: 5px 20px; border-radius: 50px; }
+.badge-pro-price { background: var(--accent-color); color: #fff; padding: 6px 20px; border-radius: 50px; font-weight: 800; }
 
 .iphone-mockup-inner {
     background: #0f172a;
@@ -2003,7 +2005,7 @@ input, select, textarea, button, .saas-link-btn, .hero-claim-btn {
 .ls-1 { letter-spacing: 1px; }
 .ls-0-05 { letter-spacing: 0.05em; }
 .w-60p { width: 60%; }
-.bg-pro-badge { background: #39e09b; }
+.bg-pro-badge { background: var(--accent-color); }
 .border-light { border: 1px solid #eee; }
 .p-25 { padding: 25px; }
 .p-30 { padding: 30px; }
@@ -2045,7 +2047,7 @@ input, select, textarea, button, .saas-link-btn, .hero-claim-btn {
 
 .cta-button-featured { background: #fff; color: var(--primary-color); border: none; }
 .cta-button-light { border: 2px solid var(--primary-color); color: var(--primary-color); background: transparent; }
-.cta-button-dark { background: #39e09b; color: #1e2329; border: none; }
+.cta-button-dark { background: var(--accent-color); color: #fff; border: none; font-weight: 800; }
 
 .iphone-preview-container {
     background: #0f172a;
@@ -2069,7 +2071,7 @@ input, select, textarea, button, .saas-link-btn, .hero-claim-btn {
 .drift-glow-2 { position: absolute; bottom: -20%; right: -20%; width: 60%; height: 60%; background: radial-gradient(circle, #10b981 0%, transparent 70%); filter: blur(80px); animation: drift 25s infinite alternate-reverse; }
 
 .text-gradient-gold { background: linear-gradient(135deg, #d4af37, #f6e05e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.text-gradient-vibrant { background: linear-gradient(135deg, #10b981, #39e09b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.text-gradient-vibrant { background: linear-gradient(135deg, var(--accent-color), var(--accent-vibrant)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
 .pricing-plan-card.is-dark { background: #0f172a; color: #fff; border: none; }
 
@@ -2099,13 +2101,13 @@ input, select, textarea, button, .saas-link-btn, .hero-claim-btn {
 .placeholder-grey-light { background: #e2e8f0; }
 
 .demo-card-badge-gold { background: #f59e0b; }
-.demo-card-badge-vibrant { background: #39e09b; }
+.demo-card-badge-vibrant { background: var(--accent-color); }
 
 .benefit-check-white { color: #fff; }
 .benefit-check-vibrant { color: #10b981; }
 
 .cta-pro-white { background: #fff; color: var(--primary-color); border: none; }
-.cta-pro-vibrant { background: #39e09b; color: #1e2329; border: none; }
+.cta-pro-vibrant { background: var(--accent-color); color: #fff; border: none; font-weight: 800; }
 .cta-standard-outline { border: 2px solid var(--primary-color); color: var(--primary-color); background: transparent; }
 
 
