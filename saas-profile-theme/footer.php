@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 // Hide global footer on user profile pages
 if ( ! get_query_var( 'saas_profile' ) ) : ?>
 
-<footer id="colophon" class="footer-main">
+<footer id="colophon" class="footer-main bg-subtle">
     <div class="footer-container mx-auto">
         <!-- Column 1: Branding -->
         <div class="footer-branding">

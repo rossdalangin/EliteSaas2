@@ -22,22 +22,54 @@ $h_img   = get_option('saas_home_image');
     <div class="landing-content mx-auto">
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); the_content(); endwhile; endif; ?>
 
-        <h1 class="landing-title">
-            <?php echo esc_html($h_title); ?>
-        </h1>
-        <p class="landing-hero-text">
-            <?php echo esc_html($h_hero); ?>
-        </p>
+        <div class="hero-grid-layout">
+            <div class="hero-text-content">
+                <h1 class="landing-title">
+                    <?php echo esc_html($h_title); ?>
+                </h1>
+                <p class="landing-hero-text">
+                    <?php echo esc_html($h_hero); ?>
+                </p>
 
-        <div class="cta-actions">
-            <div class="hero-claim-wrapper">
-                <form action="<?php echo home_url('/register'); ?>" method="GET" class="hero-claim-form">
-                    <span class="hero-claim-prefix"><?php echo parse_url(home_url(), PHP_URL_HOST); ?>/</span>
-                    <input type="text" name="username" id="saas-home-username" placeholder="yourname" class="hero-claim-input">
-                    <button type="submit" class="hero-claim-btn"><?php echo esc_html($h_cta); ?></button>
-                </form>
-                <div id="username-status" class="status-message color-primary"></div>
-                <p class="hero-claim-subtext">No credit card required. Setup in minutes.</p>
+                <div class="cta-actions">
+                    <div class="hero-claim-wrapper">
+                        <form action="<?php echo home_url('/register'); ?>" method="GET" class="hero-claim-form">
+                            <span class="hero-claim-prefix"><?php echo parse_url(home_url(), PHP_URL_HOST); ?>/</span>
+                            <input type="text" name="username" id="saas-home-username" placeholder="yourname" class="hero-claim-input">
+                            <button type="submit" class="hero-claim-btn"><?php echo esc_html($h_cta); ?></button>
+                        </form>
+                        <div id="username-status" class="status-message color-primary"></div>
+                        <p class="hero-claim-subtext">No credit card required. Setup in minutes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual-content">
+                <?php if ($h_img) : ?>
+                    <div class="hero-image-perspective">
+                        <img src="<?php echo esc_url($h_img); ?>" alt="Product Preview" class="radius-40 shadow-preview">
+                    </div>
+                <?php else : ?>
+                    <!-- Default Dashboard Preview Mockup -->
+                    <div class="hero-image-perspective">
+                        <div class="card-white flex gap-30 text-left">
+                            <div class="flex-1 bg-light radius-20 p-20">
+                                <div class="mb-20 w-40 h-10 bg-grey-medium"></div>
+                                <div class="bg-white mb-20 shadow-sm radius-12 full-width h-200"></div>
+                                <div class="h-10 bg-grey-medium w-80p"></div>
+                            </div>
+                            <div class="flex-2">
+                                <div class="mb-20 h-40 bg-primary radius-10 w-60p"></div>
+                                <div class="mb-10 h-15 bg-grey-light radius-full"></div>
+                                <div class="mb-10 h-15 bg-grey-light radius-full w-80p"></div>
+                                <div class="grid-2 mt-40 gap-15">
+                                    <div class="bg-light h-80 radius-15"></div>
+                                    <div class="bg-light h-80 radius-15"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -57,32 +89,6 @@ $h_img   = get_option('saas_home_image');
                 <?php endforeach; ?>
             </div>
         </div>
-
-        <?php if ($h_img) : ?>
-            <div class="hero-image-perspective">
-                <img src="<?php echo esc_url($h_img); ?>" alt="Product Preview" class="radius-40 shadow-preview max-w-80p">
-            </div>
-        <?php else : ?>
-            <!-- Default Dashboard Preview Mockup -->
-            <div class="hero-image-perspective container-standard mx-auto">
-                <div class="card-white flex gap-30 text-left">
-                    <div class="flex-1 bg-light radius-20 p-20">
-                        <div class="mb-20 w-40 h-10 bg-grey-medium"></div>
-                        <div class="bg-white mb-20 shadow-sm radius-12 full-width h-200"></div>
-                        <div class="h-10 bg-grey-medium w-80p"></div>
-                    </div>
-                    <div class="flex-2">
-                        <div class="mb-20 h-40 bg-primary radius-10 w-60p"></div>
-                        <div class="mb-10 h-15 bg-grey-light radius-full"></div>
-                        <div class="mb-10 h-15 bg-grey-light radius-full w-80p"></div>
-                        <div class="grid-2 mt-40 gap-15">
-                            <div class="bg-light h-80 radius-15"></div>
-                            <div class="bg-light h-80 radius-15"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php endif; ?>
     </div>
 </main>
 
