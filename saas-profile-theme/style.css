@@ -1350,10 +1350,8 @@ body.theme-midnight-neon .saas-link-btn:hover {
     h2 { font-size: 1.85rem !important; }
     h3 { font-size: 1.5rem !important; }
 
-    .feature-grid-3 { grid-template-columns: 1fr !important; display: grid !important; }
+    .feature-grid-3, .grid-3, .grid-4, .directory-grid, .stats-grid { grid-template-columns: 1fr !important; display: grid !important; gap: 24px !important; }
     .feature-card-light, .feature-card-dark { padding: 48px 24px; }
-
-    .stats-grid { gap: 32px; }
     .stat-item .stat-value { font-size: 3rem; }
 
     .pricing-plan-card { padding: 48px 24px; }
