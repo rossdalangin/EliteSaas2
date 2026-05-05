@@ -10,7 +10,7 @@ get_header();
 $vision = get_option('saas_about_vision') ?: 'Empowering elite creators to own their digital real estate.';
 ?>
 
-<main id="about-page" class="site-main">
+<main id="about-page" class="site-main bg-color">
     <section class="landing-content p-100-60">
         <div class="text-center mb-80">
             <h1 class="landing-title">Our Vision</h1>

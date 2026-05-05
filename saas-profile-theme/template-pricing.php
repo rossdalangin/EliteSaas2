@@ -28,7 +28,7 @@ if (!$plans) {
 }
 ?>
 
-<main id="pricing-page" class="site-main bg-light min-h-500">
+<main id="pricing-page" class="site-main bg-color min-h-500">
     <section class="landing-content pt-100">
         <header class="pricing-section-header">
             <h1 class="landing-title">Invest in Your Growth</h1>

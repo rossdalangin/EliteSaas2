@@ -159,7 +159,7 @@ $h_img   = get_option('saas_home_image');
 </section>
 
 <!-- How It Works Section -->
-<section class="section-padding bg-white">
+<section class="section-padding bg-subtle">
     <div class="container-wide text-center">
         <h2 class="section-title-large">Your elite presence in 3 simple steps</h2>
         <div class="grid-3">
@@ -208,7 +208,7 @@ $h_img   = get_option('saas_home_image');
 </section>
 
 <!-- Featured Profiles Section -->
-<section class="section-padding bg-white">
+<section class="section-padding bg-subtle">
     <div class="container-wide text-center">
         <h2 class="text-4xl mb-20">Join thousands of elite professionals</h2>
         <p class="color-light text-xl mb-60">See how others are using our platform to scale their digital identity.</p>
@@ -256,7 +256,7 @@ $h_img   = get_option('saas_home_image');
 <?php
 $comparison_json = get_option('saas_home_comparison_json');
 if ($comparison_json) : ?>
-<section class="section-padding bg-white">
+<section class="section-padding bg-color">
     <div class="container-standard text-center mx-auto">
         <h2 class="section-title-large">Why elite creators choose us</h2>
         <div class="comparison-table-wrapper">
@@ -311,7 +311,7 @@ if ($comparison_json) : ?>
 </section>
 
 <!-- Pricing Section -->
-<section class="pricing-section bg-white section-padding">
+<section class="pricing-section bg-subtle section-padding">
     <div class="container-standard text-center mx-auto">
         <h2 class="text-4xl mb-60"><?php echo get_option('saas_pricing_title') ?: 'Simple, Transparent Pricing'; ?></h2>
         <div class="grid-3 align-stretch">
@@ -410,7 +410,7 @@ if ($comparison_json) : ?>
 </section>
 
 <!-- FAQ Section -->
-<section class="section-padding bg-white">
+<section class="section-padding bg-subtle">
     <div class="container-narrow mx-auto">
         <h2 class="text-center text-4xl mb-60">Common Questions</h2>
         <?php

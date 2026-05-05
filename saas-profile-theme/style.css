@@ -77,13 +77,13 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 900;
-    line-height: 1.1;
+    line-height: 1.15;
     color: var(--text-color);
     margin-top: 0;
     letter-spacing: -0.04em;
 }
 
-h1 { font-size: 2.75rem; letter-spacing: -0.06em; }
+h1 { font-size: 3rem; letter-spacing: -0.05em; }
 h2 { font-size: 1.875rem; }
 h3 { font-size: 1.5rem; }
 
@@ -241,27 +241,26 @@ body.theme-midnight-neon .saas-link-btn:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    color: var(--text-color);
+    background: var(--primary-color);
+    color: #fff;
     padding: 18px 24px;
     text-decoration: none;
     border-radius: var(--btn-radius, var(--radius-full));
-    font-weight: 800;
-    font-size: 1.05rem;
+    font-weight: 700;
+    font-size: 1rem;
     transition: var(--transition-bounce);
-    box-shadow: var(--shadow-style, var(--shadow-sm));
-    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.1), 0 2px 4px -1px rgba(79, 70, 229, 0.06);
+    border: none;
     width: 100%;
     position: relative;
     overflow: hidden;
 }
 
 .saas-link-btn:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
-    background: var(--card-bg);
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3), 0 4px 6px -2px rgba(79, 70, 229, 0.05);
+    background: var(--primary-light);
+    color: #fff;
 }
 
 .saas-link-btn::after {
@@ -1060,7 +1059,7 @@ body.theme-midnight-neon .saas-link-btn:hover {
 .pricing-plan-card.is-light {
     border: 1px solid var(--border-color);
     background: #fff;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 /* Section Headlines */
@@ -1965,6 +1964,8 @@ input, select, textarea, button, .saas-link-btn, .hero-claim-btn {
 .text-gradient-orange { background: linear-gradient(135deg, #f59e0b, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .bg-glass-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; }
 .bg-primary { background-color: var(--primary-color); }
+.bg-subtle { background-color: var(--bg-subtle) !important; }
+.bg-color { background-color: var(--bg-color) !important; }
 .full-height { height: 100%; }
 .object-cover { object-fit: cover; }
 .grid-column-all { grid-column: 1 / -1; }
@@ -2077,8 +2078,9 @@ input, select, textarea, button, .saas-link-btn, .hero-claim-btn {
 .max-w-560 { max-width: 560px; }
 .p-6 { padding: 6px; }
 .btn-search { padding: 12px 32px; }
-.filter-link { padding: 10px 20px; border-radius: var(--radius-full); text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: var(--transition-base); background: #fff; border: 1px solid var(--border-color); color: var(--text-light); }
-.filter-link.is-active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+.filter-link { padding: 10px 24px; border-radius: var(--radius-full); text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: var(--transition-base); background: #fff; border: 1px solid var(--border-color); color: var(--text-light); box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+.filter-link:hover { transform: translateY(-1px); border-color: var(--primary-color); color: var(--primary-color); }
+.filter-link.is-active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2); }
 .badge-directory { position: absolute; top: 20px; right: 20px; font-size: 0.65rem; }
 .avatar-directory { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary-color); box-shadow: var(--shadow-md); }
 .no-results-box { grid-column: 1 / -1; padding: 64px; background: var(--bg-color); border-radius: var(--radius-xl); text-align: center; color: var(--text-lighter); }

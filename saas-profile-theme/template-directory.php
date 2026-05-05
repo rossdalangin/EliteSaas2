@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 get_header();
 ?>
 
-<main id="directory-page" class="site-main">
+<main id="directory-page" class="site-main bg-color">
     <section class="landing-content pt-100">
         <div class="text-center mb-60">
             <h1 class="landing-title">Discover Elite Creators</h1>
@@ -22,7 +22,7 @@ get_header();
                 </form>
             </div>
 
-            <div class="directory-filters mt-32 flex-center gap-12 flex-wrap">
+            <div class="directory-filters mt-40 flex-center gap-12 flex-wrap">
                 <?php
                 $active_niche = $_GET['niche'] ?? '';
                 $niches = [

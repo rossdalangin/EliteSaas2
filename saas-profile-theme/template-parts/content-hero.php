@@ -1,5 +1,5 @@
 <!-- Benefits Section -->
-<section class="section-padding bg-white relative z-1">
+<section class="section-padding bg-subtle relative z-1">
     <div class="container-wide flex-wrap flex-center gap-80 mx-auto">
         <div class="flex-1 min-w-320">
             <h2 class="section-title-large text-6xl font-black tracking-tight mb-40">Stop losing traffic.<br>Start building your list.</h2>
