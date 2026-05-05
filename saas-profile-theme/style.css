@@ -837,7 +837,9 @@ body.theme-midnight-neon .saas-link-btn:hover {
     font-weight: 900;
     line-height: 1.1;
     margin-bottom: 24px;
-    color: var(--text-color);
+    background: linear-gradient(135deg, var(--text-color) 0%, var(--primary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     letter-spacing: -0.05em;
 }
 
@@ -957,10 +959,17 @@ body.theme-midnight-neon .saas-link-btn:hover {
 .hero-image-perspective {
     transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
     transition: var(--transition-slow);
+    animation: float-slow 6s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+    0%, 100% { transform: perspective(1000px) rotateY(-5deg) rotateX(5deg) translateY(0); }
+    50% { transform: perspective(1000px) rotateY(-3deg) rotateX(3deg) translateY(-20px); }
 }
 
 .hero-image-perspective:hover {
     transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+    animation-play-state: paused;
 }
 
 @media (max-width: 991px) {
@@ -1549,6 +1558,9 @@ input, select, textarea, button, .saas-link-btn, .hero-claim-btn {
 .opacity-80 { opacity: 0.8; }
 
 .color-primary { color: var(--primary-color); }
+.color-vibrant { color: var(--accent-vibrant); }
+.color-accent { color: var(--accent-color); }
+.color-success { color: var(--success-color); }
 .color-red { color: #ef4444; }
 .color-white { color: #fff; }
 .color-light { color: var(--text-light); }
