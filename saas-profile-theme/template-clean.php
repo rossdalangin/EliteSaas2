@@ -5,13 +5,13 @@
 
 get_header(); ?>
 
-<main id="clean-layout" class="site-main bg-light p-64">
+<main id="clean-layout" class="site-main bg-color p-64">
     <div class="clean-layout-container mx-auto">
         <?php
         while ( have_posts() ) :
             the_post();
             ?>
-            <article id="post-<?php the_ID(); ?>" <?php post_class('clean-layout-article bg-white shadow-soft radius-xl p-64'); ?>>
+            <article id="post-<?php the_ID(); ?>" <?php post_class('clean-layout-article bg-subtle shadow-soft radius-lg p-64'); ?>>
                 <header class="clean-header clean-layout-header mb-40 text-center">
                     <?php the_title( '<h1 class="clean-title clean-layout-title text-5xl font-black tracking-tight">', '</h1>' ); ?>
                 </header>

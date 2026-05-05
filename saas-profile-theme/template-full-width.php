@@ -5,7 +5,7 @@
 
 get_header(); ?>
 
-	<main id="primary" class="site-main bg-white p-64">
+	<main id="primary" class="site-main bg-color p-64">
         <div class="full-width-container mx-auto">
             <?php
             while ( have_posts() ) :

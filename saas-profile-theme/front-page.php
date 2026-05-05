@@ -24,6 +24,7 @@ $h_img   = get_option('saas_home_image');
 
         <div class="hero-grid-layout">
             <div class="hero-text-content">
+                <div class="badge-ui mb-24">The Elite Standard 1%</div>
                 <h1 class="landing-title">
                     <?php echo esc_html($h_title); ?>
                 </h1>
@@ -52,7 +53,13 @@ $h_img   = get_option('saas_home_image');
                 <?php else : ?>
                     <!-- Default Dashboard Preview Mockup -->
                     <div class="hero-image-perspective">
-                        <div class="card-white flex gap-30 text-left">
+                        <div class="card-white flex gap-30 text-left relative overflow-visible">
+                            <div class="absolute -top-30 -right-30 z-10">
+                                <div class="bg-vibrant-gradient p-24 radius-20 shadow-xl color-white text-center">
+                                    <div class="text-3xl font-black mb-5">4.8x</div>
+                                    <div class="text-xs font-bold opacity-80">CONVERSION LIFT</div>
+                                </div>
+                            </div>
                             <div class="flex-1 bg-light radius-20 p-20">
                                 <div class="mb-20 w-40 h-10 bg-grey-medium"></div>
                                 <div class="bg-white mb-20 shadow-sm radius-12 full-width h-200"></div>
@@ -64,7 +71,7 @@ $h_img   = get_option('saas_home_image');
                                 <div class="mb-10 h-15 bg-grey-light radius-full w-80p"></div>
                                 <div class="grid-2 mt-40 gap-15">
                                     <div class="bg-light h-80 radius-15"></div>
-                                    <div class="bg-light h-80 radius-15"></div>
+                                    <div class="bg-light h-80 radius-15 shadow-accent"></div>
                                 </div>
                             </div>
                         </div>

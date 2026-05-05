@@ -80,10 +80,10 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.15;
     color: var(--text-color);
     margin-top: 0;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.05em;
 }
 
-h1 { font-size: 3rem; letter-spacing: -0.05em; }
+h1 { font-size: 3.25rem; letter-spacing: -0.06em; }
 h2 { font-size: 1.875rem; }
 h3 { font-size: 1.5rem; }
 
@@ -257,8 +257,8 @@ body.theme-midnight-neon .saas-link-btn:hover {
 }
 
 .saas-link-btn:hover {
-    transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3), 0 4px 6px -2px rgba(79, 70, 229, 0.05);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.4), 0 10px 10px -5px rgba(79, 70, 229, 0.2);
     background: var(--primary-light);
     color: #fff;
 }
@@ -612,7 +612,7 @@ body.theme-midnight-neon .saas-link-btn:hover {
 }
 
 .header-container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin-left: auto !important;
     margin-right: auto !important;
     display: flex;
@@ -630,7 +630,7 @@ body.theme-midnight-neon .saas-link-btn:hover {
 }
 
 .saas-global-header {
-    width: 100%;
+    width: 100% !important;
     text-align: center;
     padding: 8px 0;
     background: var(--primary-dark);
@@ -861,11 +861,17 @@ body.theme-midnight-neon .saas-link-btn:hover {
     background: #fff;
     padding: 8px;
     border-radius: var(--radius-full);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.1), 0 10px 10px -5px rgba(79, 70, 229, 0.04);
     border: 1px solid var(--border-color);
     width: 100%;
     max-width: 500px;
     text-align: left;
+    transition: var(--transition-base);
+}
+
+.hero-claim-form:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1), 0 20px 25px -5px rgba(79, 70, 229, 0.15);
 }
 
 @media (max-width: 991px) {
@@ -1129,19 +1135,23 @@ body.theme-midnight-neon .saas-link-btn:hover {
 
 /* --- Specific Components --- */
 .card-white {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 48px;
     border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
     transition: var(--transition-bounce);
 }
 
 .card-light {
-    background: #f8fafc;
+    background: rgba(248, 250, 252, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 48px;
     border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     transition: var(--transition-bounce);
 }
 

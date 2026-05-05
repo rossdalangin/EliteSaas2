@@ -8,9 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 get_header();
 ?>
 
-<main id="legal-page" class="site-main bg-light p-64">
+<main id="legal-page" class="site-main bg-color p-64">
     <div class="legal-main-container mx-auto">
-        <div class="legal-inner-card bg-white shadow-soft radius-xl p-64">
+        <div class="legal-inner-card bg-subtle shadow-soft radius-lg p-64">
             <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 <header class="entry-header mb-60 text-center">
                     <?php the_title( '<h1 class="entry-title text-6xl font-black tracking-tight mb-20">', '</h1>' ); ?>
