@@ -118,7 +118,7 @@ $h_img   = get_option('saas_home_image');
     <div class="container-wide text-center">
         <h2 class="section-title-large">The only link hub with an <span class="text-gradient-primary">IQ</span>.</h2>
 
-        <div class="feature-grid-3 mb-80 text-left flex-center">
+        <div class="feature-grid-3 mb-80 text-left">
             <div class="feature-card-light hover-lift">
                 <div class="flex gap-12 mb-24">
                     <span class="badge-ui">Smart Routing</span>
