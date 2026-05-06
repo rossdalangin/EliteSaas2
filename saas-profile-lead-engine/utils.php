@@ -77,7 +77,7 @@ if ( ! function_exists( 'saas_get_profile_meta' ) ) {
         return [
             'bio'          => get_post_meta( $profile_id, '_saas_bio', true ),
             'headline'     => get_post_meta( $profile_id, '_saas_headline', true ),
-            'theme_color'  => get_post_meta( $profile_id, '_saas_theme_color', true ) ?: '#6c5ce7',
+            'theme_color'  => get_post_meta( $profile_id, '_saas_theme_color', true ) ?: '#4f46e5',
             'social_links' => get_post_meta( $profile_id, '_saas_social_links', true ) ?: [],
             'phone'        => get_post_meta( $profile_id, '_saas_phone', true ),
             'avatar_id'    => get_post_thumbnail_id( $profile_id ),
@@ -183,7 +183,7 @@ function saas_get_default_templates() {
         'coach' => [
             'headline' => 'Helping you double your revenue in 90 days. 🚀',
             'bio' => 'Certified high-performance coach. I work with CEOs and founders to scale their impact.',
-            'color' => '#6c5ce7', 'theme' => 'modern-glass', 'shadow' => 'soft',
+            'color' => '#4f46e5', 'theme' => 'modern-glass', 'shadow' => 'soft',
             'links' => [
                 ['title' => '👉 Free Strategy Session', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['title' => 'Watch Case Study', 'url' => 'https://youtube.com', 'type' => 'video'],
@@ -205,7 +205,7 @@ function saas_get_default_templates() {
         'startup' => [
             'headline' => 'Disrupting the Status Quo with Elite Innovation. 🚀',
             'bio' => 'We build scalable solutions for the modern world. Backed by top-tier VCs.',
-            'color' => '#6c5ce7', 'theme' => 'dark', 'shadow' => 'soft',
+            'color' => '#4f46e5', 'theme' => 'dark', 'shadow' => 'soft',
             'links' => [
                 ['title' => 'Join our Beta', 'url' => '#', 'type' => 'lead_form'],
                 ['title' => 'Watch Pitch Deck', 'url' => 'https://youtube.com', 'type' => 'video'],
@@ -332,7 +332,7 @@ function saas_get_default_templates() {
         'podcast' => [
             'headline' => 'Deep Dives into the Elite Mindset. 🎙️',
             'bio' => 'New episodes every Tuesday. We interview the world\'s top 1% to deconstruct their success.',
-            'color' => '#6c5ce7', 'theme' => 'dark', 'shadow' => 'soft',
+            'color' => '#4f46e5', 'theme' => 'dark', 'shadow' => 'soft',
             'links' => [
                 ['title' => 'Listen on Spotify', 'url' => '#', 'type' => 'button', 'style' => 'glow'],
                 ['title' => 'Watch on YouTube', 'url' => 'https://youtube.com', 'type' => 'video'],

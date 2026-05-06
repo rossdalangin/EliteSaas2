@@ -680,7 +680,7 @@ class Saas_Admin_Settings {
     public function render_user_columns( $val, $column, $user_id ) {
         if ( $column === 'saas_plan' ) {
             $plan = get_user_meta($user_id, '_saas_subscription_plan', true) ?: 'Free';
-            $color = ($plan === 'pro') ? '#39e09b' : '#666';
+            $color = ($plan === 'pro') ? '#10b981' : '#666';
             return '<strong style="color:'.$color.';">'.strtoupper($plan).'</strong>';
         }
         if ( $column === 'saas_earnings' ) {
@@ -1199,7 +1199,7 @@ class Saas_Admin_Settings {
                 </div>
                 <div style="background:#fff; padding:20px; border-radius:12px; border:1px solid #ddd;">
                     <small style="text-transform:uppercase; color:#64748b; font-weight:700; letter-spacing:1px;">Affiliate Obligations</small>
-                    <div style="font-size:2rem; font-weight:900; color:#6c5ce7;">$<?php echo number_format($obligations, 2); ?></div>
+                    <div style="font-size:2rem; font-weight:900; color:#4f46e5;">$<?php echo number_format($obligations, 2); ?></div>
                 </div>
                 <div style="background:#fff; padding:20px; border-radius:12px; border:1px solid #ddd;">
                     <small style="text-transform:uppercase; color:#64748b; font-weight:700; letter-spacing:1px;">Net Profit (Est)</small>
@@ -1650,11 +1650,11 @@ class Saas_Admin_Settings {
                                     <div style="margin-top:15px;">
                                         <div style="margin-bottom:10px;">
                                             <div style="display:flex; justify-content:space-between; margin-bottom:5px;"><small>Mobile</small> <small>72%</small></div>
-                                            <div style="height:8px; background:#f1f5f9; border-radius:10px;"><div style="width:72%; height:100%; background:#6c5ce7; border-radius:10px;"></div></div>
+                                            <div style="height:8px; background:#f1f5f9; border-radius:10px;"><div style="width:72%; height:100%; background:#4f46e5; border-radius:10px;"></div></div>
                                         </div>
                                         <div style="margin-bottom:10px;">
                                             <div style="display:flex; justify-content:space-between; margin-bottom:5px;"><small>Desktop</small> <small>24%</small></div>
-                                            <div style="height:8px; background:#f1f5f9; border-radius:10px;"><div style="width:24%; height:100%; background:#39e09b; border-radius:10px;"></div></div>
+                                            <div style="height:8px; background:#f1f5f9; border-radius:10px;"><div style="width:24%; height:100%; background:#10b981; border-radius:10px;"></div></div>
                                         </div>
                                         <div>
                                             <div style="display:flex; justify-content:space-between; margin-bottom:5px;"><small>Tablet</small> <small>4%</small></div>
@@ -1709,7 +1709,7 @@ class Saas_Admin_Settings {
                 <div id="tab-home-editor" class="tab-content" style="display:none; padding:20px; background:#fff; border:1px solid #ddd;">
                     <h3>Elite Sales Copy Setup</h3>
                     <p>Populate your homepage with professional copy designed by elite marketers.</p>
-                    <a href="<?php echo admin_url('admin-post.php?action=saas_populate_pro_content'); ?>" class="button button-primary" style="background:#39e09b; border-color:#39e09b; color:#1e2329;">🔥 Apply Pro Sales Copy Now</a>
+                    <a href="<?php echo admin_url('admin-post.php?action=saas_populate_pro_content'); ?>" class="button button-primary" style="background:#10b981; border-color:#10b981; color:#fff;">🔥 Apply Pro Sales Copy Now</a>
                     <hr>
                     <p>Use the General Settings tab to manually edit homepage titles, descriptions, and JSON content.</p>
                 </div>

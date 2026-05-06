@@ -86,7 +86,7 @@ function saas_render_lead_form_block( $attributes ) {
             <div class="input-group" style="margin-bottom:15px;">
                 <input type="email" name="email" placeholder="Your Email" required style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd;">
             </div>
-            <button type="submit" style="width:100%; padding:15px; background:#6c5ce7; color:#fff; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Submit Request</button>
+            <button type="submit" style="width:100%; padding:15px; background:#4f46e5; color:#fff; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Submit Request</button>
         </form>
         <div class="lead-feedback" style="margin-top:15px; font-weight:bold;"></div>
     </section>

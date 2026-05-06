@@ -826,7 +826,7 @@ function saas_ajax_generate_samples() {
     // Ensure content hub options are populated with at least some data if empty
     if (!get_option('saas_templates')) {
         $default_tpls = [
-            'coach' => ['headline' => 'Scale Your Impact 🚀', 'bio' => 'Certified high-performance coach.', 'color' => '#6c5ce7', 'theme' => 'light', 'shadow' => 'soft', 'links' => [['title' => 'Book Strategy Session', 'url' => '#', 'type' => 'button', 'style' => 'featured']]],
+            'coach' => ['headline' => 'Scale Your Impact 🚀', 'bio' => 'Certified high-performance coach.', 'color' => '#4f46e5', 'theme' => 'light', 'shadow' => 'soft', 'links' => [['title' => 'Book Strategy Session', 'url' => '#', 'type' => 'button', 'style' => 'featured']]],
             'business' => ['headline' => 'Enterprise Solutions 🏢', 'bio' => 'Driving growth through tech.', 'color' => '#0073aa', 'theme' => 'light', 'shadow' => 'hard', 'links' => [['title' => 'Our Services', 'url' => '#', 'type' => 'pricing', 'extra' => "$99/mo\nSupport\nUpdates"]]]
         ];
         update_option('saas_templates', $default_tpls);
@@ -863,7 +863,7 @@ function saas_ajax_generate_samples() {
                 'title' => 'Executive Performance Coach',
                 'headline' => 'Helping Founders Scale from 6 to 7 Figures 🚀',
                 'bio' => 'Ex-Google Exec turned Strategic Coach. I help high-ticket service providers automate their acquisition and double their profit margins.',
-                'color' => '#6c5ce7', 'theme' => 'light', 'shadow' => 'soft',
+                'color' => '#4f46e5', 'theme' => 'light', 'shadow' => 'soft',
                 'links' => [
                     ['t' => '👉 Free Strategy Session', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
                     ['t' => 'Masterclass: Scaling Systems', 'u' => 'https://youtube.com', 'type' => 'video'],

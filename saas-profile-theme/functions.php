@@ -42,7 +42,7 @@ function saas_customize_register( $wp_customize ) {
     ]);
 
     $wp_customize->add_setting( 'saas_primary_color' , [
-        'default'   => '#6c5ce7',
+        'default'   => '#4f46e5',
         'transport' => 'refresh',
     ]);
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'saas_primary_color', [
@@ -52,7 +52,7 @@ function saas_customize_register( $wp_customize ) {
     ]));
 
     $wp_customize->add_setting( 'saas_accent_color' , [
-        'default'   => '#39e09b',
+        'default'   => '#10b981',
         'transport' => 'refresh',
     ]);
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'saas_accent_color', [
@@ -70,8 +70,8 @@ function saas_customizer_css() {
     ?>
     <style type="text/css">
         :root {
-            --primary-color: <?php echo get_theme_mod( 'saas_primary_color', '#6c5ce7' ); ?>;
-            --accent-color: <?php echo get_theme_mod( 'saas_accent_color', '#39e09b' ); ?>;
+            --primary-color: <?php echo get_theme_mod( 'saas_primary_color', '#4f46e5' ); ?>;
+            --accent-color: <?php echo get_theme_mod( 'saas_accent_color', '#10b981' ); ?>;
         }
     </style>
     <?php
@@ -86,7 +86,7 @@ if ( ! function_exists( 'saas_get_profile_meta' ) ) {
         return [
             'bio'          => get_post_meta( $profile_id, '_saas_bio', true ),
             'headline'     => get_post_meta( $profile_id, '_saas_headline', true ),
-            'theme_color'  => get_post_meta( $profile_id, '_saas_theme_color', true ) ?: '#6c5ce7',
+            'theme_color'  => get_post_meta( $profile_id, '_saas_theme_color', true ) ?: '#4f46e5',
             'social_links' => get_post_meta( $profile_id, '_saas_social_links', true ) ?: [],
             'phone'        => get_post_meta( $profile_id, '_saas_phone', true ),
             'avatar_id'    => get_post_thumbnail_id( $profile_id ),

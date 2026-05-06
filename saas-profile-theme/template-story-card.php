@@ -27,7 +27,7 @@ if (!$profile) {
 
 $profile_id = $profile->ID;
 $meta = saas_get_profile_meta( $profile_id );
-$bg_color = get_post_meta( $profile_id, '_saas_bg_color', true ) ?: '#6c5ce7';
+$bg_color = get_post_meta( $profile_id, '_saas_bg_color', true ) ?: '#4f46e5';
 ?>
 <!DOCTYPE html>
 <html>

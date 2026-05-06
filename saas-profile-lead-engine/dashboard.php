@@ -652,7 +652,7 @@ class Saas_Dashboard {
                             <div class="field" id="saas-bg-value-wrapper">
                                 <label id="saas-bg-value-label">Background Value</label>
                                 <input type="text" name="bg_value" id="saas-bg-value-input" value="<?php echo esc_attr($profile_bg_val ?: '#f3f3f1'); ?>">
-                                <p class="field-hint">Flat: #f3f3f1 | Gradient: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%)</p>
+                                <p class="field-hint">Flat: #f3f3f1 | Gradient: linear-gradient(135deg, #4f46e5 0%, #a29bfe 100%)</p>
                             </div>
 
                             <div class="field">

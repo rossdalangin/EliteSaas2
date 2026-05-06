@@ -213,7 +213,7 @@
             $('#edit-link-url-mobile').val($li.attr('data-url-mobile'));
             $('#edit-link-geo-country').val($li.attr('data-geo-country'));
             $('#edit-link-url-geo').val($li.attr('data-url-geo'));
-            $('#edit-link-custom-bg').val($li.attr('data-custom-bg') || '#6366f1');
+            $('#edit-link-custom-bg').val($li.attr('data-custom-bg') || '#4f46e5');
             $('#edit-link-custom-text').val($li.attr('data-custom-text') || '#ffffff');
             $('#edit-link-hour-from').val($li.attr('data-hour-from'));
             $('#edit-link-hour-to').val($li.attr('data-hour-to'));
@@ -481,9 +481,9 @@
             var p = $(this).data('preset');
             var $form = $('#saas-branding-form');
             var presets = {
-                midnight: { theme: 'dark', bg_type: 'flat', bg_value: '#0f172a', accent: '#6366f1', shadow: 'soft', font: "'Inter', sans-serif" },
+                midnight: { theme: 'dark', bg_type: 'flat', bg_value: '#0f172a', accent: '#4f46e5', shadow: 'soft', font: "'Inter', sans-serif" },
                 glassy: { theme: 'light', bg_type: 'gradient', bg_value: 'linear-gradient(135deg, #e0e7ff 0%, #ffffff 100%)', accent: '#4f46e5', shadow: 'soft', font: "'Inter', sans-serif" },
-                vibrant: { theme: 'vibrant', bg_type: 'gradient', bg_value: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)', accent: '#ffffff', shadow: 'hard', font: "'Montserrat', sans-serif" },
+                vibrant: { theme: 'vibrant', bg_type: 'gradient', bg_value: 'linear-gradient(135deg, #4f46e5 0%, #a855f7 100%)', accent: '#ffffff', shadow: 'hard', font: "'Montserrat', sans-serif" },
                 minimal: { theme: 'light', bg_type: 'flat', bg_value: '#ffffff', accent: '#000000', shadow: 'none', font: "'Inter', sans-serif" },
                 luxury: { theme: 'luxury', bg_type: 'flat', bg_value: '#000000', accent: '#d4af37', shadow: 'soft', font: "'Playfair Display', serif" }
             };
@@ -763,7 +763,7 @@
                 data: {
                     labels: saas_chart_data.labels.length ? saas_chart_data.labels : ['No Data'],
                     datasets: [
-                        { label: 'Views', data: saas_chart_data.views.length ? saas_chart_data.views : [0], borderColor: '#6366f1', backgroundColor: 'rgba(99, 102, 241, 0.05)', fill: true, tension: 0.4 },
+                        { label: 'Views', data: saas_chart_data.views.length ? saas_chart_data.views : [0], borderColor: '#4f46e5', backgroundColor: 'rgba(79, 70, 229, 0.05)', fill: true, tension: 0.4 },
                         { label: 'Clicks', data: saas_chart_data.clicks.length ? saas_chart_data.clicks : [0], borderColor: '#10b981', fill: false, tension: 0.4 }
                     ]
                 },
@@ -779,7 +779,7 @@
                     datasets: [{
                         label: 'Total Clicks',
                         data: [saas_ab_data.a, saas_ab_data.b],
-                        backgroundColor: ['#6366f1', '#10b981'],
+                        backgroundColor: ['#4f46e5', '#10b981'],
                         borderRadius: 10
                     }]
                 },

@@ -82,7 +82,7 @@ body {
     position: absolute;
     width: 150%;
     height: 150%;
-    background: radial-gradient(circle, #39e09b 0%, transparent 60%);
+    background: radial-gradient(circle, #10b981 0%, transparent 60%);
     bottom: -25%;
     right: -25%;
     animation: rotate 20s linear reverse infinite;
