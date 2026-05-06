@@ -190,24 +190,24 @@ $h_img   = get_option('saas_home_image');
 </section>
 
 <!-- Theme Showcase Section -->
-<section class="section-padding bg-light">
+<section class="section-padding bg-color">
     <div class="container-wide text-center">
         <h2 class="section-title-large">Bespoke themes for elite brands</h2>
         <div class="grid-4">
-            <div class="p-30 bg-white radius-24 border-light">
-                <div class="bg-light mb-20 flex-center font-black color-light shadow-sm radius-12 h-200">Light Mode</div>
+            <div class="theme-showcase-card is-light">
+                <div class="theme-preview-box">Light Mode</div>
                 <h4 class="mb-0">Clean & Professional</h4>
             </div>
-            <div class="p-30 bg-dark radius-24 color-white border-slate-800">
-                <div class="mb-20 flex-center font-black color-lighter shadow-lg radius-12 h-200 bg-card">Dark Mode</div>
+            <div class="theme-showcase-card is-dark">
+                <div class="theme-preview-box">Dark Mode</div>
                 <h4 class="mb-0">Modern & Bold</h4>
             </div>
-            <div class="p-30 bg-primary-gradient radius-24 color-white border-glass">
-                <div class="mb-20 flex-center font-black color-white shadow-md radius-12 h-200 bg-glass-overlay">Vibrant</div>
+            <div class="theme-showcase-card is-vibrant">
+                <div class="theme-preview-box">Vibrant</div>
                 <h4 class="mb-0">Energetic & Fun</h4>
             </div>
-            <div class="p-30 bg-dark radius-24 color-gold border-gold">
-                <div class="mb-20 flex-center font-black shadow-md radius-12 color-gold h-200 bg-luxury-inner">Luxury</div>
+            <div class="theme-showcase-card is-luxury">
+                <div class="theme-preview-box">Luxury</div>
                 <h4 class="mb-0">Premium & Elite</h4>
             </div>
         </div>

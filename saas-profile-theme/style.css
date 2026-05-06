@@ -912,11 +912,30 @@ body.theme-midnight-neon .saas-link-btn:hover {
     cursor: pointer;
     transition: var(--transition-bounce);
     box-shadow: 0 8px 16px rgba(79, 70, 229, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-claim-btn:hover {
     transform: translateY(-3px) scale(1.03);
     box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
+}
+
+.hero-claim-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(30deg);
+    transition: none;
+}
+
+.hero-claim-btn:hover::after {
+    left: 120%;
+    transition: all 0.6s ease-in-out;
 }
 
 .trusted-by-section {
@@ -997,6 +1016,17 @@ body.theme-midnight-neon .saas-link-btn:hover {
     text-align: center;
 }
 
+.stat-item {
+    transition: var(--transition-bounce);
+    padding: 24px;
+    border-radius: var(--radius-lg);
+}
+
+.stat-item:hover {
+    transform: translateY(-10px);
+    background: var(--bg-color);
+}
+
 .stat-item .stat-value {
     font-size: 4.5rem;
     font-weight: 900;
@@ -1006,10 +1036,11 @@ body.theme-midnight-neon .saas-link-btn:hover {
 }
 
 .stat-item .stat-label {
-    font-weight: 700;
+    font-weight: 800;
     color: var(--text-light);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
+    font-size: 0.85rem;
 }
 
 /* Feature Sections */
@@ -1227,12 +1258,20 @@ body.theme-midnight-neon .saas-link-btn:hover {
 .comparison-table th {
     padding: 30px;
     font-size: 1.1rem;
-    background: #f8fafc;
+    background: var(--bg-subtle);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .comparison-table td {
     padding: 25px 30px;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition-fast);
+}
+
+.comparison-table tr:hover td {
+    background: rgba(79, 70, 229, 0.02);
 }
 
 /* --- Mobile Hamburger Menu --- */
@@ -2294,3 +2333,37 @@ input, select, textarea, button, .saas-link-btn, .hero-claim-btn {
 .clean-layout-header { text-align: center; margin-bottom: 40px; }
 .clean-layout-title { font-weight: 800; font-size: 2.5rem; }
 .clean-layout-content { line-height: 1.8; font-size: 1.15rem; color: #444; }
+
+/* Theme Showcase Section */
+.theme-showcase-card {
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    transition: var(--transition-bounce);
+    border: 1px solid var(--border-color);
+    background: var(--bg-subtle);
+}
+
+.theme-showcase-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.theme-preview-box {
+    height: 200px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-base);
+}
+
+.is-light .theme-preview-box { background: #f8fafc; color: #64748b; }
+.is-dark .theme-preview-box { background: #0f172a; color: #f8fafc; }
+.is-vibrant .theme-preview-box { background: linear-gradient(135deg, #4f46e5, #6366f1); color: #fff; }
+.is-luxury .theme-preview-box { background: radial-gradient(circle, #1a1a1a 0%, #000 100%); color: #f59e0b; border: 1px solid #f59e0b; }
+
+.theme-showcase-card.is-dark { background: #0f172a; color: #fff; border-color: #1e293b; }
+.theme-showcase-card.is-luxury { border-color: #f59e0b; }
