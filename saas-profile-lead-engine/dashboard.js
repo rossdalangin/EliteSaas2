@@ -113,7 +113,7 @@
                     var urls = $(extraId).val().split('\n').filter(Boolean);
                     var html = '';
                     urls.forEach(function(u) {
-                        html += '<img src="' + u + '" style="width:100%; height:60px; object-fit:cover; border-radius:8px;">';
+                        html += '<div class="gallery-preview-item"><img src="' + u + '"><button type="button" class="remove-gallery-img" data-url="' + u + '">&times;</button></div>';
                     });
                     $('#saas-edit-gallery-previews').html(html);
                 }
@@ -566,17 +566,24 @@
             }).on('select', function() {
                 if (isGallery) {
                     var selection = custom_uploader.state().get('selection');
-                    var urls = [];
-                    var html = '';
+                    var targetInput = (target === 'gallery-add') ? '#saas-add-extra-field' : '#edit-link-extra';
+                    var currentUrls = $(targetInput).val().split('\n').filter(Boolean);
+                    var newHtml = '';
+
                     selection.map(function(attachment) {
                         attachment = attachment.toJSON();
-                        urls.push(attachment.url);
-                        html += '<img src="' + attachment.url + '" style="width:100%; height:60px; object-fit:cover; border-radius:8px;">';
+                        if (currentUrls.indexOf(attachment.url) === -1) {
+                            currentUrls.push(attachment.url);
+                        }
                     });
+
+                    currentUrls.forEach(function(u) {
+                        newHtml += '<div class="gallery-preview-item"><img src="' + u + '"><button type="button" class="remove-gallery-img" data-url="' + u + '">&times;</button></div>';
+                    });
+
                     var targetPreviews = (target === 'gallery-add') ? '#saas-gallery-previews' : '#saas-edit-gallery-previews';
-                    var targetInput = (target === 'gallery-add') ? '#saas-add-extra-field' : '#edit-link-extra';
-                    $(targetPreviews).html(html);
-                    $(targetInput).val(urls.join('\n'));
+                    $(targetPreviews).html(newHtml);
+                    $(targetInput).val(currentUrls.join('\n'));
                 } else {
                     var attachment = custom_uploader.state().get('selection').first().toJSON();
                     if (target === 'profile-image') {
@@ -610,6 +617,32 @@
             var old = $btn.text();
             $btn.text('HTML Copied! ✅');
             setTimeout(function() { $btn.text(old); }, 2000);
+        });
+
+        // Removal Logic for Gallery Images
+        $(document).on('click', '.remove-gallery-img', function(e) {
+            e.preventDefault();
+            var url = $(this).data('url');
+            var $item = $(this).closest('.gallery-preview-item');
+            var $wrap = $(this).closest('.grid-gallery');
+            var targetInputId = $wrap.attr('id') === 'saas-gallery-previews' ? '#saas-add-extra-field' : '#edit-link-extra';
+            var $input = $(targetInputId);
+
+            var urls = $input.val().split('\n').filter(Boolean);
+            var filtered = urls.filter(function(u) { return u !== url; });
+
+            $input.val(filtered.join('\n'));
+            $item.fadeOut(300, function() { $(this).remove(); });
+        });
+
+        // Clear All Gallery Images
+        $(document).on('click', '.clear-gallery', function(e) {
+            e.preventDefault();
+            if(!confirm('Clear all images in this gallery?')) return;
+            var targetPreviewId = '#' + $(this).data('target');
+            var targetInputId = targetPreviewId === '#saas-gallery-previews' ? '#saas-add-extra-field' : '#edit-link-extra';
+            $(targetPreviewId).html('');
+            $(targetInputId).val('');
         });
 
         // 11. Lead Management (Search)
@@ -753,6 +786,29 @@
                     });
                     saasFetch('saas_update_link_order', { link_ids: ids });
                 }
+            });
+        }
+
+        function saasUpdateGalleryInput(previewId) {
+            var inputId = previewId === '#saas-gallery-previews' ? '#saas-add-extra-field' : '#edit-link-extra';
+            var urls = [];
+            $(previewId + ' .gallery-preview-item img').each(function() {
+                urls.push($(this).attr('src'));
+            });
+            $(inputId).val(urls.join('\n'));
+        }
+
+        if ($('#saas-gallery-previews').length && typeof Sortable !== 'undefined') {
+            new Sortable(document.getElementById('saas-gallery-previews'), {
+                animation: 150,
+                onEnd: function() { saasUpdateGalleryInput('#saas-gallery-previews'); }
+            });
+        }
+
+        if ($('#saas-edit-gallery-previews').length && typeof Sortable !== 'undefined') {
+            new Sortable(document.getElementById('saas-edit-gallery-previews'), {
+                animation: 150,
+                onEnd: function() { saasUpdateGalleryInput('#saas-edit-gallery-previews'); }
             });
         }
 

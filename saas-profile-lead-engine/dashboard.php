@@ -283,8 +283,12 @@ class Saas_Dashboard {
                                     </div>
 
                                     <div id="saas-gallery-selector-wrap" class="display-none mb-20 p-15 bg-main border-light radius-12">
-                                        <label class="display-block mb-10">Gallery Images</label>
-                                        <div id="saas-gallery-previews" class="grid-gallery gap-10 mb-10"></div>
+                                        <div class="flex-between mb-10">
+                                            <label class="mb-0">Gallery Images</label>
+                                            <button type="button" class="clear-gallery button text-xs p-2-8 color-danger border-none bg-transparent" data-target="saas-gallery-previews">Clear All</button>
+                                        </div>
+                                        <div id="saas-gallery-previews" class="grid-gallery mb-10"></div>
+                                        <p class="text-xs color-muted mb-10 text-center">💡 Drag images to reorder them.</p>
                                         <button type="button" class="button select-media full-width" data-target="gallery-add">📸 Select Gallery Images</button>
                                     </div>
 
@@ -377,8 +381,12 @@ class Saas_Dashboard {
                                     <div class="field"><label id="edit-label-extra">Description / Extra Content</label><textarea name="extra" id="edit-link-extra" rows="3"></textarea></div>
 
                                     <div id="saas-edit-gallery-selector-wrap" class="display-none mb-20 p-15 bg-main border-light radius-12">
-                                        <label class="display-block mb-10">Gallery Images</label>
-                                        <div id="saas-edit-gallery-previews" class="grid-gallery gap-10 mb-10"></div>
+                                        <div class="flex-between mb-10">
+                                            <label class="mb-0">Gallery Images</label>
+                                            <button type="button" class="clear-gallery button text-xs p-2-8 color-danger border-none bg-transparent" data-target="saas-edit-gallery-previews">Clear All</button>
+                                        </div>
+                                        <div id="saas-edit-gallery-previews" class="grid-gallery mb-10"></div>
+                                        <p class="text-xs color-muted mb-10 text-center">💡 Drag images to reorder them.</p>
                                         <button type="button" class="button select-media full-width" data-target="gallery-edit">📸 Select Gallery Images</button>
                                     </div>
 
