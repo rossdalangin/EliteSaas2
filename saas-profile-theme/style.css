@@ -1447,6 +1447,10 @@ body.theme-midnight-neon .saas-link-btn:hover {
     box-shadow: var(--shadow-xl);
 }
 
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
 /* --- Responsive Typography & Spacing --- */
 @media (max-width: 768px) {
     html { font-size: 14px; }

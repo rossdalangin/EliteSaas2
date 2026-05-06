@@ -20,17 +20,25 @@
             </ul>
         </div>
         <div class="flex-1 min-w-320">
-            <div class="card-light relative shadow-xl">
+            <div class="card-light relative shadow-xl p-48">
                 <div class="demo-card-badge">Live Demo</div>
                 <h4 class="mt-0 text-3xl font-black mb-10 tracking-tight">Your Profile Preview</h4>
                 <p class="mb-30 color-lighter">See how your business card looks on mobile instantly.</p>
-                <div class="iphone-mockup">
-                    <div class="iphone-content">
-                        <div class="iphone-avatar"></div>
-                        <div class="iphone-line-lg"></div>
-                        <div class="iphone-line-sm"></div>
-                        <div class="iphone-btn-primary">GET STARTED</div>
-                        <div class="iphone-btn-secondary"></div>
+
+                <div class="hero-image-perspective">
+                    <div class="iphone-mockup relative overflow-visible">
+                        <div class="absolute -left-20 top-40 z-10 animate-float">
+                            <div class="bg-vibrant-gradient p-15 radius-15 shadow-lg color-white text-xs font-bold">
+                                🚀 New Lead Captured!
+                            </div>
+                        </div>
+                        <div class="iphone-content p-32">
+                            <div class="iphone-avatar mb-24"></div>
+                            <div class="iphone-line-lg mb-16"></div>
+                            <div class="iphone-line-sm mb-32"></div>
+                            <div class="iphone-btn-primary mb-12">GET STARTED</div>
+                            <div class="iphone-btn-secondary"></div>
+                        </div>
                     </div>
                 </div>
             </div>
