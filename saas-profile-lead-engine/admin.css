@@ -3,43 +3,46 @@ SaaS Admin - Vibrant & Modern UI
 */
 
 .wrap h1 {
-    font-weight: 800;
-    color: #2d3436;
-    margin-bottom: 30px;
-    background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 32px;
+    background: linear-gradient(90deg, #4f46e5, #6366f1);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    letter-spacing: -0.05em;
 }
 
 #saas_settings .form-table th {
     font-weight: 700;
-    color: #636e72;
+    color: #475569;
 }
 
 #saas_settings input[type="text"], #saas_settings input[type="color"] {
-    border-radius: 8px;
-    padding: 10px;
-    border: 1px solid #dfe6e9;
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
 }
 
 #saas_settings .button-primary {
-    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%) !important;
+    background: #4f46e5 !important;
     border: none !important;
     border-radius: 50px !important;
-    padding: 10px 30px !important;
-    font-weight: 700 !important;
-    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3) !important;
+    padding: 10px 32px !important;
+    font-weight: 800 !important;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2) !important;
 }
 
 .saas-admin-card {
-    border: none !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
-    background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%) !important;
-    border-left: 5px solid #6c5ce7 !important;
+    border: 1px solid rgba(0,0,0,0.05) !important;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05) !important;
+    background: #fff !important;
+    border-left: 6px solid #4f46e5 !important;
+    border-radius: 20px !important;
+    padding: 24px !important;
 }
 
 .saas-admin-card div strong {
-    color: #6c5ce7;
+    color: #4f46e5;
 }
 
 .saas-admin-wrapper {
@@ -51,17 +54,18 @@ SaaS Admin - Vibrant & Modern UI
 .saas-admin-sidebar {
     width: 250px;
     background: #fff;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    padding: 32px;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
     height: fit-content;
+    border: 1px solid #e2e8f0;
 }
 
-.saas-admin-sidebar h3 { margin-top: 0; color: #6c5ce7; }
+.saas-admin-sidebar h3 { margin-top: 0; color: #4f46e5; font-weight: 900; letter-spacing: -0.02em; }
 .saas-admin-sidebar ul { list-style: none; padding: 0; }
-.saas-admin-sidebar li { margin-bottom: 15px; }
-.saas-admin-sidebar a { text-decoration: none; color: #636e72; font-weight: 600; font-size: 1rem; }
-.saas-admin-sidebar a:hover { color: #6c5ce7; }
+.saas-admin-sidebar li { margin-bottom: 12px; }
+.saas-admin-sidebar a { text-decoration: none; color: #475569; font-weight: 700; font-size: 0.95rem; display: block; padding: 8px 12px; border-radius: 8px; transition: all 0.2s; }
+.saas-admin-sidebar a:hover { color: #4f46e5; background: rgba(79, 70, 229, 0.05); }
 
 .saas-admin-main {
     flex: 1;

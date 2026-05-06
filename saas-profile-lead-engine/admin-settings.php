@@ -218,13 +218,13 @@ class Saas_Admin_Settings {
                             datasets: [{
                                 label: "Views",
                                 data: ' . json_encode($views ?: [0,0,0,0,0,0,0]) . ',
-                                borderColor: "#6c5ce7",
+                                borderColor: "#4f46e5",
                                 fill: true,
                                 tension: 0.4
                             }, {
                                 label: "Clicks",
                                 data: ' . json_encode($clicks ?: [0,0,0,0,0,0,0]) . ',
-                                borderColor: "#39e09b",
+                                borderColor: "#10b981",
                                 tension: 0.4
                             }]
                         },
@@ -1827,13 +1827,13 @@ class Saas_Admin_Settings {
                             datasets: [{
                                 label: 'New Profiles Created',
                                 data: <?php echo json_encode($growth_counts ?: [0, 0, 0, 0, 0, 0]); ?>,
-                                borderColor: '#6c5ce7',
-                                backgroundColor: 'rgba(108, 92, 231, 0.1)',
+                                borderColor: '#4f46e5',
+                                backgroundColor: 'rgba(79, 70, 229, 0.1)',
                                 borderWidth: 3,
                                 fill: true,
                                 tension: 0.4,
                                 pointBackgroundColor: '#fff',
-                                pointBorderColor: '#6c5ce7',
+                                pointBorderColor: '#4f46e5',
                                 pointRadius: 5
                             }]
                         },

@@ -76,8 +76,8 @@ class Saas_Admin_Profile_Manager {
             <label>Font Family:</label>
             <select name="saas_font_family">
                 <option value="'Inter', sans-serif" <?php selected(get_post_meta($post->ID, '_saas_font_family', true), "'Inter', sans-serif"); ?>>Inter (Modern)</option>
-                <option value="'Roboto', sans-serif" <?php selected(get_post_meta($post->ID, '_saas_font_family', true), "'Roboto', sans-serif"); ?>>Roboto (Clean)</option>
-                <option value="serif" <?php selected(get_post_meta($post->ID, '_saas_font_family', true), "serif"); ?>>Serif (Elegant)</option>
+                <option value="'Montserrat', sans-serif" <?php selected(get_post_meta($post->ID, '_saas_font_family', true), "'Montserrat', sans-serif"); ?>>Montserrat (Elite)</option>
+                <option value="'Playfair Display', serif" <?php selected(get_post_meta($post->ID, '_saas_font_family', true), "'Playfair Display', serif"); ?>>Playfair (Elegant)</option>
             </select>
         </p>
         <p>
