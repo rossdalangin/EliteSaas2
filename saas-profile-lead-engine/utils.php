@@ -194,7 +194,7 @@ function saas_get_default_templates() {
         'business' => [
             'headline' => 'Innovative Solutions for Global Enterprise. 🏢',
             'bio' => 'Streamlining operations and driving growth through technology.',
-            'color' => '#0073aa', 'theme' => 'modern-glass', 'shadow' => 'soft',
+            'color' => '#4f46e5', 'theme' => 'modern-glass', 'shadow' => 'soft',
             'links' => [
                 ['title' => 'Book a Consultation', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['title' => 'Our Core Services', 'url' => '#', 'type' => 'pricing', 'extra' => "$199/hr\nStrategy Audit\nProcess Automation\nCustom Dev"],
@@ -215,7 +215,7 @@ function saas_get_default_templates() {
         'wellness' => [
             'headline' => 'Holistic Wellness for the Modern Professional. 🌿',
             'bio' => 'Mind, body, and spirit alignment. Certified wellness coach and nutritionist.',
-            'color' => '#00b894', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#10b981', 'theme' => 'light', 'shadow' => 'soft',
             'links' => [
                 ['title' => 'Free Meditation Session', 'url' => '#', 'type' => 'button', 'style' => 'glow'],
                 ['title' => 'Wellness Retreats', 'url' => '#', 'type' => 'pricing', 'extra' => "$1,500+\n3 Days / 2 Nights\nAll Inclusive\nPersonalized Plan"],
@@ -256,7 +256,7 @@ function saas_get_default_templates() {
         'saas' => [
             'headline' => 'Software that Scales with Your Ambition. 💻',
             'bio' => 'Building the next generation of digital tools for elite teams. Fast, secure, and intuitive.',
-            'color' => '#4834d4', 'theme' => 'dark', 'shadow' => 'soft',
+            'color' => '#4f46e5', 'theme' => 'dark', 'shadow' => 'soft',
             'links' => [
                 ['title' => 'Start Your Free Trial', 'url' => '#', 'type' => 'button', 'style' => 'glow'],
                 ['title' => 'Watch Product Demo', 'url' => 'https://youtube.com', 'type' => 'video'],
@@ -278,7 +278,7 @@ function saas_get_default_templates() {
         'medical' => [
             'headline' => 'Modern Care, Compassionate Service. 🩺',
             'bio' => 'Full-service medical clinic specializing in preventative wellness and elite diagnostic care.',
-            'color' => '#1e90ff', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#4f46e5', 'theme' => 'light', 'shadow' => 'soft',
             'links' => [
                 ['title' => 'Book Appointment', 'url' => '#', 'type' => 'calendar'],
                 ['title' => 'Patient Portal Login', 'url' => '#', 'type' => 'button'],
@@ -343,7 +343,7 @@ function saas_get_default_templates() {
         'consultant' => [
             'headline' => 'Strategic Advisory for Scaling Founders. 🧠',
             'bio' => 'I help businesses streamline operations and maximize efficiency through data-driven strategies.',
-            'color' => '#4834d4', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#4f46e5', 'theme' => 'light', 'shadow' => 'soft',
             'links' => [
                 ['title' => 'Book Audit Call', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['title' => 'Service Menu', 'url' => '#', 'type' => 'pricing', 'extra' => "Operations Audit\nGrowth Strategy\nTeam Training"],
@@ -374,7 +374,7 @@ function saas_get_default_templates() {
         'doctor' => [
             'headline' => 'Compassionate Care, Precision Medicine. 🩺',
             'bio' => 'Advancing the future of medicine through patient-centered care.',
-            'color' => '#0097e6', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#4f46e5', 'theme' => 'light', 'shadow' => 'soft',
             'links' => [
                 ['title' => 'Book Appointment', 'url' => '#', 'type' => 'button', 'style' => 'glow'],
                 ['title' => 'Patient Portal', 'url' => '#', 'type' => 'button'],
@@ -395,7 +395,7 @@ function saas_get_default_templates() {
         'course' => [
             'headline' => 'Master Your Craft with Elite Systems. 🎓',
             'bio' => 'Practical, results-driven courses for high-ticket consultants and coaches.',
-            'color' => '#0984e3', 'theme' => 'light', 'shadow' => 'hard',
+            'color' => '#4f46e5', 'theme' => 'light', 'shadow' => 'hard',
             'links' => [
                 ['title' => 'Enroll in Masterclass', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['title' => 'Course Curriculum', 'url' => '#', 'type' => 'pricing', 'extra' => "12 Modules\nWeekly Group Coaching\nPrivate Community\nLifetime Access"],
@@ -415,7 +415,7 @@ function saas_get_default_templates() {
         'charity' => [
             'headline' => 'Building a Brighter Future Together. ❤️',
             'bio' => 'Empowering communities through sustainable impact and transparent giving.',
-            'color' => '#00b894', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#10b981', 'theme' => 'light', 'shadow' => 'soft',
             'links' => [
                 ['title' => 'Support Our Mission', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['title' => 'See Our Impact (2023)', 'url' => '#', 'type' => 'milestone', 'extra' => 'Impact:1.2M+ Lives'],
@@ -456,7 +456,7 @@ function saas_get_default_templates() {
         'yoga' => [
             'headline' => 'Find Your Inner Balance. 🧘',
             'bio' => 'Vinyasa and Yin yoga for all levels. Join me on the mat.',
-            'color' => '#be2edd', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#4f46e5', 'theme' => 'light', 'shadow' => 'soft',
             'links' => [
                 ['title' => 'Join My Next Class', 'url' => '#', 'type' => 'calendar'],
                 ['title' => 'Watch Guided Flow', 'url' => 'https://youtube.com', 'type' => 'video'],
@@ -517,7 +517,7 @@ function saas_get_default_templates() {
         'web3' => [
             'headline' => 'Building the Future of the Web. 🌐',
             'bio' => 'NFT Collector, DeFi enthusiast, and Web3 developer. Exploring the decentralized world.',
-            'color' => '#4834d4', 'theme' => 'dark', 'shadow' => 'soft',
+            'color' => '#4f46e5', 'theme' => 'dark', 'shadow' => 'soft',
             'links' => [
                 ['title' => 'View My NFT Collection', 'url' => '#', 'type' => 'button', 'style' => 'glow'],
                 ['title' => 'Join the DAO Discord', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
@@ -547,7 +547,7 @@ function saas_get_default_templates() {
         'mobile_app' => [
             'headline' => 'The App That Changes Everything. 📱',
             'bio' => 'Download our latest mobile experience. Optimized for speed and productivity.',
-            'color' => '#55efc4', 'theme' => 'vibrant', 'shadow' => 'hard',
+            'color' => '#10b981', 'theme' => 'vibrant', 'shadow' => 'hard',
             'links' => [
                 ['title' => 'Download on App Store', 'url' => '#', 'type' => 'button', 'style' => 'glow'],
                 ['title' => 'Get it on Play Store', 'url' => '#', 'type' => 'button'],
@@ -587,7 +587,7 @@ function saas_get_default_templates() {
         'dentist' => [
             'headline' => 'Bespoke Smiles, Modern Care. 🦷',
             'bio' => 'Advanced cosmetic and restorative dentistry. Experience the difference of elite care.',
-            'color' => '#81ecec', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#10b981', 'theme' => 'light', 'shadow' => 'soft',
             'links' => [
                 ['title' => 'Schedule Appointment', 'url' => '#', 'type' => 'calendar'],
                 ['title' => 'Our Smile Gallery', 'url' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/400?text=Smile1\nhttps://via.placeholder.com/400?text=Smile2"],

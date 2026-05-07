@@ -584,6 +584,9 @@
                     var targetPreviews = (target === 'gallery-add') ? '#saas-gallery-previews' : '#saas-edit-gallery-previews';
                     $(targetPreviews).html(newHtml);
                     $(targetInput).val(currentUrls.join('\n'));
+
+                    // Smooth scroll to new images
+                    $(targetPreviews).animate({ scrollTop: $(targetPreviews)[0].scrollHeight }, 500);
                 } else {
                     var attachment = custom_uploader.state().get('selection').first().toJSON();
                     if (target === 'profile-image') {

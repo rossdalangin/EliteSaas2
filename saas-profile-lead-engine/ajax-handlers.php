@@ -827,7 +827,7 @@ function saas_ajax_generate_samples() {
     if (!get_option('saas_templates')) {
         $default_tpls = [
             'coach' => ['headline' => 'Scale Your Impact 🚀', 'bio' => 'Certified high-performance coach.', 'color' => '#4f46e5', 'theme' => 'light', 'shadow' => 'soft', 'links' => [['title' => 'Book Strategy Session', 'url' => '#', 'type' => 'button', 'style' => 'featured']]],
-            'business' => ['headline' => 'Enterprise Solutions 🏢', 'bio' => 'Driving growth through tech.', 'color' => '#0073aa', 'theme' => 'light', 'shadow' => 'hard', 'links' => [['title' => 'Our Services', 'url' => '#', 'type' => 'pricing', 'extra' => "$99/mo\nSupport\nUpdates"]]]
+            'business' => ['headline' => 'Enterprise Solutions 🏢', 'bio' => 'Driving growth through tech.', 'color' => '#4f46e5', 'theme' => 'light', 'shadow' => 'hard', 'links' => [['title' => 'Our Services', 'url' => '#', 'type' => 'pricing', 'extra' => "$99/mo\nSupport\nUpdates"]]]
         ];
         update_option('saas_templates', $default_tpls);
     }
