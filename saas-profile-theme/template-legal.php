@@ -14,7 +14,8 @@ get_header();
             <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 <header class="entry-header mb-60 text-center">
                     <?php the_title( '<h1 class="entry-title text-6xl font-black tracking-tight mb-20">', '</h1>' ); ?>
-                    <p class="color-light font-bold">Last Updated: <?php echo get_the_modified_date(); ?></p>
+                    <p class="color-light font-bold">Protocol Version: <?php echo get_the_modified_date(); ?></p>
+                    <p class="text-sm opacity-60 mt-10">Establishing the framework for secure, elite digital commerce.</p>
                 </header>
 
                 <div class="entry-content lh-1-8 text-lg color-light">

@@ -6,9 +6,9 @@
 get_header(); ?>
 
 <?php
-$h_title = get_option('saas_home_title') ?: 'The Only Digital Identity Engine Built for the Elite 1%.';
-$h_hero  = get_option('saas_home_hero') ?: 'Stop settling for static link trees. Deploy a conversion-optimized command center that captures leads, closes deals, and scales your authority automatically.';
-$h_cta   = get_option('saas_home_cta') ?: 'Claim Your Elite Link →';
+$h_title = get_option('saas_home_title') ?: get_the_title();
+$h_hero  = get_option('saas_home_hero');
+$h_cta   = get_option('saas_home_cta') ?: 'Get Started Free';
 $h_img   = get_option('saas_home_image');
 ?>
 <main id="landing-page" class="landing-main bg-color">
@@ -113,14 +113,14 @@ $h_img   = get_option('saas_home_image');
 <section class="section-padding bg-subtle">
     <div class="container-standard flex-wrap flex-center gap-60 mx-auto">
         <div class="flex-1 min-w-320">
-            <h2 class="text-5xl mb-30">Stop Leaking Revenue. Start Owning Your Audience.</h2>
+            <h2 class="text-5xl mb-30">Stop losing traffic. Start building your list.</h2>
             <ul class="benefit-list">
                 <?php
                 $benefits = json_decode(get_option('saas_home_benefits'), true) ?: [
-                    'Unified Strategic Command: One link to dominate every platform.',
-                    'Passive Lead Acquisition: Capture high-intent inquiries 24/7/365.',
-                    'Frictionless Networking: Instant vCard exchange for the digital age.',
-                    'Conversion-First Architecture: Precision-engineered for mobile results.'
+                    'One link to rule them all',
+                    'Capture leads even while you sleep',
+                    'Instant vCard exchange for networking',
+                    'Beautiful, mobile-first design'
                 ];
                 foreach ($benefits as $b) : ?>
                     <li class="mb-15 flex-center gap-15">
@@ -158,7 +158,7 @@ $h_img   = get_option('saas_home_image');
 <!-- Comparison Section -->
 <section class="section-padding bg-color">
     <div class="container-standard text-center mx-auto">
-        <h2 class="section-title-large">Why Elite Creators Choose Strategic Command</h2>
+        <h2 class="section-title-large">Why elite creators choose us</h2>
         <div class="comparison-table-wrapper">
             <table class="comparison-table">
                 <thead>
@@ -252,17 +252,17 @@ $h_img   = get_option('saas_home_image');
 <!-- Features Grid -->
 <section class="section-padding-large bg-light border-t">
     <div class="container-wide text-center mx-auto">
-        <h2 class="section-title-large">The Arsenal of the Modern Elite</h2>
+        <h2 class="section-title-large">Everything you need to grow online</h2>
 
         <!-- Interactive Tech Preview -->
         <div class="grid-2 mb-80 text-left flex-center">
             <div class="card-white p-40 shadow-xl">
                 <div class="flex-wrap gap-10 mb-20">
                     <span class="badge-ui">Smart Routing</span>
-                    <span class="badge-ui badge-vibrant">Behavioral Intelligence</span>
+                    <span class="badge-ui badge-vibrant">A/B Testing</span>
                 </div>
-                <h3 class="text-4xl mb-20">The Only Link Hub With a Revenue IQ.</h3>
-                <p class="color-light text-lg lh-1-6">Our proprietary engine analyzes visitor intent, device, and location in real-time to serve the highest-converting content automatically. Eliminate the guesswork with mathematical A/B testing that identifies your winning offers with surgical precision.</p>
+                <h3 class="text-4xl mb-20">The only link hub with an IQ.</h3>
+                <p class="color-light text-lg lh-1-6">Our system automatically detects your visitor's location and device. Send iPhone users to the App Store and Android users to Play Store—automatically. Run split tests on your CTAs to see which version converts better.</p>
             </div>
             <div class="bg-dark p-40 radius-40 relative overflow-hidden">
                 <div class="mb-15 p-20 bg-glass-card">
@@ -427,24 +427,24 @@ $h_img   = get_option('saas_home_image');
 <!-- Pricing Section -->
 <section id="pricing" class="section-padding-large bg-light border-t">
     <div class="container-standard text-center mx-auto">
-        <h2 class="section-title-large">Invest in Your Global Authority</h2>
-        <p class="color-light text-xl mb-80 mx-auto max-w-600">Select the tactical tier that matches your ambition. All plans engineered for maximum conversion lift.</p>
+        <h2 class="section-title-large">Invest in Your Authority</h2>
+        <p class="color-light text-xl mb-80 mx-auto max-w-600">Unlock the tools used by the world's most successful consultants. Risk-free. Cancel anytime.</p>
 
         <div class="grid-3 align-stretch">
             <?php
             $pricing_json = get_option('saas_home_pricing_json');
             $plans = json_decode($pricing_json, true) ?: [
                 [
-            'name' => 'Foundational', 'price' => '$0', 'period' => 'forever', 'cta' => 'Deploy Free Engine →', 'link' => '/register', 'style' => 'light',
-            'features' => ['1 Core Authority Engine', 'Standard Conversion Blocks', 'Essential Performance Data', 'Global Community Access']
+                    'name' => 'Free', 'price' => '$0', 'period' => 'forever', 'cta' => 'Join for Free', 'link' => '/register', 'style' => 'light',
+                    'features' => ['1 Profile', 'Standard Blocks', 'Basic Analytics', 'Community Support']
                 ],
                 [
-            'name' => 'Elite Command', 'price' => '$19', 'period' => '/mo', 'cta' => 'Scale to Elite →', 'link' => '/register?plan=pro', 'style' => 'featured', 'badge' => 'STRATEGIC CHOICE',
-            'features' => ['Unlimited Premium Blocks', 'Advanced Lead CRM', 'Custom Sovereign Domain', 'Priority Tactical Support', 'Zero Platform Branding']
+                    'name' => 'Elite Pro', 'price' => '$19', 'period' => '/mo', 'cta' => 'Upgrade to Pro', 'link' => '/register?plan=pro', 'style' => 'featured', 'badge' => 'FOR THE ELITE 1%',
+                    'features' => ['Unlimited Premium Blocks', 'Lead Generation CRM', 'Custom Domain Mapping', 'Whitelabel Branding', 'Priority Support']
                 ],
                 [
-            'name' => 'Empire Scale', 'price' => '$49', 'period' => '/mo', 'cta' => 'Launch Empire →', 'link' => '/register?plan=agency', 'style' => 'dark',
-            'features' => ['Unlimited Sub-Accounts', 'Full API Command', 'White-Label Architectural Control', 'Dedicated Growth Manager', 'Custom Logic Integration']
+                    'name' => 'Agency Unlimited', 'price' => '$49', 'period' => '/mo', 'cta' => 'Go Unlimited', 'link' => '/register?plan=agency', 'style' => 'dark',
+                    'features' => ['Everything in Pro', 'Unlimited Sub-accounts', 'API & Webhook Access', 'White-label Client Funnels', 'Dedicated Account Manager']
                 ]
             ];
             foreach ($plans as $p) :

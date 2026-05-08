@@ -245,8 +245,8 @@ class Saas_Dashboard {
                     <div class="link-tab-grid">
                         <div class="block-picker-sidebar">
                             <div class="dashboard-card">
-                                <h3>Manage Blocks</h3>
-                                <p class="field-hint">Blocks are the building blocks of your funnel. Use them to share links, capture leads, or showcase testimonials.</p>
+                                <h3>Strategic Block Command</h3>
+                                <p class="field-hint">Deploy high-performance blocks to engineer your funnel. Every element is a tactical asset designed for conversion.</p>
                                 <div class="saas-block-picker">
                                     <div class="picker-item active" data-type="button"><span>🔗</span> Button</div>
                                     <div class="picker-item" data-type="video"><span>🎬</span> Video</div>
@@ -736,10 +736,10 @@ class Saas_Dashboard {
                 <div id="tab-leads" class="saas-tab-content">
                     <div class="dashboard-card">
                         <div class="flex-between flex-center mb-20">
-                            <h3>Captured Leads</h3>
+                            <h3>High-Intent Pipeline</h3>
                             <div class="flex gap-10">
-                                <input type="text" id="lead-search" placeholder="Search leads..." class="button bg-white text-left">
-                                <a href="<?php echo admin_url('admin-ajax.php?action=saas_export_leads&security='.wp_create_nonce('saas_export_nonce')); ?>" class="button">📥 Export CSV</a>
+                                <input type="text" id="lead-search" placeholder="Filter prospects..." class="button bg-white text-left">
+                                <a href="<?php echo admin_url('admin-ajax.php?action=saas_export_leads&security='.wp_create_nonce('saas_export_nonce')); ?>" class="button">📥 Export Intel</a>
                             </div>
                         </div>
                         <div class="saas-table-wrapper">
@@ -774,8 +774,8 @@ class Saas_Dashboard {
                 <div id="tab-analytics" class="saas-tab-content">
                     <div class="dashboard-card">
                         <div class="flex-between flex-center mb-20">
-                            <h3>Performance</h3>
-                            <a href="<?php echo admin_url('admin-ajax.php?action=saas_export_analytics&security='.wp_create_nonce('saas_export_nonce')); ?>" class="button">📥 Export Stats</a>
+                            <h3>Tactical Intelligence</h3>
+                            <a href="<?php echo admin_url('admin-ajax.php?action=saas_export_analytics&security='.wp_create_nonce('saas_export_nonce')); ?>" class="button">📥 Export Intelligence</a>
                         </div>
                         <div class="h-280 mb-24"><canvas id="saas-analytics-chart"></canvas></div>
                         <?php
