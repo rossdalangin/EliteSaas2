@@ -967,9 +967,37 @@ class Saas_Admin_Settings {
                                     <textarea name="comparison_json" rows="8" class="large-text" style="width:100%; font-family:monospace;"><?php echo esc_textarea(json_encode(json_decode(get_option('saas_home_comparison_json')), JSON_PRETTY_PRINT)); ?></textarea>
                                 </div>
                                 <div class="field" style="margin-top:20px;">
-                                    <label><strong>Pricing Strategy (JSON)</strong></label>
-                                    <p class="description">Manage price points, features, and plan CTAs.</p>
-                                    <textarea name="pricing_json" rows="8" class="large-text" style="width:100%; font-family:monospace;"><?php echo esc_textarea(json_encode(json_decode(get_option('saas_home_pricing_json')), JSON_PRETTY_PRINT)); ?></textarea>
+                                    <label><strong>Elite Pricing Manager</strong></label>
+                                    <p class="description">Manage price points, features, and plan CTAs. Changes are auto-synced to JSON.</p>
+                                    <div id="saas-pricing-repeater" style="background:#f8fafc; padding:15px; border-radius:12px; border:1px solid #e2e8f0;">
+                                        <div class="pricing-rows-container">
+                                            <?php
+                                            $current_plans = json_decode(get_option('saas_home_pricing_json'), true) ?: [];
+                                            foreach($current_plans as $index => $plan):
+                                            ?>
+                                            <div class="pricing-row" style="background:#fff; padding:15px; border-radius:10px; border:1px solid #eee; margin-bottom:15px; position:relative;">
+                                                <button type="button" class="remove-pricing-row" style="position:absolute; top:10px; right:10px; background:#fee2e2; color:#ef4444; border:none; border-radius:5px; cursor:pointer; padding:5px 10px;">&times;</button>
+                                                <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:10px;">
+                                                    <input type="text" class="plan-name" placeholder="Plan Name" value="<?php echo esc_attr($plan['name']); ?>" style="width:100%;">
+                                                    <input type="text" class="plan-price" placeholder="Price (e.g. $19)" value="<?php echo esc_attr($plan['price']); ?>" style="width:100%;">
+                                                    <input type="text" class="plan-period" placeholder="Period (e.g. /mo)" value="<?php echo esc_attr($plan['period']); ?>" style="width:100%;">
+                                                </div>
+                                                <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:10px;">
+                                                    <input type="text" class="plan-cta" placeholder="CTA Text" value="<?php echo esc_attr($plan['cta']); ?>" style="width:100%;">
+                                                    <input type="text" class="plan-link" placeholder="CTA Link" value="<?php echo esc_attr($plan['link']); ?>" style="width:100%;">
+                                                    <select class="plan-style" style="width:100%;">
+                                                        <option value="light" <?php selected($plan['style'], 'light'); ?>>Light</option>
+                                                        <option value="featured" <?php selected($plan['style'], 'featured'); ?>>Featured (Vibrant)</option>
+                                                    </select>
+                                                </div>
+                                                <input type="text" class="plan-badge" placeholder="Badge (Optional)" value="<?php echo esc_attr($plan['badge'] ?? ''); ?>" style="width:100%; margin-bottom:10px;">
+                                                <textarea class="plan-features" placeholder="Features (one per line)" style="width:100%; height:60px;"><?php echo esc_textarea(implode("\n", $plan['features'])); ?></textarea>
+                                            </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                        <button type="button" id="add-pricing-row" class="button button-secondary" style="width:100%; margin-top:10px;">+ Add New Plan</button>
+                                        <textarea name="pricing_json" id="pricing-json-sync" style="display:none;"><?php echo esc_textarea(json_encode($current_plans)); ?></textarea>
+                                    </div>
                                 </div>
                                 <div class="field" style="margin-top:20px;">
                                     <label><strong>Features Grid (JSON)</strong></label>
@@ -1064,6 +1092,58 @@ class Saas_Admin_Settings {
                 $('#json-kb').val(JSON.stringify(list, null, 4));
                 $('#new-kb-title, #new-kb-url').val('');
                 alert('Added! Click "Save All" to commit changes.');
+            });
+
+            function syncPricing() {
+                var plans = [];
+                $('.pricing-row').each(function() {
+                    var features = $(this).find('.plan-features').val().split('\n').filter(line => line.trim() !== "");
+                    plans.push({
+                        name: $(this).find('.plan-name').val(),
+                        price: $(this).find('.plan-price').val(),
+                        period: $(this).find('.plan-period').val(),
+                        cta: $(this).find('.plan-cta').val(),
+                        link: $(this).find('.plan-link').val(),
+                        style: $(this).find('.plan-style').val(),
+                        badge: $(this).find('.plan-badge').val(),
+                        features: features
+                    });
+                });
+                $('#pricing-json-sync').val(JSON.stringify(plans));
+            }
+
+            $('#add-pricing-row').on('click', function() {
+                var rowHtml = `<div class="pricing-row" style="background:#fff; padding:15px; border-radius:10px; border:1px solid #eee; margin-bottom:15px; position:relative;">
+                    <button type="button" class="remove-pricing-row" style="position:absolute; top:10px; right:10px; background:#fee2e2; color:#ef4444; border:none; border-radius:5px; cursor:pointer; padding:5px 10px;">&times;</button>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:10px;">
+                        <input type="text" class="plan-name" placeholder="Plan Name" value="" style="width:100%;">
+                        <input type="text" class="plan-price" placeholder="Price (e.g. $19)" value="" style="width:100%;">
+                        <input type="text" class="plan-period" placeholder="Period (e.g. /mo)" value="" style="width:100%;">
+                    </div>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:10px;">
+                        <input type="text" class="plan-cta" placeholder="CTA Text" value="" style="width:100%;">
+                        <input type="text" class="plan-link" placeholder="CTA Link" value="" style="width:100%;">
+                        <select class="plan-style" style="width:100%;">
+                            <option value="light">Light</option>
+                            <option value="featured">Featured (Vibrant)</option>
+                        </select>
+                    </div>
+                    <input type="text" class="plan-badge" placeholder="Badge (Optional)" value="" style="width:100%; margin-bottom:10px;">
+                    <textarea class="plan-features" placeholder="Features (one per line)" style="width:100%; height:60px;"></textarea>
+                </div>`;
+                $('.pricing-rows-container').append(rowHtml);
+                syncPricing();
+            });
+
+            $(document).on('click', '.remove-pricing-row', function() {
+                if(confirm('Remove this plan?')) {
+                    $(this).closest('.pricing-row').remove();
+                    syncPricing();
+                }
+            });
+
+            $(document).on('change keyup', '.pricing-row input, .pricing-row textarea, .pricing-row select', function() {
+                syncPricing();
             });
         });
 
