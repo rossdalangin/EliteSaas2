@@ -1355,31 +1355,59 @@ class Saas_Dashboard {
                         </div>
 
                         <div class="grid-3 gap-30 mt-30">
-                            <div class="plan-card bg-white p-32 radius-24 border-light relative overflow-hidden">
-                                <h4 class="text-lg m-0 color-muted">Free Plan</h4>
-                                <div class="text-4xl font-black m-16-0">$0<small class="text-base">/forever</small></div>
-                                <ul class="benefit-list mb-24 lh-2-2 text-sm text-left">
-                                    <li>✓ 1 Profile</li>
-                                    <li>✓ Standard Blocks</li>
-                                    <li>✓ Basic Analytics</li>
-                                    <li>✗ Custom Domains</li>
-                                    <li>✗ Pro Backgrounds</li>
-                                    <li>✗ Tracking Pixels</li>
-                                </ul>
-                                <button class="button full-width pointer-events-none opacity-60">Current Plan</button>
-                            </div>
+                            <?php
+                            $pricing_json = get_option('saas_home_pricing_json');
+                            $plans = json_decode($pricing_json, true) ?: [];
+                            foreach ($plans as $p) :
+                                $p_slug = $p['slug'] ?? 'free';
+                                $is_pro_plan = ($p_slug === 'pro');
+                                $is_agency_plan = ($p_slug === 'agency');
+                                $is_free_plan = ($p_slug === 'free');
 
-                            <div class="plan-card bg-primary-soft p-32 radius-24 border-primary-2 relative overflow-hidden">
-                                <div class="pos-absolute-tr-rotate bg-primary color-white p-5-40 text-xs font-bold">POPULAR</div>
-                                <h4 class="text-2xl m-0 color-primary">Elite Pro</h4>
-                                <div class="text-4xl font-black m-16-0">$19<small class="text-base">/mo</small></div>
-                                <ul class="benefit-list mb-24 lh-2-2 text-sm text-left">
-                                    <li>✓ Unlimited Profiles</li>
-                                    <li>✓ All Premium Blocks</li>
-                                    <li>✓ Real-time Deep Analytics</li>
-                                    <li>✓ Custom Domain Mapping</li>
-                                    <li>✓ Remove All Branding</li>
+                                $card_class = "plan-card p-32 radius-24 relative overflow-hidden";
+                                if ($is_pro_plan) $card_class .= " bg-primary-soft border-primary-2";
+                                elseif ($is_agency_plan) $card_class .= " bg-dark-inner border-slate-800 color-white";
+                                else $card_class .= " bg-white border-light";
+
+                                $current_user_plan = get_user_meta($user_id, '_saas_subscription_plan', true) ?: 'free';
+                                $is_current = ($current_user_plan === $p_slug);
+                            ?>
+                            <div class="<?php echo $card_class; ?>">
+                                <?php if (isset($p['badge'])) : ?>
+                                    <div class="pos-absolute-tr-rotate <?php echo $is_agency_plan ? 'bg-accent color-dark' : 'bg-primary color-white'; ?> p-5-40 text-xs font-bold"><?php echo esc_html($p['badge']); ?></div>
+                                <?php endif; ?>
+                                <h4 class="text-2xl m-0 <?php echo $is_pro_plan ? 'color-primary' : ($is_agency_plan ? 'color-accent' : 'color-muted'); ?>"><?php echo esc_html($p['name']); ?></h4>
+                                <div class="text-4xl font-black m-16-0"><?php echo esc_html($p['price']); ?><small class="text-base"><?php echo esc_html($p['period']); ?></small></div>
+                                <ul class="benefit-list mb-24 lh-2-2 text-sm text-left <?php echo $is_agency_plan ? 'color-white-70' : ''; ?>">
+                                    <?php foreach ($p['features'] as $f) : ?>
+                                        <li>✓ <?php echo esc_html($f); ?></li>
+                                    <?php endforeach; ?>
                                 </ul>
+
+                                <?php if ($is_current) : ?>
+                                    <div class="color-secondary font-bold mb-15">✓ Your <?php echo esc_html($p['name']); ?> subscription is active</div>
+                                    <?php if (!$is_free_plan) : ?>
+                                        <button id="saas-cancel-sub" class="button full-width color-danger <?php echo $is_agency_plan ? 'bg-transparent' : ''; ?>">Cancel Subscription</button>
+                                    <?php else: ?>
+                                        <button class="button full-width pointer-events-none opacity-60">Current Plan</button>
+                                    <?php endif; ?>
+                                <?php else : ?>
+                                    <div class="payment-options flex flex-column gap-10">
+                                        <?php
+                                        $gateway_mode = $payments->get_active_gateway();
+                                        $btn_color_class = $is_agency_plan ? 'bg-accent color-dark' : ($is_pro_plan ? '' : 'bg-secondary');
+                                        if ($gateway_mode === 'stripe' || $gateway_mode === 'user_select') : ?>
+                                            <button class="btn-primary saas-checkout-btn full-width <?php echo $btn_color_class; ?>" data-gateway="stripe" data-plan="<?php echo esc_attr($p_slug); ?>">Upgrade with Stripe</button>
+                                        <?php endif; ?>
+                                        <?php if ($gateway_mode === 'paypal' || $gateway_mode === 'user_select') : ?>
+                                            <button class="btn-primary saas-checkout-btn full-width bg-paypal" data-gateway="paypal" data-plan="<?php echo esc_attr($p_slug); ?>">Upgrade with PayPal</button>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            <?php endforeach; ?>
+
+                            <?php if (false) : // Remove legacy hardcoded blocks ?>
                             <?php if ($is_pro && get_user_meta($user_id, '_saas_subscription_plan', true) === 'pro') :
                                 $expiry = get_user_meta($user_id, '_saas_subscription_expiry', true);
                                 ?>
@@ -1399,33 +1427,7 @@ class Saas_Dashboard {
                             <?php endif; ?>
                         </div>
 
-                        <div class="plan-card bg-dark-inner p-32 radius-24 border-slate-800 relative overflow-hidden color-white">
-                                <div class="pos-absolute-tr-rotate bg-accent color-dark p-5-40 text-xs font-bold">MAX SCALE</div>
-                                <h4 class="text-2xl m-0 color-accent">Agency Unlimited</h4>
-                                <div class="text-4xl font-black m-16-0">$49<small class="text-base">/mo</small></div>
-                                <ul class="benefit-list mb-24 lh-2-2 text-sm text-left color-white-70">
-                                    <li>✓ Everything in Pro</li>
-                                    <li>✓ Unlimited Sub-accounts</li>
-                                    <li>✓ API & Webhook Access</li>
-                                    <li>✓ White-label Client Funnels</li>
-                                    <li>✓ Dedicated Account Manager</li>
-                                </ul>
-                            <?php if ($is_pro && get_user_meta($user_id, '_saas_subscription_plan', true) === 'agency') : ?>
-                                <div class="color-secondary font-bold mb-15">✓ Your agency subscription is active</div>
-                                <button id="saas-cancel-sub" class="button full-width color-danger bg-transparent">Cancel Subscription</button>
-                            <?php elseif (!$is_pro || get_user_meta($user_id, '_saas_subscription_plan', true) === 'pro') : ?>
-                                <div class="payment-options flex flex-column gap-10">
-                                    <?php
-                                    $gateway_mode = $payments->get_active_gateway();
-                                    if ($gateway_mode === 'stripe' || $gateway_mode === 'user_select') : ?>
-                                        <button class="btn-primary saas-checkout-btn full-width bg-accent color-dark" data-gateway="stripe" data-plan="agency">Upgrade to Agency (Stripe)</button>
-                                    <?php endif; ?>
-                                    <?php if ($gateway_mode === 'paypal' || $gateway_mode === 'user_select') : ?>
-                                        <button class="btn-primary saas-checkout-btn full-width bg-paypal">Upgrade to Agency (PayPal)</button>
-                                    <?php endif; ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
+                            <?php endif; // End legacy block removal ?>
                     </div>
 
                     <div class="max-w-600 mx-auto mt-40 dashboard-card">
