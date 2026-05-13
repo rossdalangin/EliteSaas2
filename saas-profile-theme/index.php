@@ -247,12 +247,14 @@ include __DIR__ . '/header.php';
                     </div>
                 <?php elseif ($type === 'image_gallery') : ?>
                     <div class="image-gallery-block">
-                        <h3><?php echo esc_html($block->post_title); ?></h3>
+                        <h3 class="mb-24"><?php echo esc_html($block->post_title); ?></h3>
                         <div class="gallery-grid">
                             <?php
                             $images = get_post_meta($block->ID, '_saas_gallery_images', true) ?: [];
                             foreach ($images as $img_url) : ?>
-                                <img src="<?php echo esc_url($img_url); ?>" alt="Gallery Image">
+                                <div class="gallery-item shadow-sm">
+                                    <img src="<?php echo esc_url($img_url); ?>" alt="Gallery Image">
+                                </div>
                             <?php endforeach; ?>
                         </div>
                     </div>

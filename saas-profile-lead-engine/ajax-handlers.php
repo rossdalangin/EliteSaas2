@@ -144,6 +144,11 @@ function saas_ajax_save_profile() {
         if (isset($_POST['phone'])) update_post_meta($profile_id, '_saas_phone', sanitize_text_field($_POST['phone']));
         if (isset($_POST['company'])) update_post_meta($profile_id, '_saas_company', sanitize_text_field($_POST['company']));
 
+        if (isset($_POST['social_links']) && is_array($_POST['social_links'])) {
+            $social_links = array_map('esc_url_raw', $_POST['social_links']);
+            update_post_meta($profile_id, '_saas_social_links', $social_links);
+        }
+
         if ($is_pro) {
             if (isset($_POST['custom_domain'])) update_post_meta($profile_id, '_saas_custom_domain', sanitize_text_field($_POST['custom_domain']));
             if (isset($_POST['profile_password'])) update_post_meta($profile_id, '_saas_profile_password', sanitize_text_field($_POST['profile_password']));
