@@ -72,9 +72,10 @@
             var fd = (data instanceof FormData) ? data : new FormData();
             if (!(data instanceof FormData)) {
                 for (var key in data) {
-                    if (Array.isArray(data[key])) {
-                        for(var i=0; i<data[key].length; i++) {
-                            fd.append(key + '[]', data[key][i]);
+                    if (data[key] !== null && typeof data[key] === 'object') {
+                        // Recursively handle objects (e.g. social_links[twitter])
+                        for (var subKey in data[key]) {
+                            fd.append(key + '[' + subKey + ']', data[key][subKey]);
                         }
                     } else {
                         fd.append(key, data[key]);
@@ -440,7 +441,7 @@
                 message: $form.find('textarea').val(),
                 subject: $form.find('[name="subject"]').val() || 'Support Request'
             };
-            saasFetch('saas_send_message', data, $form.find('button')).done(function(msg) {
+            saasFetch('saas_send_message', data, $form.find('.btn-primary')).done(function(msg) {
                 alert(msg);
                 $form.find('textarea, input[type="text"]').val('');
                 if($form.closest('.saas-modal').length) {
@@ -453,7 +454,7 @@
         // Payout Request
         $('#saas-payout-request-form').on('submit', function(e) {
             e.preventDefault();
-            saasFetch('saas_request_payout', new FormData(this), $(this).find('button')).done(function(msg) {
+            saasFetch('saas_request_payout', new FormData(this), $(this).find('.btn-primary')).done(function(msg) {
                 alert(msg);
                 location.reload();
             });
@@ -694,7 +695,7 @@
         // Update Lead Details
         $(document).on('submit', '#saas-update-lead-form', function(e) {
             e.preventDefault();
-            saasFetch('saas_update_lead', new FormData(this), $(this).find('button')).done(function() {
+            saasFetch('saas_update_lead', new FormData(this), $(this).find('.btn-primary')).done(function() {
                 location.reload();
             });
         });
@@ -703,7 +704,7 @@
         $(document).on('submit', '#saas-email-lead-form', function(e) {
             e.preventDefault();
             var $form = $(this);
-            saasFetch('saas_email_lead', new FormData(this), $form.find('button')).done(function(msg) {
+            saasFetch('saas_email_lead', new FormData(this), $form.find('.btn-primary')).done(function(msg) {
                 alert(msg);
                 $form.find('textarea').val('');
             });

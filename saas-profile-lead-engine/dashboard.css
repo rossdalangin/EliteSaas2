@@ -771,6 +771,60 @@ body {
     border-radius: 4px;
 }
 
+/* Elite Checkboxes */
+input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+    cursor: pointer;
+    accent-color: var(--primary);
+    border-radius: 4px;
+    border: 1.5px solid var(--border);
+    transition: all 0.2s;
+}
+
+/* Advanced Options Styling */
+#edit-advanced-fields {
+    border: 1px solid var(--border);
+    background: #fcfdfe !important;
+}
+
+#edit-advanced-fields .field {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+}
+
+#edit-advanced-fields .field:last-child {
+    border-bottom: none;
+}
+
+#edit-advanced-fields input[type="text"],
+#edit-advanced-fields input[type="url"],
+#edit-advanced-fields input[type="number"],
+#edit-advanced-fields select {
+    background: #fff;
+    border-radius: 10px;
+}
+
+#edit-advanced-fields .button.select-media {
+    background: var(--primary-soft);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    font-weight: 700;
+}
+
+#edit-advanced-fields label {
+    color: var(--text-dark);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Containment Fix: Ensure backgrounds respect parent rounding */
+.dashboard-card, .saas-inline-container, .picker-item, .saas-modal-content, .pricing-row {
+    overflow: hidden !important;
+}
+
 /* Animations */
 @keyframes pulse-soft {
     0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }

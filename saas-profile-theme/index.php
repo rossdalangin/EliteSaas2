@@ -173,7 +173,7 @@ include __DIR__ . '/header.php';
                 }
             }
             ?>
-            <div class="saas-block block-<?php echo esc_attr($type); ?> style-<?php echo esc_attr($style); ?> animate-<?php echo esc_attr($animation); ?>" data-block-id="<?php echo $block->ID; ?>" style="animation-delay: <?php echo $index * 0.1; ?>s; <?php echo $block_style_attr; ?>">
+            <div class="saas-block block-<?php echo esc_attr($type); ?> style-<?php echo esc_attr($style); ?> animate-<?php echo esc_attr($animation); ?>" data-block-id="<?php echo $block->ID; ?>" style="animation-delay: <?php echo $index * 0.1; ?>s;">
                 <?php if ($type === 'button') :
                     $has_pass = !empty(get_post_meta($block->ID, '_saas_link_password', true));
                     $ab_title_b = get_post_meta($block->ID, '_saas_ab_title_b', true);
@@ -233,7 +233,7 @@ include __DIR__ . '/header.php';
                         <p><?php echo esc_html( get_post_meta($block->ID, '_saas_faq_answer', true) ); ?></p>
                     </details>
                 <?php elseif ($type === 'pricing') : ?>
-                    <div class="pricing-card">
+                    <div class="pricing-card" style="<?php echo $block_style_attr; ?>">
                         <h3><?php echo esc_html( $block->post_title ); ?></h3>
                         <div class="price"><?php echo esc_html( get_post_meta($block->ID, '_saas_price', true) ); ?></div>
                         <ul>
