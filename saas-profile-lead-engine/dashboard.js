@@ -63,6 +63,12 @@
 
         // 3. AJAX Wrapper
         function saasFetch(action, data, $btn) {
+            // Ensure $btn is a single jQuery object even if a collection was passed
+            if ($btn && $btn.length > 1) {
+                $btn = $btn.filter('.btn-primary, [type="submit"]').first();
+                if (!$btn.length) $btn = $($btn[0]);
+            }
+
             var fd = (data instanceof FormData) ? data : new FormData();
             if (!(data instanceof FormData)) {
                 for (var key in data) {
@@ -78,8 +84,8 @@
             fd.append('action', action);
             fd.append('security', saas_dashboard_data.nonce);
 
-            var originalText = $btn ? $btn.text() : '';
-            if ($btn) $btn.text('Processing...').prop('disabled', true);
+            var originalText = ($btn && $btn.length) ? $btn.text() : '';
+            if ($btn && $btn.length) $btn.text('Processing...').prop('disabled', true);
 
             return $.ajax({
                 url: saas_dashboard_data.ajax_url,
@@ -89,11 +95,11 @@
                 contentType: false,
                 dataType: 'json'
             }).then(function(res) {
-                if ($btn) $btn.text(originalText).prop('disabled', false);
+                if ($btn && $btn.length) $btn.text(originalText).prop('disabled', false);
                 if (res.success) return res.data;
                 throw new Error(res.data || 'Execution failed');
             }).fail(function(err) {
-                if ($btn) $btn.text(originalText).prop('disabled', false);
+                if ($btn && $btn.length) $btn.text(originalText).prop('disabled', false);
                 alert("Error: " + (err.message || "Request failed"));
                 throw err;
             });
@@ -323,7 +329,7 @@
         // 5. Form Submissions
         $('#saas-add-link-form').on('submit', function(e) {
             e.preventDefault();
-            saasFetch('saas_add_link', new FormData(this), $(this).find('button'))
+            saasFetch('saas_add_link', new FormData(this), $(this).find('.btn-primary'))
                 .done(function() { location.reload(); });
         });
 
@@ -361,7 +367,7 @@
             var newSlug = isProfileTab ? $form.find('[name="profile_slug"]').val() : null;
             var action = isAccountTab ? 'saas_save_account' : 'saas_save_profile';
 
-            saasFetch(action, new FormData(this), $form.find('button'))
+            saasFetch(action, new FormData(this), $form.find('.btn-primary'))
                 .done(function(msg) {
                     alert(msg);
                     var frame = document.getElementById('saas-preview-frame');

@@ -247,6 +247,12 @@ function saas_ajax_save_profile() {
         if (isset($_POST['bio'])) update_post_meta($profile_id, '_saas_bio', sanitize_textarea_field($_POST['bio']));
         if (isset($_POST['niche'])) update_post_meta($profile_id, '_saas_niche', sanitize_text_field($_POST['niche']));
         if (isset($_POST['theme_color'])) update_post_meta($profile_id, '_saas_theme_color', sanitize_hex_color($_POST['theme_color']));
+        if (isset($_POST['profile_theme'])) update_post_meta($profile_id, '_saas_profile_theme', sanitize_text_field($_POST['profile_theme']));
+
+        if (isset($_POST['social_links']) && is_array($_POST['social_links'])) {
+            $social_links = array_map('esc_url_raw', $_POST['social_links']);
+            update_post_meta($profile_id, '_saas_social_links', $social_links);
+        }
     }
 
     // SEO CONTEXT
