@@ -380,7 +380,8 @@ include __DIR__ . '/header.php';
 
     <div class="sticky-cta">
         <a href="<?php echo home_url('/?saas_action=vcard&profile=' . $profile_id); ?>" class="save-contact-btn">
-            💾 Save Contact Info
+            <span class="text-xl">💾</span>
+            <span>Exchange Digital Card</span>
         </a>
     </div>
 
