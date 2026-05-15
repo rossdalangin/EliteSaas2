@@ -446,6 +446,7 @@ include __DIR__ . '/header.php';
     <!-- Mobile Navigation Bar -->
     <nav class="profile-bottom-nav">
         <a href="#profile-container" title="Top">🏠</a>
+        <a href="<?php echo home_url('/?saas_action=vcard&profile=' . $profile_id); ?>" class="nav-vcard" title="Save Contact">👤</a>
         <a href="mailto:<?php echo get_the_author_meta('user_email', $user_id); ?>" title="Email">✉️</a>
         <a href="<?php echo home_url('/register'); ?>" title="Create Yours">➕</a>
         <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" title="Share">📤</a>

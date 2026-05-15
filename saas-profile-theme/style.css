@@ -508,7 +508,7 @@ body.theme-midnight-neon .saas-link-btn:hover {
 }
 
 @media (max-width: 768px) {
-    .sticky-cta { bottom: 40px; }
+    .sticky-cta { display: none; }
 }
 
 .save-contact-btn {
