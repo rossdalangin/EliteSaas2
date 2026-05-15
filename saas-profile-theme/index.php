@@ -132,7 +132,7 @@ include __DIR__ . '/header.php';
             <img src="https://via.placeholder.com/150" alt="Avatar">
         <?php endif; ?>
         <h1 class="text-4xl font-black mb-10 tracking-tight">
-            <?php echo esc_html( $profile->post_title ); ?>
+            <?php echo esc_html( get_the_author_meta( 'display_name', $profile->post_author ) ); ?>
             <?php
                 $is_verified = $is_pro && get_post_meta($profile_id, '_saas_verified_badge', true);
                 $badge_class = 'verified-badge' . ($is_verified ? '' : ' display-none');
