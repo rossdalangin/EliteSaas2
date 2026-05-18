@@ -124,3 +124,22 @@ if ( ! function_exists( 'saas_get_effective_url' ) ) {
         return $default_url; // Default if plugin is inactive
     }
 }
+
+/**
+ * Register Sidebar
+ */
+function saas_widgets_init() {
+    register_sidebar( array(
+        'name'          => 'Blog Sidebar',
+        'id'            => 'sidebar-1',
+        'description'   => 'Add widgets here to appear in your blog sidebar.',
+        'before_widget' => '<section id="%1" class="widget %2">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+}
+add_action( 'widgets_init', 'saas_widgets_init' );
+
+// Post support
+add_theme_support( 'post-thumbnails' );
