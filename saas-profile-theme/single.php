@@ -20,7 +20,7 @@ get_header(); ?>
                         </div>
                         <h1 class="post-title text-5xl font-black ls-neg-2 mb-20"><?php the_title(); ?></h1>
                         <div class="post-author-bar flex flex-center gap-15">
-                            <div class="author-avatar radius-full bg-light avatar-fixed-40"></div>
+                            <?php echo get_avatar( get_the_author_meta( 'ID' ), 40, '', '', array('class'=>'radius-full') ); ?>
                             <span class="author-name font-bold">By <?php the_author(); ?></span>
                         </div>
                     </header>

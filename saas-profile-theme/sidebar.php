@@ -15,7 +15,7 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
                     <input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
                 </label>
                 <button type="submit" class="search-submit"><span class="si-icon">🔍</span></button>
-            </form>Section
+            </form>
         </section>
 
         <section class="widget knotbio-cta-widget">
