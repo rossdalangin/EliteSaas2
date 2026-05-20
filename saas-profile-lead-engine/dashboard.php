@@ -1407,10 +1407,6 @@ class Saas_Dashboard {
                             </div>
                             <?php endforeach; ?>
 
-                            <?php if (false) : // Remove legacy hardcoded blocks ?>
-                            <?php if ($is_pro && get_user_meta($user_id, '_saas_subscription_plan', true) === 'pro') :
-                                $expiry = get_user_meta($user_id, '_saas_subscription_expiry', true);
-                                ?>
                                 <div class="color-secondary font-bold mb-15">✓ Your elite subscription is active</div>
                                 <button id="saas-cancel-sub" class="button full-width color-danger">Cancel Subscription</button>
                             <?php elseif (!$is_pro) : ?>

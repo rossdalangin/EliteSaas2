@@ -43,6 +43,7 @@ if ( ! $profile ) {
 $profile_id = $profile->ID;
 $user_id = $profile->post_author;
 $meta = saas_get_profile_meta( $profile_id );
+$niche = get_post_meta($profile_id, '_saas_niche', true) ?: 'general';
 
 // Check Pro Status (Unified License Check)
 $is_pro = saas_is_profile_licensed($profile_id);
@@ -114,7 +115,7 @@ include __DIR__ . '/header.php';
     </script>
 <?php endif; ?>
 
-<div id="profile-container" class="mx-auto">
+<div id="profile-container" class="mx-auto niche-<?php echo esc_attr($niche); ?>">
     <!-- Cover Banner -->
     <?php
     $cover_id = get_post_meta($profile_id, '_saas_cover_id', true);

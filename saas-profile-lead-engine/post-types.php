@@ -219,31 +219,6 @@ add_filter( 'template_include', 'saas_template_redirect' );
 /**
  * Meta Field Helpers
  */
-if ( ! function_exists( 'saas_get_profile_meta' ) ) {
-    function saas_get_profile_meta( $profile_id ) {
-        return [
-            'bio'          => get_post_meta( $profile_id, '_saas_bio', true ),
-            'headline'     => get_post_meta( $profile_id, '_saas_headline', true ),
-            'theme_color'  => get_post_meta( $profile_id, '_saas_theme_color', true ) ?: '#4f46e5',
-            'social_links' => get_post_meta( $profile_id, '_saas_social_links', true ) ?: [],
-            'phone'        => get_post_meta( $profile_id, '_saas_phone', true ),
-            'avatar_id'    => get_post_thumbnail_id( $profile_id ),
-            'cover_id'     => get_post_meta( $profile_id, '_saas_cover_id', true ),
-            'niche'        => get_post_meta( $profile_id, '_saas_niche', true ),
-            'company'      => get_post_meta( $profile_id, '_saas_company', true ),
-            'custom_domain'=> get_post_meta( $profile_id, '_saas_custom_domain', true ),
-            'bg_type'      => get_post_meta( $profile_id, '_saas_bg_type', true ) ?: 'flat',
-            'bg_color'     => get_post_meta( $profile_id, '_saas_bg_color', true ) ?: '#f3f3f1',
-            'bg_gradient'  => get_post_meta( $profile_id, '_saas_bg_gradient', true ),
-            'btn_shape'    => get_post_meta( $profile_id, '_saas_btn_shape', true ) ?: 'pill',
-            'font_family'  => get_post_meta( $profile_id, '_saas_font_family', true ) ?: "'Inter', sans-serif",
-            'shadow_style' => get_post_meta( $profile_id, '_saas_container_shadow', true ) ?: 'soft',
-            'profile_theme'=> get_post_meta($profile_id, '_saas_profile_theme', true) ?: 'light',
-            'custom_css'   => get_post_meta($profile_id, '_saas_custom_css', true),
-            'qr_color'     => get_post_meta($profile_id, '_saas_qr_color', true) ?: '#000000',
-        ];
-    }
-}
 
 if ( ! function_exists( 'saas_update_profile_meta' ) ) {
     function saas_update_profile_meta( $profile_id, $data ) {

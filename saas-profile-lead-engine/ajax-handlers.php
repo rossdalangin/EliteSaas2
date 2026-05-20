@@ -853,47 +853,64 @@ function saas_ajax_generate_samples() {
     $all_templates = get_option('saas_templates');
     $samples = [];
 
-    if ($all_templates) {
-        foreach($all_templates as $id => $tpl) {
-            $samples[] = [
-                'title' => 'Elite ' . ucfirst($id),
-                'headline' => $tpl['headline'],
-                'bio' => $tpl['bio'],
-                'color' => $tpl['color'],
-                'theme' => $tpl['theme'],
-                'shadow' => $tpl['shadow'],
-                'links' => array_map(function($l) {
-                    return ['t' => $l['title'], 'u' => $l['url'], 'type' => $l['type'], 'style' => $l['style'] ?? 'regular', 'extra' => $l['extra'] ?? ''];
-                }, $tpl['links'])
-            ];
-        }
-    } else {
-        // High-quality fallback defaults
-        $samples = [
-            [
-                'title' => 'Executive Performance Coach',
-                'headline' => 'Helping Founders Scale from 6 to 7 Figures 🚀',
-                'bio' => 'Ex-Google Exec turned Strategic Coach. I help high-ticket service providers automate their acquisition and double their profit margins.',
-                'color' => '#4f46e5', 'theme' => 'light', 'shadow' => 'soft',
-                'links' => [
-                    ['t' => '👉 Free Strategy Session', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
-                    ['t' => 'Masterclass: Scaling Systems', 'u' => 'https://youtube.com', 'type' => 'video'],
-                    ['t' => 'Consulting Packages', 'u' => '#', 'type' => 'pricing', 'extra' => "$2,500/mo\nBi-weekly Calls\nSlack Support\nResource Library"],
-                ]
-            ],
-            [
-                'title' => 'Bespoke Private Advisory',
-                'headline' => 'Own Your Future. Protect Your Legacy. ⚜️',
-                'bio' => 'Specializing in off-market acquisitions and private advisory for high-net-worth individuals. Excellence at every touchpoint.',
-                'color' => '#d4af37', 'theme' => 'luxury', 'shadow' => 'soft',
-                'links' => [
-                    ['t' => 'New Asset Portfolio', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/800x600?text=Penthouse+A\nhttps://via.placeholder.com/800x600?text=Coastal+Villa"],
-                    ['t' => 'Inquire Privately', 'u' => '#', 'type' => 'lead_form'],
-                    ['t' => 'Save VCard to Phone', 'u' => home_url('/?saas_action=vcard'), 'type' => 'button', 'style' => 'rainbow'],
-                ]
+    // High-quality industry-leading samples
+    $samples = [
+        [
+            'title' => 'Elite Strategy & Performance',
+            'headline' => 'Helping Founders Scale from 6 to 7 Figures 🚀',
+            'bio' => 'Ex-Google Exec turned Strategic Coach. I help high-ticket service providers automate their acquisition and double their profit margins.',
+            'color' => '#1e293b', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'coach',
+            'links' => [
+                ['t' => '👉 Free Strategy Session', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Masterclass: Scaling Systems', 'u' => 'https://youtube.com', 'type' => 'video'],
+                ['t' => 'Consulting Packages', 'u' => '#', 'type' => 'pricing', 'extra' => "$2,500/mo\nBi-weekly Calls\nSlack Support\nResource Library"],
             ]
-        ];
-    }
+        ],
+        [
+            'title' => 'Universal Knowledge Podcast',
+            'headline' => 'Deep Conversations with Deep Thinkers 🎙️',
+            'bio' => 'Exploring the fringes of human experience, science, and culture. No filters. No scripts. Just curiosity and elite level insights.',
+            'color' => '#000000', 'theme' => 'dark', 'shadow' => 'soft', 'niche' => 'podcast',
+            'links' => [
+                ['t' => 'Listen on Spotify', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Upcoming Tour Dates', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+                ['t' => 'Support the Strategy', 'u' => '#', 'type' => 'button', 'style' => 'rainbow'],
+            ]
+        ],
+        [
+            'title' => 'Modern Solopreneurship',
+            'headline' => 'Synthesizing Business & Philosophy 🏰',
+            'bio' => 'The digital landscape is changing. I provide the synthesis of business, personal growth, and self-improvement for the modern polymath.',
+            'color' => '#0f172a', 'theme' => 'light', 'shadow' => 'none', 'niche' => 'creator',
+            'links' => [
+                ['t' => 'The 2-Hour Writer Course', 'u' => '#', 'type' => 'product', 'extra' => "$150"],
+                ['t' => 'Weekly Synthesis Letter', 'u' => '#', 'type' => 'newsletter'],
+                ['t' => 'My Creative Toolkit', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+            ]
+        ],
+        [
+            'title' => 'Tactical Performance Agency',
+            'headline' => 'We Don\'t Just Market. We Dominate. 📈',
+            'bio' => 'Ogilvy-style excellence meets modern tactical execution. We build high-ticket acquisition funnels that scale authority automatically.',
+            'color' => '#be123c', 'theme' => 'light', 'shadow' => 'hard', 'niche' => 'agency',
+            'links' => [
+                ['t' => 'View Performance Deck', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Our Core Framework', 'u' => '#', 'type' => 'milestone', 'extra' => "Market Authority:85"],
+                ['t' => 'Request Tactical Audit', 'u' => '#', 'type' => 'lead_form'],
+            ]
+        ],
+        [
+            'title' => 'Haute Couture Digital',
+            'headline' => 'Elegance in Every Digital Touchpoint ⚜️',
+            'bio' => 'Redefining digital fashion and lifestyle branding through minimalist excellence and high-performance design principles.',
+            'color' => '#262626', 'theme' => 'luxury', 'shadow' => 'soft', 'niche' => 'fashion',
+            'links' => [
+                ['t' => 'New Season Collection', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1539109132314-347752418b3b\nhttps://images.unsplash.com/photo-1490481651871-ab68de25d43d"],
+                ['t' => 'Exclusive Member Access', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+                ['t' => 'Book Styling Consult', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+            ]
+        ]
+    ];
 
     foreach ($samples as $s) {
         $p_id = wp_insert_post(['post_type' => 'saas_profile', 'post_title' => $s['title'], 'post_status' => 'publish', 'post_author' => $user_id]);
@@ -902,6 +919,7 @@ function saas_ajax_generate_samples() {
         update_post_meta($p_id, '_saas_theme_color', $s['color']);
         update_post_meta($p_id, '_saas_profile_theme', $s['theme']);
         update_post_meta($p_id, '_saas_container_shadow', $s['shadow']);
+        update_post_meta($p_id, '_saas_niche', $s['niche']);
 
         foreach ($s['links'] as $idx => $l) {
             $l_id = wp_insert_post([

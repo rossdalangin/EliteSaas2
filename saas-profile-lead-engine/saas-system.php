@@ -14,7 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define( 'SAAS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SAAS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
-// 1. Core Data Structures & Routing
+// 1. Core Utilities & Data Structures
+require_once SAAS_PLUGIN_DIR . 'utils.php';
 require_once SAAS_PLUGIN_DIR . 'post-types.php';
 
 // 2. Dashboard & Auth Logic
@@ -29,8 +30,6 @@ require_once SAAS_PLUGIN_DIR . 'payments.php';
 require_once SAAS_PLUGIN_DIR . 'affiliates.php';
 require_once SAAS_PLUGIN_DIR . 'messaging.php';
 require_once SAAS_PLUGIN_DIR . 'licenses.php';
-require_once SAAS_PLUGIN_DIR . 'utils.php';
-
 // 4. Admin Interface
 require_once SAAS_PLUGIN_DIR . 'admin-settings.php';
 require_once SAAS_PLUGIN_DIR . 'admin-profile-manager.php';
