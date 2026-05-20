@@ -1406,24 +1406,7 @@ class Saas_Dashboard {
                                 <?php endif; ?>
                             </div>
                             <?php endforeach; ?>
-
-                                <div class="color-secondary font-bold mb-15">✓ Your elite subscription is active</div>
-                                <button id="saas-cancel-sub" class="button full-width color-danger">Cancel Subscription</button>
-                            <?php elseif (!$is_pro) : ?>
-                                <div class="payment-options flex flex-column gap-10">
-                                    <?php
-                                    $gateway_mode = $payments->get_active_gateway();
-                                    if ($gateway_mode === 'stripe' || $gateway_mode === 'user_select') : ?>
-                                        <button class="btn-primary saas-checkout-btn full-width" data-gateway="stripe" data-plan="pro">Upgrade with Stripe</button>
-                                    <?php endif; ?>
-                                    <?php if ($gateway_mode === 'paypal' || $gateway_mode === 'user_select') : ?>
-                                        <button class="btn-primary saas-checkout-btn full-width bg-paypal">Upgrade with PayPal</button>
-                                    <?php endif; ?>
-                                </div>
-                            <?php endif; ?>
                         </div>
-
-                            <?php endif; // End legacy block removal ?>
                     </div>
 
                     <div class="max-w-600 mx-auto mt-40 dashboard-card">
