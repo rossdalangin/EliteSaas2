@@ -990,7 +990,10 @@ class Saas_Admin_Settings {
                                                         <option value="featured" <?php selected($plan['style'], 'featured'); ?>>Featured (Vibrant)</option>
                                                     </select>
                                                 </div>
-                                                <input type="text" class="plan-badge" placeholder="Badge (Optional)" value="<?php echo esc_attr($plan['badge'] ?? ''); ?>" style="width:100%; margin-bottom:10px;">
+                                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:10px;">
+                                                    <input type="text" class="plan-slug" placeholder="Plan Slug (e.g. pro, agency, free)" value="<?php echo esc_attr($plan['slug'] ?? ''); ?>" style="width:100%;">
+                                                    <input type="text" class="plan-badge" placeholder="Badge (Optional)" value="<?php echo esc_attr($plan['badge'] ?? ''); ?>" style="width:100%;">
+                                                </div>
                                                 <textarea class="plan-features" placeholder="Features (one per line)" style="width:100%; height:60px;"><?php echo esc_textarea(implode("\n", $plan['features'])); ?></textarea>
                                             </div>
                                             <?php endforeach; ?>
@@ -1099,6 +1102,7 @@ class Saas_Admin_Settings {
                 $('.pricing-row').each(function() {
                     var features = $(this).find('.plan-features').val().split('\n').filter(line => line.trim() !== "");
                     plans.push({
+                        slug: $(this).find('.plan-slug').val(),
                         name: $(this).find('.plan-name').val(),
                         price: $(this).find('.plan-price').val(),
                         period: $(this).find('.plan-period').val(),
@@ -1128,7 +1132,10 @@ class Saas_Admin_Settings {
                             <option value="featured">Featured (Vibrant)</option>
                         </select>
                     </div>
-                    <input type="text" class="plan-badge" placeholder="Badge (Optional)" value="" style="width:100%; margin-bottom:10px;">
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:10px;">
+                        <input type="text" class="plan-slug" placeholder="Plan Slug (e.g. pro, agency, free)" value="" style="width:100%;">
+                        <input type="text" class="plan-badge" placeholder="Badge (Optional)" value="" style="width:100%;">
+                    </div>
                     <textarea class="plan-features" placeholder="Features (one per line)" style="width:100%; height:60px;"></textarea>
                 </div>`;
                 $('.pricing-rows-container').append(rowHtml);

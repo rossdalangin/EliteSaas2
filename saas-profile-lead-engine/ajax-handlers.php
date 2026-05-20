@@ -853,61 +853,151 @@ function saas_ajax_generate_samples() {
     $all_templates = get_option('saas_templates');
     $samples = [];
 
-    // High-quality industry-leading samples
+    // Massive Library of Industry-Leading Sample Profiles (2+ per niche)
     $samples = [
+        // 1. COACH: Tony Robbins Style
         [
-            'title' => 'Elite Strategy & Performance',
-            'headline' => 'Helping Founders Scale from 6 to 7 Figures 🚀',
-            'bio' => 'Ex-Google Exec turned Strategic Coach. I help high-ticket service providers automate their acquisition and double their profit margins.',
+            'title' => 'Tony Robbins',
+            'headline' => 'Transform Your Life & Business 🚀',
+            'bio' => "The world's #1 life and business strategist. Author of 6 international bestsellers. Philanthropist. Entrepreneur.",
             'color' => '#1e293b', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'coach',
             'links' => [
-                ['t' => '👉 Free Strategy Session', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
-                ['t' => 'Masterclass: Scaling Systems', 'u' => 'https://youtube.com', 'type' => 'video'],
-                ['t' => 'Consulting Packages', 'u' => '#', 'type' => 'pricing', 'extra' => "$2,500/mo\nBi-weekly Calls\nSlack Support\nResource Library"],
+                ['t' => '👉 Join the Unleash the Power Within Event', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'New Book: The Holy Grail of Investing', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+                ['t' => 'Elite Platinum Partnership', 'u' => '#', 'type' => 'pricing', 'extra' => "$85,000/yr\nWorld-class Networking\nPrivate Events\nStrategic Coaching"],
+                ['t' => 'Watch: The Power of Identity', 'u' => 'https://youtube.com', 'type' => 'video'],
             ]
         ],
+        // 2. CREATOR: GaryVee Style
         [
-            'title' => 'Universal Knowledge Podcast',
-            'headline' => 'Deep Conversations with Deep Thinkers 🎙️',
-            'bio' => 'Exploring the fringes of human experience, science, and culture. No filters. No scripts. Just curiosity and elite level insights.',
+            'title' => 'Gary Vaynerchuk',
+            'headline' => 'CEO of VaynerMedia & Creator of VeeFriends 📈',
+            'bio' => "Serial entrepreneur, investor, and creator. Helping you understand where the consumer attention is going and how to exploit it.",
+            'color' => '#4f46e5', 'theme' => 'vibrant', 'shadow' => 'hard', 'niche' => 'creator',
+            'links' => [
+                ['t' => 'Get the VeeFriends Series 2', 'u' => '#', 'type' => 'button', 'style' => 'rainbow'],
+                ['t' => 'DailyVee: My Life as a CEO', 'u' => 'https://youtube.com', 'type' => 'video'],
+                ['t' => 'Join the GaryVee 0-100 Discord', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+            ]
+        ],
+        // 3. PODCASTER: Joe Rogan Style
+        [
+            'title' => 'Joe Rogan Experience',
+            'headline' => "The World's Most Powerful Podcast 🎙️",
+            'bio' => "Long-form conversations about life, science, culture, and comedy. Exploring the fringes of human knowledge.",
             'color' => '#000000', 'theme' => 'dark', 'shadow' => 'soft', 'niche' => 'podcast',
             'links' => [
-                ['t' => 'Listen on Spotify', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
-                ['t' => 'Upcoming Tour Dates', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
-                ['t' => 'Support the Strategy', 'u' => '#', 'type' => 'button', 'style' => 'rainbow'],
+                ['t' => 'Listen Now on Spotify', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Upcoming Comedy Dates', 'u' => '#', 'type' => 'faq', 'extra' => "Austin, TX - Dec 15:Sold Out\nLas Vegas, NV - Jan 10:Available"],
+                ['t' => 'JRE Official Gear Store', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
             ]
         ],
+        // 4. INFOPRENEUR: Dan Koe Style
         [
-            'title' => 'Modern Solopreneurship',
+            'title' => 'Dan Koe Strategy',
             'headline' => 'Synthesizing Business & Philosophy 🏰',
-            'bio' => 'The digital landscape is changing. I provide the synthesis of business, personal growth, and self-improvement for the modern polymath.',
-            'color' => '#0f172a', 'theme' => 'light', 'shadow' => 'none', 'niche' => 'creator',
+            'bio' => "Synthesizing business, personal growth, and self-improvement for the modern polymath. Build your digital kingdom.",
+            'color' => '#0f172a', 'theme' => 'light', 'shadow' => 'none', 'niche' => 'infopreneur',
             'links' => [
                 ['t' => 'The 2-Hour Writer Course', 'u' => '#', 'type' => 'product', 'extra' => "$150"],
                 ['t' => 'Weekly Synthesis Letter', 'u' => '#', 'type' => 'newsletter'],
-                ['t' => 'My Creative Toolkit', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+                ['t' => 'The Modern Polymath Roadmap', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
             ]
         ],
+        // 5. AGENCY: Ogilvy Style
         [
-            'title' => 'Tactical Performance Agency',
-            'headline' => 'We Don\'t Just Market. We Dominate. 📈',
-            'bio' => 'Ogilvy-style excellence meets modern tactical execution. We build high-ticket acquisition funnels that scale authority automatically.',
+            'title' => 'Ogilvy & Mather Elite',
+            'headline' => 'The Original Performance Agency 🚀',
+            'bio' => "We sell, or else. David Ogilvy's legacy of excellence applied to modern tactical marketing and brand development.",
             'color' => '#be123c', 'theme' => 'light', 'shadow' => 'hard', 'niche' => 'agency',
             'links' => [
-                ['t' => 'View Performance Deck', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
-                ['t' => 'Our Core Framework', 'u' => '#', 'type' => 'milestone', 'extra' => "Market Authority:85"],
-                ['t' => 'Request Tactical Audit', 'u' => '#', 'type' => 'lead_form'],
+                ['t' => 'View Our Global Case Studies', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Request a Strategic Audit', 'u' => '#', 'type' => 'lead_form'],
+                ['t' => 'Brand Authority Index', 'u' => '#', 'type' => 'milestone', 'extra' => "Market Dominance:88"],
             ]
         ],
+        // 6. FASHION: Vogue Style
         [
-            'title' => 'Haute Couture Digital',
-            'headline' => 'Elegance in Every Digital Touchpoint ⚜️',
-            'bio' => 'Redefining digital fashion and lifestyle branding through minimalist excellence and high-performance design principles.',
-            'color' => '#262626', 'theme' => 'luxury', 'shadow' => 'soft', 'niche' => 'fashion',
+            'title' => 'Vogue Elite Digital',
+            'headline' => 'The Authority on Fashion & Culture ⚜️',
+            'bio' => "Defining the zeitgeist since 1892. Redefining digital luxury and editorial excellence for the modern era.",
+            'color' => '#111111', 'theme' => 'luxury', 'shadow' => 'soft', 'niche' => 'fashion',
             'links' => [
-                ['t' => 'New Season Collection', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1539109132314-347752418b3b\nhttps://images.unsplash.com/photo-1490481651871-ab68de25d43d"],
-                ['t' => 'Exclusive Member Access', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
-                ['t' => 'Book Styling Consult', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+                ['t' => 'Spring/Summer 2026 Collection', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1539109132314-347752418b3b\nhttps://images.unsplash.com/photo-1490481651871-ab68de25d43d"],
+                ['t' => 'Join Vogue Club', 'u' => '#', 'type' => 'pricing', 'extra' => "$24/mo\nExclusive Events\nDigital Archive\nMember-only Content"],
+                ['t' => 'The Met Gala Archive', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+            ]
+        ],
+        // 7. EDUCATOR: Huberman Lab Style
+        [
+            'title' => 'Huberman Lab',
+            'headline' => 'Science-Based Tools for Daily Life 🧠',
+            'bio' => "Dr. Andrew Huberman, Professor at Stanford. I share low-cost/zero-cost tools for health, performance, and well-being.",
+            'color' => '#0c4a6e', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'education',
+            'links' => [
+                ['t' => 'Protocol: Neural Optimization', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Join the Neural Newsletter', 'u' => '#', 'type' => 'newsletter'],
+                ['t' => 'Science of Sleep Masterclass', 'u' => 'https://youtube.com', 'type' => 'video'],
+            ]
+        ],
+        // 8. BRAND: Apple Style
+        [
+            'title' => 'Apple Elite Digital',
+            'headline' => 'Think Different. Build Better. 💻',
+            'bio' => "Designing products that empower humanity. Excellence in engineering. Perfection in design. Privacy by default.",
+            'color' => '#111111', 'theme' => 'light', 'shadow' => 'none', 'niche' => 'brand',
+            'links' => [
+                ['t' => 'Discover iPhone 17 Pro', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+                ['t' => 'MacBook Pro Performance Deck', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+                ['t' => 'Privacy Architecture Statement', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+            ]
+        ],
+        // 9. LIFESTYLE: Kylie Beauty Style
+        [
+            'title' => 'Kylie Elite Beauty',
+            'headline' => 'Define Your Look. Own Your Power. ✨',
+            'bio' => "Revolutionary beauty products designed to make you feel confident and unstoppable. Clean. Vegan. High Performance.",
+            'color' => '#fbcfe8', 'theme' => 'vibrant', 'shadow' => 'soft', 'niche' => 'beauty',
+            'links' => [
+                ['t' => 'Shop the Matte Lip Kit', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Tutorial: 5-Min Glow Up', 'u' => 'https://youtube.com', 'type' => 'video'],
+                ['t' => 'Best Sellers Gallery', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1512496015851-a90fb38ba796\nhttps://images.unsplash.com/photo-1522335789203-aabd1fc54bc9"],
+            ]
+        ],
+        // 10. PUBLISHER: Morning Brew Style
+        [
+            'title' => 'Morning Brew Elite',
+            'headline' => 'Business News, Actually Fun. ☕',
+            'bio' => "The daily newsletter that makes you smarter in 5 minutes. Join 4M+ readers and stay ahead of the business world.",
+            'color' => '#fef08a', 'theme' => 'light', 'shadow' => 'hard', 'niche' => 'publisher',
+            'links' => [
+                ['t' => 'Subscribe to the Daily Brew', 'u' => '#', 'type' => 'newsletter'],
+                ['t' => 'Advertise with KnotBio Elite', 'u' => '#', 'type' => 'lead_form'],
+                ['t' => 'Our Core Readership', 'u' => '#', 'type' => 'milestone', 'extra' => "Audience Retention:94"],
+            ]
+        ],
+        // 11. SMALL BUSINESS: Elite Bistro
+        [
+            'title' => 'The Elite Bistro',
+            'headline' => 'Farm-to-Table Excellence 🍽️',
+            'bio' => "Experience the finest locally-sourced ingredients. An intimate atmosphere for the discerning palate.",
+            'color' => '#1e3a8a', 'theme' => 'luxury', 'shadow' => 'soft', 'niche' => 'small-business',
+            'links' => [
+                ['t' => 'Reserve Your Table Now', 'u' => '#', 'type' => 'calendar'],
+                ['t' => 'View Tonight\'s Specials', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Join Our Loyalty Circle', 'u' => '#', 'type' => 'pricing', 'extra' => "Elite Member\n15% Off Always\nPriority Booking\nComplimentary Wine"],
+            ]
+        ],
+        // 12. FREELANCER: Senior Product Designer
+        [
+            'title' => 'Elite Product Design',
+            'headline' => 'Solving Problems Through Visual Craft 🎨',
+            'bio' => "Ex-FAANG Senior Designer. I help startups build scalable design systems and intuitive user experiences that convert.",
+            'color' => '#475569', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'freelancer',
+            'links' => [
+                ['t' => 'View My Behance Portfolio', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Book a Design Consultation', 'u' => '#', 'type' => 'calendar'],
+                ['t' => 'Client Success Story', 'u' => '#', 'type' => 'testimonial', 'extra' => "Alex completely transformed our app. Conversion went up 40% in two weeks. Highly recommended."],
             ]
         ]
     ];

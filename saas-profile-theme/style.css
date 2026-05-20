@@ -2352,3 +2352,80 @@ input[type="checkbox"] {
     border: 2px dashed var(--border-color);
     background: #fff;
 }
+
+/* --- Enhanced Profile Component Styles --- */
+.badge-niche {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--primary-soft);
+    color: var(--primary-color);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.featured-media-wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.testimonial-block {
+    background: #fff;
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+    position: relative;
+}
+.testimonial-block .quote { font-size: 1.25rem; font-style: italic; line-height: 1.6; color: #475569; }
+.testimonial-block .quote-mark { font-size: 4rem; color: var(--primary-soft); position: absolute; top: 10px; left: 20px; opacity: 0.5; font-family: serif; }
+
+.elite-pricing {
+    background: #fff;
+    border-radius: 32px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+.elite-pricing:hover { transform: scale(1.02); }
+.elite-pricing .price { letter-spacing: -3px; line-height: 1; }
+
+/* --- Expanded Niche Overlays (Batch 2) --- */
+
+/* 7. Infopreneurs (Authority & Logic) */
+.niche-infopreneur .saas-link-btn, .niche-creator .saas-link-btn {
+    border: 1.5px solid var(--primary-color);
+    background: #fff;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+.niche-infopreneur .saas-link-btn:hover {
+    background: var(--primary-color);
+    color: #fff !important;
+}
+
+/* 8. Educators & Coaches (Trust & Clarity) */
+.niche-education .saas-link-btn, .niche-educator .saas-link-btn {
+    border-radius: 14px;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    text-align: left;
+    padding: 20px 25px;
+}
+.niche-education .btn-label, .niche-educator .btn-label { color: #0f172a; font-weight: 800; font-size: 1.05rem; }
+
+/* 9. Small Business & Local Experts (Modern Classic) */
+.niche-small-business .saas-link-btn, .niche-business .saas-link-btn {
+    background: var(--primary-color);
+    color: #fff !important;
+    font-weight: 700;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border: none;
+}
+.niche-small-business .profile-header img { border-radius: 18px; }
+
+/* 10. Publishers & Media (Content First) */
+.niche-publisher .profile-header h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; }
+.niche-publisher .saas-link-btn { border-radius: 4px; text-transform: uppercase; font-weight: 900; border: 2px solid #000; }

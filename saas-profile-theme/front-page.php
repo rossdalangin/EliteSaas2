@@ -339,10 +339,12 @@ if ($comparison_json) : ?>
                 ]
             ];
             foreach ($plans as $p) :
-                $is_featured = ($p['style'] === 'featured');
+                $is_featured = (isset($p['style']) && $p['style'] === 'featured');
+                $cta_text = $p['cta'] ?? 'Get Started';
+                $cta_link = $p['link'] ?? '/register';
             ?>
-                <div class="pricing-plan-card <?php echo $is_featured ? 'is-featured' : 'is-light'; ?> relative">
-                    <?php if (isset($p['badge'])) : ?>
+                <div class="pricing-plan-card <?php echo $is_featured ? 'is-featured' : 'is-light'; ?> relative flex-column">
+                    <?php if (!empty($p['badge'])) : ?>
                         <div class="badge-pro-price demo-card-badge-static"><?php echo esc_html($p['badge']); ?></div>
                     <?php endif; ?>
                     <h3 class="mb-0"><?php echo esc_html($p['name']); ?></h3>
@@ -352,8 +354,8 @@ if ($comparison_json) : ?>
                             <li class="mb-10">✓ <?php echo esc_html($f); ?></li>
                         <?php endforeach; ?>
                     </ul>
-                    <a href="<?php echo home_url($p['link']); ?>" class="saas-link-btn font-bold btn-pricing-cta">
-                        <?php echo esc_html($p['cta']); ?>
+                    <a href="<?php echo home_url($cta_link); ?>" class="saas-link-btn font-bold btn-pricing-cta <?php echo $is_featured ? 'style-featured' : ''; ?>">
+                        <?php echo esc_html($cta_text); ?>
                     </a>
                 </div>
             <?php endforeach; ?>

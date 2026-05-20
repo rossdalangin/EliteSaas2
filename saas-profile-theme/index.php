@@ -141,8 +141,22 @@ include __DIR__ . '/header.php';
             <span class="<?php echo $badge_class; ?>" title="Verified Professional">✨</span>
         </h1>
         <p class="headline"><?php echo esc_html( $meta['headline'] ); ?></p>
+        <?php if (!empty($meta['niche'])) : ?>
+            <span class="badge-niche mb-20"><?php echo esc_html(ucfirst($meta['niche'])); ?></span>
+        <?php endif; ?>
         <p class="bio"><?php echo nl2br( esc_html( $meta['bio'] ) ); ?></p>
     </header>
+
+    <?php
+    // Featured Component (Elite Pro Feature)
+    $featured_video = get_post_meta($profile_id, '_saas_featured_video', true);
+    if ($is_pro && $featured_video) : ?>
+        <div class="featured-media-wrapper mb-40 animate-fadein">
+            <div class="video-embed shadow-xl radius-24 overflow-hidden">
+                <?php echo wp_oembed_get( $featured_video ); ?>
+            </div>
+        </div>
+    <?php endif; ?>
 
     <!-- Dynamic Blocks Engine -->
     <div class="blocks-container">
@@ -220,13 +234,17 @@ include __DIR__ . '/header.php';
                         <?php echo wp_oembed_get( $url ); ?>
                     </div>
                 <?php elseif ($type === 'testimonial') : ?>
-                    <div class="testimonial-block">
-                        <div class="quote-mark">“</div>
-                        <p class="quote">"<?php echo esc_html( get_post_meta($block->ID, '_saas_testimonial_text', true) ); ?>"</p>
-                        <cite>— <?php echo esc_html( $block->post_title ); ?></cite>
-                        <?php if ($url && $url !== '#') : ?>
-                            <a href="<?php echo esc_url($url); ?>" class="testimonial-link" target="_blank">View Case Study ↗</a>
-                        <?php endif; ?>
+                    <div class="testimonial-block shadow-sm">
+                        <div class="testimonial-content">
+                            <div class="quote-mark">“</div>
+                            <p class="quote"><?php echo esc_html( get_post_meta($block->ID, '_saas_testimonial_text', true) ); ?></p>
+                            <div class="testimonial-author mt-20">
+                                <strong class="display-block color-dark"><?php echo esc_html( $block->post_title ); ?></strong>
+                                <?php if ($url && $url !== '#') : ?>
+                                    <a href="<?php echo esc_url($url); ?>" class="testimonial-link text-xs font-bold color-primary mt-5 display-block" target="_blank">View Success Story →</a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </div>
                 <?php elseif ($type === 'faq') : ?>
                     <details class="faq-block">
@@ -234,17 +252,19 @@ include __DIR__ . '/header.php';
                         <p><?php echo esc_html( get_post_meta($block->ID, '_saas_faq_answer', true) ); ?></p>
                     </details>
                 <?php elseif ($type === 'pricing') : ?>
-                    <div class="pricing-card" style="<?php echo $block_style_attr; ?>">
-                        <h3><?php echo esc_html( $block->post_title ); ?></h3>
-                        <div class="price"><?php echo esc_html( get_post_meta($block->ID, '_saas_price', true) ); ?></div>
-                        <ul>
-                            <?php
-                            $features = get_post_meta($block->ID, '_saas_features', true) ?: [];
-                            foreach ($features as $feature) : ?>
-                                <li>✓ <?php echo esc_html($feature); ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <a href="<?php echo esc_url($url); ?>" class="saas-link-btn">Select Plan</a>
+                    <div class="pricing-card elite-pricing shadow-lg" style="<?php echo $block_style_attr; ?>">
+                        <div class="p-40">
+                            <h3 class="text-2xl mb-10"><?php echo esc_html( $block->post_title ); ?></h3>
+                            <div class="price text-5xl font-black mb-30"><?php echo esc_html( get_post_meta($block->ID, '_saas_price', true) ); ?></div>
+                            <ul class="benefit-list mb-40 text-left">
+                                <?php
+                                $features = get_post_meta($block->ID, '_saas_features', true) ?: [];
+                                foreach ($features as $feature) : ?>
+                                    <li class="mb-12 flex gap-12"><span>✓</span> <span><?php echo esc_html($feature); ?></span></li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <a href="<?php echo esc_url( $url ); ?>" class="saas-link-btn style-featured full-width">Secure Access Now</a>
+                        </div>
                     </div>
                 <?php elseif ($type === 'image_gallery') : ?>
                     <div class="image-gallery-block">
