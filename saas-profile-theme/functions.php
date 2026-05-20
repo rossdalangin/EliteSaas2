@@ -81,6 +81,12 @@ add_action( 'wp_head', 'saas_customizer_css' );
 /**
  * Data Helpers (Robustness check)
  */
+if ( ! function_exists( 'saas_get_profile_by_slug' ) ) {
+    function saas_get_profile_by_slug( $slug ) {
+        $posts = get_posts([
+            'name'        => $slug,
+            'post_type'   => 'saas_profile',
+            'post_status' => 'publish',
             'numberposts' => 1
         ]);
         return $posts ? $posts[0] : null;
