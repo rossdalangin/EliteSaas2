@@ -2429,3 +2429,28 @@ input[type="checkbox"] {
 /* 10. Publishers & Media (Content First) */
 .niche-publisher .profile-header h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; }
 .niche-publisher .saas-link-btn { border-radius: 4px; text-transform: uppercase; font-weight: 900; border: 2px solid #000; }
+
+/* --- Visibility & Contrast Enhancements --- */
+.saas-link-btn { transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+body.theme-dark .badge-niche { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+body.theme-vibrant .badge-niche { background: rgba(0,0,0,0.2); color: #fff; }
+body.theme-luxury .badge-niche { background: var(--primary-color); color: #000; }
+
+.profile-header h1 { color: var(--text-color); }
+.profile-header .headline { color: var(--text-color); opacity: 0.85; font-weight: 600; }
+.profile-header .bio { color: var(--text-light); }
+
+/* Force contrast for light backgrounds */
+[style*="background-color: #ffffff"] .btn-label,
+[style*="background-color: #f"] .btn-label,
+[style*="background-color: white"] .btn-label {
+    color: #0f172a !important;
+}
+
+/* Force contrast for dark backgrounds */
+[style*="background-color: #000000"] .btn-label,
+[style*="background-color: #1"] .btn-label,
+[style*="background-color: black"] .btn-label {
+    color: #ffffff !important;
+}

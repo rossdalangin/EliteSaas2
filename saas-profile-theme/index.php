@@ -279,7 +279,7 @@ include __DIR__ . '/header.php';
                             <?php endforeach; ?>
                         </div>
                     </div>
-                <?php elseif ($type === 'calendar') : ?>
+                <?php elseif ($type === 'calendar' && !empty($url) && $url !== '#') : ?>
                     <div class="calendar-block">
                         <h3><?php echo esc_html($block->post_title); ?></h3>
                         <div class="calendar-embed">
