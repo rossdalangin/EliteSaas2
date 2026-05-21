@@ -27,7 +27,7 @@ get_header(); ?>
 
                     <?php if ( has_post_thumbnail() ) : ?>
                         <div class="post-thumbnail-wrapper mb-40 radius-24 overflow-hidden shadow-lg">
-                            <?php the_post_thumbnail('large', ['class' => 'full-width object-cover']); ?>
+                            <?php the_post_thumbnail('large', ['class' => 'full-width object-cover', 'loading' => 'lazy']); ?>
                         </div>
                     <?php endif; ?>
 

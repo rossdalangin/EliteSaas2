@@ -30,7 +30,7 @@ get_header(); ?>
                                 <?php if ( has_post_thumbnail() ) : ?>
                                     <a href="<?php the_permalink(); ?>" class="archive-post-thumb-link">
                                         <div class="archive-post-thumb h-220 overflow-hidden">
-                                            <?php the_post_thumbnail('large', ['class' => 'full-width full-height object-cover']); ?>
+                                            <?php the_post_thumbnail('large', ['class' => 'full-width full-height object-cover', 'loading' => 'lazy']); ?>
                                         </div>
                                     </a>
                                 <?php endif; ?>

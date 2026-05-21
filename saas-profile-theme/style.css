@@ -2550,3 +2550,44 @@ body.theme-luxury .badge-niche { background: var(--primary-color); color: #000; 
 .niche-fashion .btn-label { color: #000; font-weight: 800; }
 .niche-luxury .saas-link-btn { border: 1px solid var(--primary-color); }
 .niche-dark .btn-desc { color: rgba(255,255,255,0.6) !important; }
+
+/* --- Advanced Contrast Logic & Component Refinements --- */
+.contrast-light .testimonial-block,
+.contrast-light .pricing-card,
+.contrast-light .milestone-block,
+.contrast-light .product-block {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+}
+
+.contrast-light .ms-title,
+.contrast-light .product-info h4,
+.contrast-light .price {
+    color: #fff !important;
+}
+
+.contrast-light .ms-bar-bg { background: rgba(255, 255, 255, 0.2); }
+.contrast-light .ms-bar-fill { background: #fff; }
+
+.contrast-dark .testimonial-block,
+.contrast-dark .pricing-card,
+.contrast-dark .milestone-block,
+.contrast-dark .product-block {
+    background: #ffffff !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* SEO & Performance Helpers */
+.display-none { display: none !important; }
+img { max-width: 100%; height: auto; }
+
+/* Super-fast transitions */
+.saas-block, .saas-link-btn { will-change: transform, opacity; }
+
+@media (max-width: 480px) {
+    .profile-header h1 { font-size: 1.75rem !important; letter-spacing: -0.04em; }
+    .profile-header .headline { font-size: 0.95rem !important; }
+    .profile-header .bio { font-size: 0.9rem; }
+}
