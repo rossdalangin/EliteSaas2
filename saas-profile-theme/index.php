@@ -130,7 +130,7 @@ include __DIR__ . '/header.php';
         <?php if ( has_post_thumbnail( $profile_id ) ) : ?>
             <?php echo get_the_post_thumbnail( $profile_id, 'thumbnail' ); ?>
         <?php else : ?>
-            <img src="https://via.placeholder.com/150" alt="Avatar">
+            <img src="https://via.placeholder.com/150" alt="Avatar" loading="lazy">
         <?php endif; ?>
         <h1 class="text-4xl font-black mb-10 tracking-tight">
             <?php echo esc_html( get_the_author_meta( 'display_name', $profile->post_author ) ); ?>
@@ -169,7 +169,11 @@ include __DIR__ . '/header.php';
             $custom_bg = get_post_meta($block->ID, '_saas_custom_bg', true);
             $custom_text = get_post_meta($block->ID, '_saas_custom_text', true);
             $block_style_attr = '';
-            if ($custom_bg) $block_style_attr .= "background-color: $custom_bg; ";
+            $contrast_class = '';
+            if ($custom_bg) {
+                $block_style_attr .= "background-color: $custom_bg; ";
+                $contrast_class = 'contrast-' . saas_get_contrast_color($custom_bg);
+            }
             if ($custom_text) $block_style_attr .= "color: $custom_text; ";
 
             if (!$is_preview) {
@@ -188,7 +192,7 @@ include __DIR__ . '/header.php';
                 }
             }
             ?>
-            <div class="saas-block block-<?php echo esc_attr($type); ?> style-<?php echo esc_attr($style); ?> animate-<?php echo esc_attr($animation); ?>" data-block-id="<?php echo $block->ID; ?>" style="animation-delay: <?php echo $index * 0.1; ?>s;">
+            <div class="saas-block block-<?php echo esc_attr($type); ?> style-<?php echo esc_attr($style); ?> animate-<?php echo esc_attr($animation); ?> <?php echo $contrast_class; ?>" data-block-id="<?php echo $block->ID; ?>" style="animation-delay: <?php echo $index * 0.1; ?>s;">
                 <?php if ($type === 'button') :
                     $has_pass = !empty(get_post_meta($block->ID, '_saas_link_password', true));
                     $ab_title_b = get_post_meta($block->ID, '_saas_ab_title_b', true);
@@ -218,7 +222,7 @@ include __DIR__ . '/header.php';
                         <?php
                         $thumb_id = get_post_meta($block->ID, '_saas_link_image_id', true);
                         if ($thumb_id) : ?>
-                            <img src="<?php echo esc_url(wp_get_attachment_thumb_url($thumb_id)); ?>" class="btn-thumb">
+                            <img src="<?php echo esc_url(wp_get_attachment_thumb_url($thumb_id)); ?>" class="btn-thumb" loading="lazy">
                         <?php endif; ?>
                         <div class="btn-text-wrapper">
                             <span class="btn-label"><?php echo esc_html( $block->post_title ); ?> <?php if($has_pass) echo '🔒'; ?></span>
@@ -274,7 +278,7 @@ include __DIR__ . '/header.php';
                             $images = get_post_meta($block->ID, '_saas_gallery_images', true) ?: [];
                             foreach ($images as $img_url) : ?>
                                 <div class="gallery-item shadow-sm">
-                                    <img src="<?php echo esc_url($img_url); ?>" alt="Gallery Image">
+                                    <img src="<?php echo esc_url($img_url); ?>" alt="Gallery Image" loading="lazy">
                                 </div>
                             <?php endforeach; ?>
                         </div>

@@ -48,7 +48,7 @@ $h_img   = get_option('saas_home_image');
             <div class="hero-visual-content">
                 <?php if ($h_img) : ?>
                     <div class="hero-image-perspective">
-                        <img src="<?php echo esc_url($h_img); ?>" alt="Product Preview" class="radius-40 shadow-preview">
+                        <img src="<?php echo esc_url($h_img); ?>" alt="Product Preview" class="radius-40 shadow-preview" loading="lazy">
                     </div>
                 <?php else : ?>
                     <!-- Default Dashboard Preview Mockup -->
@@ -92,7 +92,7 @@ $h_img   = get_option('saas_home_image');
                     'https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg'
                 ];
                 foreach ($logos as $logo_url) : ?>
-                    <img src="<?php echo esc_url($logo_url); ?>" class="trusted-logo" alt="Partner Logo">
+                    <img src="<?php echo esc_url($logo_url); ?>" class="trusted-logo" alt="Partner Logo" loading="lazy">
                 <?php endforeach; ?>
             </div>
         </div>
@@ -370,7 +370,7 @@ if ($comparison_json) : ?>
             <?php
             $founder_img = get_option('saas_home_founder_image');
             if ($founder_img) : ?>
-                <img src="<?php echo esc_url($founder_img); ?>" class="mx-auto shadow-md radius-full full-size-cover founder-avatar avatar-fixed-80 border-white-4">
+                <img src="<?php echo esc_url($founder_img); ?>" class="mx-auto shadow-md radius-full full-size-cover founder-avatar avatar-fixed-80 border-white-4" loading="lazy">
             <?php else : ?>
                 <div class="mx-auto shadow-md bg-primary radius-full founder-avatar-placeholder avatar-fixed-80 border-white-4"></div>
             <?php endif; ?>

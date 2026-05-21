@@ -2486,3 +2486,67 @@ body.theme-luxury .badge-niche { background: var(--primary-color); color: #000; 
 @media (max-width: 600px) {
     .product-block { flex-direction: column; text-align: center; }
 }
+
+/* --- Auto-Contrast & Visibility Engine --- */
+.contrast-light .btn-label,
+.contrast-light h3,
+.contrast-light .price,
+.contrast-light .btn-label {
+    color: #ffffff !important;
+}
+.contrast-light .btn-desc,
+.contrast-light p,
+.contrast-light .benefit-list li,
+.contrast-light details summary {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.contrast-dark .btn-label,
+.contrast-dark h3,
+.contrast-dark .price {
+    color: #0f172a !important;
+}
+.contrast-dark .btn-desc,
+.contrast-dark p,
+.contrast-dark .benefit-list li,
+.contrast-dark details summary {
+    color: rgba(15, 23, 42, 0.7) !important;
+}
+
+/* Ensure global header contrast */
+.profile-header.has-cover h1,
+.profile-header.has-cover .headline {
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    color: #fff;
+}
+
+/* --- Mobile UX & Accessibility --- */
+#back-to-top {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background: var(--primary-color);
+    color: #fff;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 900;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all 0.3s;
+}
+#back-to-top:hover { opacity: 1; transform: translateY(-5px); }
+
+@media (max-width: 768px) {
+    .profile-header h1 { font-size: 2.25rem; }
+    .blocks-container { padding: 0 10px; }
+}
+
+/* Niche Contrast Fine-tuning */
+.niche-fashion .btn-label { color: #000; font-weight: 800; }
+.niche-luxury .saas-link-btn { border: 1px solid var(--primary-color); }
+.niche-dark .btn-desc { color: rgba(255,255,255,0.6) !important; }
