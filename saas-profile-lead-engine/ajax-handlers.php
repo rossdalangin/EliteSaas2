@@ -853,9 +853,9 @@ function saas_ajax_generate_samples() {
     $all_templates = get_option('saas_templates');
     $samples = [];
 
-    // Massive Library of Industry-Leading Sample Profiles (2+ per niche)
+    // Massive Library of Industry-Leading Sample Profiles (Maximize Block Usage)
     $samples = [
-        // 1. COACH: Tony Robbins & Simon Sinek style
+        // 1. COACH: Tony Robbins
         [
             'title' => 'Tony Robbins',
             'headline' => 'Transform Your Life & Business 🚀',
@@ -863,72 +863,39 @@ function saas_ajax_generate_samples() {
             'color' => '#1e293b', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'coach',
             'links' => [
                 ['t' => '👉 Join the Unleash the Power Within Event', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Watch: The Power of Identity', 'u' => 'https://www.youtube.com/watch?v=k-S6rD8f8-Y', 'type' => 'video'],
                 ['t' => 'Elite Platinum Partnership', 'u' => '#', 'type' => 'pricing', 'extra' => "$85,000/yr\nWorld-class Networking\nPrivate Events\nStrategic Coaching"],
+                ['t' => 'Client Breakthrough', 'u' => '#', 'type' => 'testimonial', 'extra' => "Tony's strategies changed my business and my life forever. I am a different person."],
+                ['t' => 'Common Questions', 'u' => '#', 'type' => 'faq', 'extra' => "Is this for beginners?:Yes, we have programs for all levels.\nWhat is the guarantee?:We offer a 100% satisfaction guarantee."],
             ]
         ],
-        [
-            'title' => 'Simon Sinek',
-            'headline' => 'Start With Why 🎯',
-            'bio' => "Optimist and author. Imagining a world in which the vast majority of people wake up inspired to go to work, feel safe while they are there and return home fulfilled.",
-            'color' => '#0f172a', 'theme' => 'light', 'shadow' => 'none', 'niche' => 'coach',
-            'links' => [
-                ['t' => 'The Optimism Library', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
-                ['t' => 'Join the Why Masterclass', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
-            ]
-        ],
-        // 2. CREATOR: GaryVee & MrBeast style
+        // 2. CREATOR: GaryVee
         [
             'title' => 'Gary Vaynerchuk',
             'headline' => 'CEO of VaynerMedia & Creator of VeeFriends 📈',
             'bio' => "Serial entrepreneur, investor, and creator. Helping you understand where the consumer attention is going and how to exploit it.",
             'color' => '#4f46e5', 'theme' => 'vibrant', 'shadow' => 'hard', 'niche' => 'creator',
             'links' => [
-                ['t' => 'DailyVee: My Life as a CEO', 'u' => 'https://youtube.com', 'type' => 'video'],
-                ['t' => 'Join the GaryVee 0-100 Discord', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+                ['t' => 'Get the VeeFriends Series 2', 'u' => '#', 'type' => 'button', 'style' => 'rainbow'],
+                ['t' => 'DailyVee: My Life as a CEO', 'u' => 'https://www.youtube.com/watch?v=G8v8N-C-Vl8', 'type' => 'video'],
+                ['t' => 'VeeFriends Collection', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d\nhttps://images.unsplash.com/photo-1622547748225-3fc4abd2cca0"],
+                ['t' => 'Join the GaryVee Discord', 'u' => '#', 'type' => 'social_icons', 'extra' => "instagram:#\ntiktok:#\nyoutube:#\ntwitter:#"],
             ]
         ],
-        [
-            'title' => 'MrBeast',
-            'headline' => 'Making the World a Better Place 🌎',
-            'bio' => "Philanthropist and digital creator. Redefining what it means to entertain and give back at scale.",
-            'color' => '#3b82f6', 'theme' => 'vibrant', 'shadow' => 'soft', 'niche' => 'creator',
-            'links' => [
-                ['t' => 'Shop MrBeast Merch', 'u' => '#', 'type' => 'button', 'style' => 'rainbow'],
-                ['t' => 'Team Seas: Help the Ocean', 'u' => '#', 'type' => 'milestone', 'extra' => "Ocean Cleaned:72"],
-            ]
-        ],
-        // 3. PODCASTER: Joe Rogan & Huberman style
+        // 3. PODCASTER: Joe Rogan
         [
             'title' => 'Joe Rogan Experience',
             'headline' => "The World's Most Powerful Podcast 🎙️",
             'bio' => "Long-form conversations about life, science, culture, and comedy. Exploring the fringes of human knowledge.",
             'color' => '#000000', 'theme' => 'dark', 'shadow' => 'soft', 'niche' => 'podcast',
             'links' => [
-                ['t' => 'Listen Now on Spotify', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Listen Now on Spotify', 'u' => 'https://open.spotify.com/show/4rllRUbsu9hyZ2S6xyYpUv', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Watch Recent Clips', 'u' => 'https://www.youtube.com/watch?v=5jZ379X-G_M', 'type' => 'video'],
                 ['t' => 'Upcoming Comedy Dates', 'u' => '#', 'type' => 'faq', 'extra' => "Austin, TX - Dec 15:Sold Out\nLas Vegas, NV - Jan 10:Available"],
+                ['t' => 'Connect on Social', 'u' => '#', 'type' => 'social_icons', 'extra' => "instagram:#\ntwitter:#\nfacebook:#"],
             ]
         ],
-        [
-            'title' => 'Huberman Lab',
-            'headline' => 'Science-Based Tools for Daily Life 🧠',
-            'bio' => "Dr. Andrew Huberman, Professor at Stanford. I share low-cost/zero-cost tools for health, performance, and well-being.",
-            'color' => '#0c4a6e', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'podcast',
-            'links' => [
-                ['t' => 'Protocol: Neural Optimization', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
-                ['t' => 'Join the Neural Newsletter', 'u' => '#', 'type' => 'newsletter'],
-            ]
-        ],
-        // 4. INFOPRENEUR: Justin Welsh & Dan Koe style
-        [
-            'title' => 'Justin Welsh',
-            'headline' => 'The Solopreneur Playbook 🏰',
-            'bio' => "I help creators and solopreneurs build their personal brand and scale their audience to $1M+ in revenue with zero employees.",
-            'color' => '#0f172a', 'theme' => 'light', 'shadow' => 'none', 'niche' => 'infopreneur',
-            'links' => [
-                ['t' => 'The Content OS Course', 'u' => '#', 'type' => 'product', 'extra' => "$150"],
-                ['t' => 'Weekly Solopreneur Newsletter', 'u' => '#', 'type' => 'newsletter'],
-            ]
-        ],
+        // 4. INFOPRENEUR: Dan Koe
         [
             'title' => 'Dan Koe Strategy',
             'headline' => 'Synthesizing Business & Philosophy 🏰',
@@ -936,10 +903,12 @@ function saas_ajax_generate_samples() {
             'color' => '#0f172a', 'theme' => 'light', 'shadow' => 'none', 'niche' => 'infopreneur',
             'links' => [
                 ['t' => 'The 2-Hour Writer Course', 'u' => '#', 'type' => 'product', 'extra' => "$150"],
+                ['t' => 'Weekly Synthesis Letter', 'u' => '#', 'type' => 'newsletter'],
                 ['t' => 'The Modern Polymath Roadmap', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Course Progress', 'u' => '#', 'type' => 'milestone', 'extra' => "Enrolled Students:15200"],
             ]
         ],
-        // 5. AGENCY: Ogilvy & VaynerMedia style
+        // 5. AGENCY: Ogilvy
         [
             'title' => 'Ogilvy & Mather Elite',
             'headline' => 'The Original Performance Agency 🚀',
@@ -948,39 +917,48 @@ function saas_ajax_generate_samples() {
             'links' => [
                 ['t' => 'View Our Global Case Studies', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['t' => 'Request a Strategic Audit', 'u' => '#', 'type' => 'lead_form'],
+                ['t' => 'Brand Authority Index', 'u' => '#', 'type' => 'milestone', 'extra' => "Market Dominance:88"],
+                ['t' => 'Case Study Gallery', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1460925895917-afdab827c52f\nhttps://images.unsplash.com/photo-1551288049-bebda4e38f71"],
             ]
         ],
-        [
-            'title' => 'VaynerMedia Elite',
-            'headline' => 'Built for the Now 📈',
-            'bio' => "A modern creative and media agency. We help the world's largest brands capture consumer attention and drive business results.",
-            'color' => '#4f46e5', 'theme' => 'vibrant', 'shadow' => 'hard', 'niche' => 'agency',
-            'links' => [
-                ['t' => 'Our Core Framework', 'u' => '#', 'type' => 'milestone', 'extra' => "Client ROI Growth:92"],
-                ['t' => 'Performance Media Audit', 'u' => '#', 'type' => 'lead_form'],
-            ]
-        ],
-        // 6. FASHION: Vogue & Haute Couture
+        // 6. FASHION: Vogue
         [
             'title' => 'Vogue Elite Digital',
             'headline' => 'The Authority on Fashion & Culture ⚜️',
             'bio' => "Defining the zeitgeist since 1892. Redefining digital luxury and editorial excellence for the modern era.",
             'color' => '#111111', 'theme' => 'luxury', 'shadow' => 'soft', 'niche' => 'fashion',
             'links' => [
-                ['t' => 'Spring/Summer 2026 Collection', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1539109132314-347752418b3b\nhttps://images.unsplash.com/photo-1490481651871-ab68de25d43d"],
+                ['t' => 'Spring/Summer 2026 Collection', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1539109132314-347752418b3b\nhttps://images.unsplash.com/photo-1490481651871-ab68de25d43d\nhttps://images.unsplash.com/photo-1496747611176-843222e1e57c"],
+                ['t' => 'Watch: Inside the Met Gala', 'u' => 'https://www.youtube.com/watch?v=12345', 'type' => 'video'],
+                ['t' => 'Join Vogue Club', 'u' => '#', 'type' => 'pricing', 'extra' => "$24/mo\nExclusive Events\nDigital Archive\nMember-only Content"],
             ]
         ],
+        // 7. EDUCATOR: Huberman Lab
         [
-            'title' => 'Haute Couture Maison',
-            'headline' => 'Excellence in Every Stitch ⚜️',
-            'bio' => "Handcrafted luxury for the modern elite. Tradition meets innovation in our latest digital collection.",
-            'color' => '#1a1a1a', 'theme' => 'luxury', 'shadow' => 'soft', 'niche' => 'fashion',
+            'title' => 'Huberman Lab',
+            'headline' => 'Science-Based Tools for Daily Life 🧠',
+            'bio' => "Dr. Andrew Huberman, Professor at Stanford. I share low-cost/zero-cost tools for health, performance, and well-being.",
+            'color' => '#0c4a6e', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'education',
             'links' => [
-                ['t' => 'Exclusive Member Access', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
-                ['t' => 'Book Styling Consult', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+                ['t' => 'Protocol: Neural Optimization', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Join the Neural Newsletter', 'u' => '#', 'type' => 'newsletter'],
+                ['t' => 'Science of Sleep Masterclass', 'u' => 'https://www.youtube.com/watch?v=nm1TxQj9IsQ', 'type' => 'video'],
+                ['t' => 'Optimize Your Day', 'u' => '#', 'type' => 'milestone', 'extra' => "Focus Reached:95"],
             ]
         ],
-        // 7. LIFESTYLE/BEAUTY: Kylie Beauty & Goop style
+        // 8. BRAND: Apple
+        [
+            'title' => 'Apple Elite Digital',
+            'headline' => 'Think Different. Build Better. 💻',
+            'bio' => "Designing products that empower humanity. Excellence in engineering. Perfection in design. Privacy by default.",
+            'color' => '#111111', 'theme' => 'light', 'shadow' => 'none', 'niche' => 'brand',
+            'links' => [
+                ['t' => 'The New Era of iPhone', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1510557880182-3d4d3cba3f21\nhttps://images.unsplash.com/photo-1556656793-062ff98782ee"],
+                ['t' => 'MacBook Pro Performance', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+                ['t' => 'Privacy Architecture', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+            ]
+        ],
+        // 9. BEAUTY: Kylie Cosmetics
         [
             'title' => 'Kylie Elite Beauty',
             'headline' => 'Define Your Look. Own Your Power. ✨',
@@ -988,41 +966,12 @@ function saas_ajax_generate_samples() {
             'color' => '#fbcfe8', 'theme' => 'vibrant', 'shadow' => 'soft', 'niche' => 'beauty',
             'links' => [
                 ['t' => 'Shop the Matte Lip Kit', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
-                ['t' => 'Tutorial: 5-Min Glow Up', 'u' => 'https://youtube.com', 'type' => 'video'],
+                ['t' => 'Tutorial: 5-Min Glow Up', 'u' => 'https://www.youtube.com/watch?v=12345', 'type' => 'video'],
+                ['t' => 'Best Sellers Gallery', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1512496015851-a90fb38ba796\nhttps://images.unsplash.com/photo-1522335789203-aabd1fc54bc9"],
+                ['t' => 'Join the Beauty Circle', 'u' => '#', 'type' => 'newsletter'],
             ]
         ],
-        [
-            'title' => 'The Goop Lifestyle',
-            'headline' => 'Nourish Your Body & Mind 🌿',
-            'bio' => "Modern wellness curated for the conscious consumer. Discover the best in clean beauty, nutrition, and lifestyle.",
-            'color' => '#fdfcf0', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'lifestyle',
-            'links' => [
-                ['t' => 'Shop Wellness Essentials', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
-                ['t' => 'Read: The Joy of Balance', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
-            ]
-        ],
-        // 8. BRAND: Apple & Nike style
-        [
-            'title' => 'Apple Elite Digital',
-            'headline' => 'Think Different. Build Better. 💻',
-            'bio' => "Designing products that empower humanity. Excellence in engineering. Perfection in design. Privacy by default.",
-            'color' => '#111111', 'theme' => 'light', 'shadow' => 'none', 'niche' => 'brand',
-            'links' => [
-                ['t' => 'Discover iPhone 17 Pro', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
-                ['t' => 'The New MacBook Pro Engine', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
-            ]
-        ],
-        [
-            'title' => 'Nike Performance',
-            'headline' => 'Just Do It ⚡',
-            'bio' => "If you have a body, you are an athlete. Our mission is to bring inspiration and innovation to every athlete in the world.",
-            'color' => '#000000', 'theme' => 'dark', 'shadow' => 'hard', 'niche' => 'brand',
-            'links' => [
-                ['t' => 'Shop Latest Gear', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
-                ['t' => 'Join the Nike Run Club', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
-            ]
-        ],
-        // 9. PUBLISHER: Morning Brew & NYT style
+        // 10. PUBLISHER: Morning Brew
         [
             'title' => 'Morning Brew Elite',
             'headline' => 'Business News, Actually Fun. ☕',
@@ -1030,19 +979,12 @@ function saas_ajax_generate_samples() {
             'color' => '#fef08a', 'theme' => 'light', 'shadow' => 'hard', 'niche' => 'publisher',
             'links' => [
                 ['t' => 'Subscribe to the Daily Brew', 'u' => '#', 'type' => 'newsletter'],
-                ['t' => 'Advertise with KnotBio Elite', 'u' => '#', 'type' => 'lead_form'],
+                ['t' => 'Our Reader Satisfaction', 'u' => '#', 'type' => 'milestone', 'extra' => "Retention:94"],
+                ['t' => 'Partner With Us', 'u' => '#', 'type' => 'lead_form'],
+                ['t' => 'Latest Edition Preview', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1504711434969-e33886168f5c\nhttps://images.unsplash.com/photo-1503694978374-8a2fa686963a"],
             ]
         ],
-        [
-            'title' => 'The Global Strategy Journal',
-            'headline' => 'Independent Thinking for Leaders 📰',
-            'bio' => "Deep dives into geopolitics, economics, and leadership. The newsletter for those who want to understand the why behind the news.",
-            'color' => '#1e293b', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'publisher',
-            'links' => [
-                ['t' => 'Join the Journal Plus', 'u' => '#', 'type' => 'pricing', 'extra' => "$12/mo\nAd-free Experience\nDeep Dive Archives\nExclusive Interviews"],
-            ]
-        ],
-        // 10. SMALL BUSINESS: Elite Bistro & Law Firm
+        // 11. SMALL BUSINESS: Elite Bistro
         [
             'title' => 'The Elite Bistro',
             'headline' => 'Farm-to-Table Excellence 🍽️',
@@ -1050,17 +992,22 @@ function saas_ajax_generate_samples() {
             'color' => '#1e3a8a', 'theme' => 'luxury', 'shadow' => 'soft', 'niche' => 'small-business',
             'links' => [
                 ['t' => 'Reserve Your Table Now', 'u' => '#', 'type' => 'calendar'],
-                ['t' => 'View Tonight\'s Specials', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Our Tasting Menu', 'u' => '#', 'type' => 'pricing', 'extra' => "$120/pp\n7 Courses\nWine Pairing\nChef Interaction"],
+                ['t' => 'View Our Atmosphere', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1517248135467-4c7ed9d42339\nhttps://images.unsplash.com/photo-1414235077428-338989a2e8c0"],
+                ['t' => 'Join the Supper Club', 'u' => '#', 'type' => 'newsletter'],
             ]
         ],
+        // 12. FREELANCER: Alex Designer
         [
-            'title' => 'Modern Law Firm',
-            'headline' => 'Protecting Your Digital Legacy ⚖️',
-            'bio' => "Specializing in IP law and digital asset protection for the modern entrepreneur. Expert advice in a digital-first world.",
-            'color' => '#0f172a', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'small-business',
+            'title' => 'Elite Product Design',
+            'headline' => 'Solving Problems Through Visual Craft 🎨',
+            'bio' => "Ex-FAANG Senior Designer. I help startups build scalable design systems and intuitive user experiences that convert.",
+            'color' => '#475569', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'freelancer',
             'links' => [
-                ['t' => 'Request Case Consultation', 'u' => '#', 'type' => 'lead_form'],
-                ['t' => 'View Success Portfolio', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+                ['t' => 'View My Behance Portfolio', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Book a Design Consultation', 'u' => '#', 'type' => 'calendar'],
+                ['t' => 'Client Success Story', 'u' => '#', 'type' => 'testimonial', 'extra' => "Alex completely transformed our app. Conversion went up 40% in two weeks. Highly recommended."],
+                ['t' => 'Common Project FAQ', 'u' => '#', 'type' => 'faq', 'extra' => "How long for a V1?:Typically 4 weeks.\nDo you handle code?:Yes, React/Vue support included."],
             ]
         ]
     ];
