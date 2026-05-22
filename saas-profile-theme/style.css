@@ -2591,3 +2591,36 @@ img { max-width: 100%; height: auto; }
     .profile-header .headline { font-size: 0.95rem !important; }
     .profile-header .bio { font-size: 0.9rem; }
 }
+
+/* --- Comprehensive Global Contrast Overrides --- */
+.contrast-light,
+.contrast-light * {
+    color: #ffffff !important;
+}
+.contrast-light .btn-desc,
+.contrast-light p,
+.contrast-light li,
+.contrast-light cite,
+.contrast-light small {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.contrast-dark,
+.contrast-dark * {
+    color: #0f172a !important;
+}
+.contrast-dark .btn-desc,
+.contrast-dark p,
+.contrast-dark li,
+.contrast-dark cite,
+.contrast-dark small {
+    color: rgba(15, 23, 42, 0.75) !important;
+}
+
+/* Specific Block Fixes */
+.saas-block.contrast-light { border-color: rgba(255,255,255,0.1) !important; }
+.saas-block.contrast-dark { border-color: rgba(0,0,0,0.1) !important; }
+
+/* Force readable placeholders */
+.contrast-light input::placeholder { color: rgba(255,255,255,0.5) !important; }
+.contrast-dark input::placeholder { color: rgba(0,0,0,0.4) !important; }
