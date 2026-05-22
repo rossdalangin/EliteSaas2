@@ -855,31 +855,36 @@ function saas_ajax_generate_samples() {
 
     // Massive Library of Industry-Leading Sample Profiles (Maximize Block Usage)
     $samples = [
-        // 1. COACH: Tony Robbins
+        // 1. COACH: Tony Robbins (Authority Master)
         [
             'title' => 'Tony Robbins',
             'headline' => 'Transform Your Life & Business 🚀',
-            'bio' => "The world's #1 life and business strategist. Author of 6 international bestsellers. Philanthropist. Entrepreneur.",
+            'bio' => "The world's #1 life and business strategist. Author of 6 international bestsellers. Philanthropist. Entrepreneur. I help people bridge the gap between where they are and where they want to be.",
             'color' => '#1e293b', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'coach',
             'links' => [
                 ['t' => '👉 Join the Unleash the Power Within Event', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['t' => 'Watch: The Power of Identity', 'u' => 'https://www.youtube.com/watch?v=k-S6rD8f8-Y', 'type' => 'video'],
                 ['t' => 'Elite Platinum Partnership', 'u' => '#', 'type' => 'pricing', 'extra' => "$85,000/yr\nWorld-class Networking\nPrivate Events\nStrategic Coaching"],
                 ['t' => 'Client Breakthrough', 'u' => '#', 'type' => 'testimonial', 'extra' => "Tony's strategies changed my business and my life forever. I am a different person."],
+                ['t' => 'Success Milestone', 'u' => '#', 'type' => 'milestone', 'extra' => "Global Impact:50M+"],
                 ['t' => 'Common Questions', 'u' => '#', 'type' => 'faq', 'extra' => "Is this for beginners?:Yes, we have programs for all levels.\nWhat is the guarantee?:We offer a 100% satisfaction guarantee."],
+                ['t' => 'Free Strategy Call', 'u' => '#', 'type' => 'calendar'],
+                ['t' => 'Get Daily Motivation', 'u' => '#', 'type' => 'newsletter'],
             ]
         ],
-        // 2. CREATOR: GaryVee
+        // 2. CREATOR: GaryVee (Attention Engine)
         [
             'title' => 'Gary Vaynerchuk',
             'headline' => 'CEO of VaynerMedia & Creator of VeeFriends 📈',
-            'bio' => "Serial entrepreneur, investor, and creator. Helping you understand where the consumer attention is going and how to exploit it.",
+            'bio' => "Serial entrepreneur, investor, and creator. Helping you understand where the consumer attention is going and how to exploit it. Don't overthink, just execute.",
             'color' => '#4f46e5', 'theme' => 'vibrant', 'shadow' => 'hard', 'niche' => 'creator',
             'links' => [
                 ['t' => 'Get the VeeFriends Series 2', 'u' => '#', 'type' => 'button', 'style' => 'rainbow'],
                 ['t' => 'DailyVee: My Life as a CEO', 'u' => 'https://www.youtube.com/watch?v=G8v8N-C-Vl8', 'type' => 'video'],
                 ['t' => 'VeeFriends Collection', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d\nhttps://images.unsplash.com/photo-1622547748225-3fc4abd2cca0"],
                 ['t' => 'Join the GaryVee Discord', 'u' => '#', 'type' => 'social_icons', 'extra' => "instagram:#\ntiktok:#\nyoutube:#\ntwitter:#"],
+                ['t' => 'Limited Edition NFT Drop', 'u' => '#', 'type' => 'countdown', 'extra' => date('Y-m-d H:i', strtotime('+24 hours'))],
+                ['t' => 'Inquire for Speaking', 'u' => '#', 'type' => 'lead_form'],
             ]
         ],
         // 3. PODCASTER: Joe Rogan
@@ -895,119 +900,137 @@ function saas_ajax_generate_samples() {
                 ['t' => 'Connect on Social', 'u' => '#', 'type' => 'social_icons', 'extra' => "instagram:#\ntwitter:#\nfacebook:#"],
             ]
         ],
-        // 4. INFOPRENEUR: Dan Koe
+        // 4. INFOPRENEUR: Dan Koe (Digital Kingdom)
         [
             'title' => 'Dan Koe Strategy',
             'headline' => 'Synthesizing Business & Philosophy 🏰',
-            'bio' => "Synthesizing business, personal growth, and self-improvement for the modern polymath. Build your digital kingdom.",
+            'bio' => "Synthesizing business, personal growth, and self-improvement for the modern polymath. Build your digital kingdom through creative work.",
             'color' => '#0f172a', 'theme' => 'light', 'shadow' => 'none', 'niche' => 'infopreneur',
             'links' => [
                 ['t' => 'The 2-Hour Writer Course', 'u' => '#', 'type' => 'product', 'extra' => "$150"],
                 ['t' => 'Weekly Synthesis Letter', 'u' => '#', 'type' => 'newsletter'],
                 ['t' => 'The Modern Polymath Roadmap', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
-                ['t' => 'Course Progress', 'u' => '#', 'type' => 'milestone', 'extra' => "Enrolled Students:15200"],
+                ['t' => 'Success Milestone', 'u' => '#', 'type' => 'milestone', 'extra' => "Students:15200"],
+                ['t' => 'Inside the Digital Kingdom', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1499750310107-5fef28a66643\nhttps://images.unsplash.com/photo-1488190211105-8b0e65b80b4e"],
+                ['t' => 'Frequently Asked', 'u' => '#', 'type' => 'faq', 'extra' => "How to start?:Pick a niche.\nHow to scale?:Iterate."],
             ]
         ],
-        // 5. AGENCY: Ogilvy
+        // 5. AGENCY: Ogilvy (Creative Authority)
         [
             'title' => 'Ogilvy & Mather Elite',
             'headline' => 'The Original Performance Agency 🚀',
-            'bio' => "We sell, or else. David Ogilvy's legacy of excellence applied to modern tactical marketing and brand development.",
+            'bio' => "We sell, or else. David Ogilvy's legacy of excellence applied to modern tactical marketing and brand development. We don't just build brands; we build businesses.",
             'color' => '#be123c', 'theme' => 'light', 'shadow' => 'hard', 'niche' => 'agency',
             'links' => [
                 ['t' => 'View Our Global Case Studies', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['t' => 'Request a Strategic Audit', 'u' => '#', 'type' => 'lead_form'],
+                ['t' => 'The Agency Pricing Model', 'u' => '#', 'type' => 'pricing', 'extra' => "Retainer-Based\nPerformance-Linked\nFull-Service Media"],
                 ['t' => 'Brand Authority Index', 'u' => '#', 'type' => 'milestone', 'extra' => "Market Dominance:88"],
                 ['t' => 'Case Study Gallery', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1460925895917-afdab827c52f\nhttps://images.unsplash.com/photo-1551288049-bebda4e38f71"],
+                ['t' => 'Client Quote', 'u' => '#', 'type' => 'testimonial', 'extra' => "Ogilvy understands the science of advertising better than anyone else."],
             ]
         ],
-        // 6. FASHION: Vogue
+        // 6. FASHION: Vogue (Global Luxury)
         [
             'title' => 'Vogue Elite Digital',
             'headline' => 'The Authority on Fashion & Culture ⚜️',
-            'bio' => "Defining the zeitgeist since 1892. Redefining digital luxury and editorial excellence for the modern era.",
+            'bio' => "Defining the zeitgeist since 1892. Redefining digital luxury and editorial excellence for the modern era. Your daily dose of fashion inspiration.",
             'color' => '#111111', 'theme' => 'luxury', 'shadow' => 'soft', 'niche' => 'fashion',
             'links' => [
                 ['t' => 'Spring/Summer 2026 Collection', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1539109132314-347752418b3b\nhttps://images.unsplash.com/photo-1490481651871-ab68de25d43d\nhttps://images.unsplash.com/photo-1496747611176-843222e1e57c"],
                 ['t' => 'Watch: Inside the Met Gala', 'u' => 'https://www.youtube.com/watch?v=12345', 'type' => 'video'],
                 ['t' => 'Join Vogue Club', 'u' => '#', 'type' => 'pricing', 'extra' => "$24/mo\nExclusive Events\nDigital Archive\nMember-only Content"],
+                ['t' => 'Luxury Lifestyle FAQ', 'u' => '#', 'type' => 'faq', 'extra' => "How to contribute?:Submit via our portal.\nWhere to buy?:Official stores only."],
+                ['t' => 'Exclusive Event Access', 'u' => '#', 'type' => 'lead_form'],
             ]
         ],
-        // 7. EDUCATOR: Huberman Lab
+        // 7. EDUCATOR: Huberman Lab (Neural Optimization)
         [
             'title' => 'Huberman Lab',
             'headline' => 'Science-Based Tools for Daily Life 🧠',
-            'bio' => "Dr. Andrew Huberman, Professor at Stanford. I share low-cost/zero-cost tools for health, performance, and well-being.",
+            'bio' => "Dr. Andrew Huberman, Professor at Stanford. I share low-cost/zero-cost tools for health, performance, and well-being based on the latest neuroscience.",
             'color' => '#0c4a6e', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'education',
             'links' => [
                 ['t' => 'Protocol: Neural Optimization', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['t' => 'Join the Neural Newsletter', 'u' => '#', 'type' => 'newsletter'],
                 ['t' => 'Science of Sleep Masterclass', 'u' => 'https://www.youtube.com/watch?v=nm1TxQj9IsQ', 'type' => 'video'],
                 ['t' => 'Optimize Your Day', 'u' => '#', 'type' => 'milestone', 'extra' => "Focus Reached:95"],
+                ['t' => 'Supplements I Use', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1584017945516-9072ddc14769\nhttps://images.unsplash.com/photo-1584308666744-24d5c474f2ae"],
+                ['t' => 'Huberman Lab FAQ', 'u' => '#', 'type' => 'faq', 'extra' => "How often are episodes?:Weekly.\nIs there a transcript?:Yes, on our site."],
             ]
         ],
-        // 8. BRAND: Apple
+        // 8. BRAND: Apple (Design Authority)
         [
             'title' => 'Apple Elite Digital',
             'headline' => 'Think Different. Build Better. 💻',
-            'bio' => "Designing products that empower humanity. Excellence in engineering. Perfection in design. Privacy by default.",
+            'bio' => "Designing products that empower humanity. Excellence in engineering. Perfection in design. Privacy by default. Experience the future of technology.",
             'color' => '#111111', 'theme' => 'light', 'shadow' => 'none', 'niche' => 'brand',
             'links' => [
                 ['t' => 'The New Era of iPhone', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1510557880182-3d4d3cba3f21\nhttps://images.unsplash.com/photo-1556656793-062ff98782ee"],
                 ['t' => 'MacBook Pro Performance', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+                ['t' => 'Watch the Keynote', 'u' => 'https://www.youtube.com/watch?v=12345', 'type' => 'video'],
                 ['t' => 'Privacy Architecture', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+                ['t' => 'Apple Care Support', 'u' => '#', 'type' => 'faq', 'extra' => "What is covered?:Accidental damage.\nHow to claim?:Visit an Apple Store."],
             ]
         ],
-        // 9. BEAUTY: Kylie Cosmetics
+        // 9. BEAUTY: Kylie Cosmetics (Glow Expert)
         [
             'title' => 'Kylie Elite Beauty',
             'headline' => 'Define Your Look. Own Your Power. ✨',
-            'bio' => "Revolutionary beauty products designed to make you feel confident and unstoppable. Clean. Vegan. High Performance.",
+            'bio' => "Revolutionary beauty products designed to make you feel confident and unstoppable. Clean. Vegan. High Performance. Join the beauty revolution.",
             'color' => '#fbcfe8', 'theme' => 'vibrant', 'shadow' => 'soft', 'niche' => 'beauty',
             'links' => [
                 ['t' => 'Shop the Matte Lip Kit', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['t' => 'Tutorial: 5-Min Glow Up', 'u' => 'https://www.youtube.com/watch?v=12345', 'type' => 'video'],
                 ['t' => 'Best Sellers Gallery', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1512496015851-a90fb38ba796\nhttps://images.unsplash.com/photo-1522335789203-aabd1fc54bc9"],
                 ['t' => 'Join the Beauty Circle', 'u' => '#', 'type' => 'newsletter'],
+                ['t' => 'Flash Sale Ending Soon! ⏳', 'u' => '#', 'type' => 'countdown', 'extra' => date('Y-m-d H:i', strtotime('+12 hours'))],
+                ['t' => 'Beauty Tips FAQ', 'u' => '#', 'type' => 'faq', 'extra' => "Cruelty-free?:100% Yes.\nShipping?:Worldwide available."],
             ]
         ],
-        // 10. PUBLISHER: Morning Brew
+        // 10. PUBLISHER: Morning Brew (Business News Authority)
         [
             'title' => 'Morning Brew Elite',
             'headline' => 'Business News, Actually Fun. ☕',
-            'bio' => "The daily newsletter that makes you smarter in 5 minutes. Join 4M+ readers and stay ahead of the business world.",
+            'bio' => "The daily newsletter that makes you smarter in 5 minutes. Join 4M+ readers and stay ahead of the business world with our curated insights.",
             'color' => '#fef08a', 'theme' => 'light', 'shadow' => 'hard', 'niche' => 'publisher',
             'links' => [
                 ['t' => 'Subscribe to the Daily Brew', 'u' => '#', 'type' => 'newsletter'],
                 ['t' => 'Our Reader Satisfaction', 'u' => '#', 'type' => 'milestone', 'extra' => "Retention:94"],
                 ['t' => 'Partner With Us', 'u' => '#', 'type' => 'lead_form'],
                 ['t' => 'Latest Edition Preview', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1504711434969-e33886168f5c\nhttps://images.unsplash.com/photo-1503694978374-8a2fa686963a"],
+                ['t' => 'Watch: Brew Breakdown', 'u' => 'https://www.youtube.com/watch?v=12345', 'type' => 'video'],
             ]
         ],
-        // 11. SMALL BUSINESS: Elite Bistro
+        // 11. SMALL BUSINESS: Elite Bistro (Local Authority)
         [
             'title' => 'The Elite Bistro',
             'headline' => 'Farm-to-Table Excellence 🍽️',
-            'bio' => "Experience the finest locally-sourced ingredients. An intimate atmosphere for the discerning palate.",
+            'bio' => "Experience the finest locally-sourced ingredients. An intimate atmosphere for the discerning palate. Located in the heart of the city.",
             'color' => '#1e3a8a', 'theme' => 'luxury', 'shadow' => 'soft', 'niche' => 'small-business',
             'links' => [
                 ['t' => 'Reserve Your Table Now', 'u' => '#', 'type' => 'calendar'],
                 ['t' => 'Our Tasting Menu', 'u' => '#', 'type' => 'pricing', 'extra' => "$120/pp\n7 Courses\nWine Pairing\nChef Interaction"],
                 ['t' => 'View Our Atmosphere', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1517248135467-4c7ed9d42339\nhttps://images.unsplash.com/photo-1414235077428-338989a2e8c0"],
+                ['t' => 'Watch Our Story', 'u' => 'https://www.youtube.com/watch?v=12345', 'type' => 'video'],
+                ['t' => 'Common Inquiries', 'u' => '#', 'type' => 'faq', 'extra' => "Dress Code?:Smart Casual.\nParking?:Valet available."],
                 ['t' => 'Join the Supper Club', 'u' => '#', 'type' => 'newsletter'],
             ]
         ],
-        // 12. FREELANCER: Alex Designer
+        // 12. FREELANCER: Alex Designer (Creative Expert)
         [
             'title' => 'Elite Product Design',
             'headline' => 'Solving Problems Through Visual Craft 🎨',
-            'bio' => "Ex-FAANG Senior Designer. I help startups build scalable design systems and intuitive user experiences that convert.",
+            'bio' => "Ex-FAANG Senior Designer. I help startups build scalable design systems and intuitive user experiences that convert high-value leads.",
             'color' => '#475569', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'freelancer',
             'links' => [
                 ['t' => 'View My Behance Portfolio', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['t' => 'Book a Design Consultation', 'u' => '#', 'type' => 'calendar'],
+                ['t' => 'Design Packages', 'u' => '#', 'type' => 'pricing', 'extra' => "$2,500/V1\nFull Prototyping\nDesign System\nDeveloper Handoff"],
                 ['t' => 'Client Success Story', 'u' => '#', 'type' => 'testimonial', 'extra' => "Alex completely transformed our app. Conversion went up 40% in two weeks. Highly recommended."],
+                ['t' => 'Current Workload', 'u' => '#', 'type' => 'milestone', 'extra' => "Available:20%"],
                 ['t' => 'Common Project FAQ', 'u' => '#', 'type' => 'faq', 'extra' => "How long for a V1?:Typically 4 weeks.\nDo you handle code?:Yes, React/Vue support included."],
+                ['t' => 'Inquire for Custom Work', 'u' => '#', 'type' => 'lead_form'],
             ]
         ]
     ];

@@ -115,7 +115,10 @@ include __DIR__ . '/header.php';
     </script>
 <?php endif; ?>
 
-<div id="profile-container" class="mx-auto niche-<?php echo esc_attr($niche); ?>">
+<?php
+$global_contrast = saas_get_contrast_color($bg_color);
+?>
+<div id="profile-container" class="mx-auto niche-<?php echo esc_attr($niche); ?> contrast-<?php echo $global_contrast; ?>">
     <!-- Cover Banner -->
     <?php
     $cover_id = get_post_meta($profile_id, '_saas_cover_id', true);

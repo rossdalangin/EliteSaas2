@@ -2275,13 +2275,14 @@ input[type="checkbox"] {
 /* --- Niche-Specific "Elite" Design Overlays --- */
 
 /* 1. Creators & Influencers (Vibrant & Bold) */
-.niche-creator .saas-link-btn, .niche-tiktok .saas-link-btn {
-    border-left: 5px solid var(--primary-color);
+.niche-creator .saas-link-btn, .niche-tiktok .saas-link-btn, .niche-influencer .saas-link-btn {
+    border-left: 8px solid var(--primary-color);
     padding-left: 25px;
+    border-radius: 12px;
 }
-.niche-creator .profile-header img, .niche-tiktok .profile-header img {
-    border: 4px solid var(--primary-color);
-    padding: 6px;
+.niche-creator .profile-header img, .niche-tiktok .profile-header img, .niche-influencer .profile-header img {
+    border: 6px solid var(--primary-color);
+    padding: 4px;
     background: #fff;
 }
 
@@ -2319,27 +2320,30 @@ input[type="checkbox"] {
 }
 
 /* 4. Agencies, Brands & Businesses (Corporate Power) */
-.niche-agency .saas-link-btn, .niche-business .saas-link-btn, .niche-brand .saas-link-btn {
-    font-weight: 800;
+.niche-agency .saas-link-btn, .niche-business .saas-link-btn, .niche-brand .saas-link-btn, .niche-startup .saas-link-btn {
+    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    border: 2px solid #000;
+    letter-spacing: 2px;
+    border: 3px solid #000;
     color: #000;
+    border-radius: 0;
 }
-.niche-agency .saas-link-btn:hover {
+.niche-agency .saas-link-btn:hover, .niche-business .saas-link-btn:hover, .niche-brand .saas-link-btn:hover, .niche-startup .saas-link-btn:hover {
     background: #000;
     color: #fff !important;
 }
 
 /* 5. Coaches, Consultants & Educators (Professional Trust) */
-.niche-coach .profile-header .headline, .niche-consultant .profile-header .headline {
-    font-size: 1.4rem;
+.niche-coach .profile-header .headline, .niche-consultant .profile-header .headline, .niche-education .profile-header .headline {
+    font-size: 1.6rem;
     color: var(--primary-color);
-    font-weight: 800;
+    font-weight: 900;
+    letter-spacing: -0.02em;
 }
-.niche-coach .saas-link-btn, .niche-consultant .saas-link-btn {
-    box-shadow: 0 12px 24px rgba(0,0,0,0.06);
-    border: 1.5px solid var(--border-color);
+.niche-coach .saas-link-btn, .niche-consultant .saas-link-btn, .niche-education .saas-link-btn {
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    border: 2px solid var(--border-color);
+    background: #fff;
 }
 
 /* 6. Freelancers & Creative Pros (Artistic Touch) */
@@ -2488,29 +2492,50 @@ body.theme-luxury .badge-niche { background: var(--primary-color); color: #000; 
 }
 
 /* --- Auto-Contrast & Visibility Engine --- */
-.contrast-light .btn-label,
+.contrast-light h1,
+.contrast-light h2,
 .contrast-light h3,
+.contrast-light .btn-label,
 .contrast-light .price,
-.contrast-light .btn-label {
+.contrast-light .timer-title,
+.contrast-light .timer-display,
+.contrast-light .ms-title,
+.contrast-light .product-info h4 {
     color: #ffffff !important;
 }
-.contrast-light .btn-desc,
+
 .contrast-light p,
+.contrast-light .headline,
+.contrast-light .bio,
+.contrast-light .btn-desc,
 .contrast-light .benefit-list li,
-.contrast-light details summary {
-    color: rgba(255, 255, 255, 0.8) !important;
+.contrast-light details summary,
+.contrast-light .ms-label,
+.contrast-light .field-hint {
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
-.contrast-dark .btn-label,
+.contrast-dark h1,
+.contrast-dark h2,
 .contrast-dark h3,
-.contrast-dark .price {
+.contrast-dark .btn-label,
+.contrast-dark .price,
+.contrast-dark .timer-title,
+.contrast-dark .timer-display,
+.contrast-dark .ms-title,
+.contrast-dark .product-info h4 {
     color: #0f172a !important;
 }
-.contrast-dark .btn-desc,
+
 .contrast-dark p,
+.contrast-dark .headline,
+.contrast-dark .bio,
+.contrast-dark .btn-desc,
 .contrast-dark .benefit-list li,
-.contrast-dark details summary {
-    color: rgba(15, 23, 42, 0.7) !important;
+.contrast-dark details summary,
+.contrast-dark .ms-label,
+.contrast-dark .field-hint {
+    color: rgba(15, 23, 42, 0.8) !important;
 }
 
 /* Ensure global header contrast */
