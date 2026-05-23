@@ -484,6 +484,10 @@ function saas_ajax_apply_template() {
             update_post_meta($profile_id, '_saas_theme_color', $set['color']);
             update_post_meta($profile_id, '_saas_profile_theme', $set['theme']);
             update_post_meta($profile_id, '_saas_container_shadow', $set['shadow']);
+
+            if (isset($set['bg_type'])) update_post_meta($profile_id, '_saas_bg_type', $set['bg_type']);
+            if (isset($set['bg_color'])) update_post_meta($profile_id, '_saas_bg_color', $set['bg_color']);
+            if (isset($set['bg_gradient'])) update_post_meta($profile_id, '_saas_bg_gradient', $set['bg_gradient']);
         }
 
         foreach ( $set['links'] as $index => $b ) {
@@ -861,6 +865,7 @@ function saas_ajax_generate_samples() {
             'headline' => 'Transform Your Life & Business 🚀',
             'bio' => "The world's #1 life and business strategist. Author of 6 international bestsellers. Philanthropist. Entrepreneur. I help people bridge the gap between where they are and where they want to be.",
             'color' => '#1e293b', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'coach',
+            'bg_type' => 'gradient', 'bg_color' => '#ffffff', 'bg_gradient' => 'linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%)',
             'links' => [
                 ['t' => '👉 Join the Unleash the Power Within Event', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['t' => 'Watch: The Power of Identity', 'u' => 'https://www.youtube.com/watch?v=k-S6rD8f8-Y', 'type' => 'video'],
@@ -878,6 +883,7 @@ function saas_ajax_generate_samples() {
             'headline' => 'CEO of VaynerMedia & Creator of VeeFriends 📈',
             'bio' => "Serial entrepreneur, investor, and creator. Helping you understand where the consumer attention is going and how to exploit it. Don't overthink, just execute.",
             'color' => '#4f46e5', 'theme' => 'vibrant', 'shadow' => 'hard', 'niche' => 'creator',
+            'bg_type' => 'flat', 'bg_color' => '#ffffff',
             'links' => [
                 ['t' => 'Get the VeeFriends Series 2', 'u' => '#', 'type' => 'button', 'style' => 'rainbow'],
                 ['t' => 'DailyVee: My Life as a CEO', 'u' => 'https://www.youtube.com/watch?v=G8v8N-C-Vl8', 'type' => 'video'],
@@ -906,6 +912,7 @@ function saas_ajax_generate_samples() {
             'headline' => 'Synthesizing Business & Philosophy 🏰',
             'bio' => "Synthesizing business, personal growth, and self-improvement for the modern polymath. Build your digital kingdom through creative work.",
             'color' => '#0f172a', 'theme' => 'light', 'shadow' => 'none', 'niche' => 'infopreneur',
+            'bg_type' => 'flat', 'bg_color' => '#f8fafc',
             'links' => [
                 ['t' => 'The 2-Hour Writer Course', 'u' => '#', 'type' => 'product', 'extra' => "$150"],
                 ['t' => 'Weekly Synthesis Letter', 'u' => '#', 'type' => 'newsletter'],
@@ -1057,6 +1064,10 @@ function saas_ajax_generate_samples() {
         update_post_meta($p_id, '_saas_profile_theme', $s['theme']);
         update_post_meta($p_id, '_saas_container_shadow', $s['shadow']);
         update_post_meta($p_id, '_saas_niche', $s['niche']);
+
+        if (isset($s['bg_type'])) update_post_meta($p_id, '_saas_bg_type', $s['bg_type']);
+        if (isset($s['bg_color'])) update_post_meta($p_id, '_saas_bg_color', $s['bg_color']);
+        if (isset($s['bg_gradient'])) update_post_meta($p_id, '_saas_bg_gradient', $s['bg_gradient']);
 
         foreach ($s['links'] as $idx => $l) {
             $l_id = wp_insert_post([

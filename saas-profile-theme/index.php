@@ -88,6 +88,7 @@ include __DIR__ . '/header.php';
             elseif ($shadow_style === 'hard') echo '8px 8px 0px #333';
             else echo 'none';
         ?>;
+        --primary-btn-text: <?php echo (saas_get_contrast_color($meta['theme_color']) === 'dark') ? '#0f172a' : '#ffffff'; ?>;
     }
     <?php
     $custom_css = get_post_meta($profile_id, '_saas_custom_css', true);
