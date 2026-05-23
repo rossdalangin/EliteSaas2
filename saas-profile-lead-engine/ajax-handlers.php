@@ -186,11 +186,9 @@ function saas_ajax_save_profile() {
         if (isset($_POST['btn_shape'])) update_post_meta($profile_id, '_saas_btn_shape', sanitize_text_field($_POST['btn_shape']));
 
         if ($is_pro) {
-            if (isset($_POST['custom_css'])) update_post_meta($profile_id, '_saas_custom_css', $_POST['custom_css']);
             update_post_meta($profile_id, '_saas_hide_branding', isset($_POST['hide_branding']) ? '1' : '0');
         } else {
             // Force disable pro-only styles for free users
-            delete_post_meta($profile_id, '_saas_custom_css');
             update_post_meta($profile_id, '_saas_hide_branding', '0');
         }
 
@@ -209,6 +207,18 @@ function saas_ajax_save_profile() {
         }
 
         update_post_meta($profile_id, '_saas_social_proof', isset($_POST['social_proof']) ? '1' : '0');
+    }
+
+    // CUSTOM CSS CONTEXT
+    if ($context === 'custom_css') {
+        $payments = new Saas_Payments();
+        $is_pro = $payments->is_pro_user($user_id);
+
+        if ($is_pro) {
+            if (isset($_POST['custom_css'])) update_post_meta($profile_id, '_saas_custom_css', $_POST['custom_css']);
+        } else {
+            delete_post_meta($profile_id, '_saas_custom_css');
+        }
     }
 
     // QR CONTEXT

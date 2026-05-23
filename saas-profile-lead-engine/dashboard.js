@@ -356,11 +356,11 @@
         $('#saas-branding-form [name="container_shadow"]').on('change', function() { updatePreview('container_shadow', $(this).val()); });
         $('#saas-branding-form [name="font_family"]').on('change', function() { updatePreview('font_family', $(this).val()); });
         $('#saas-branding-form [name="btn_shape"]').on('change', function() { updatePreview('btn_shape', $(this).val()); });
-        $('#saas-branding-form [name="custom_css"]').on('input', function() { updatePreview('custom_css', $(this).val()); });
+        $('#saas-custom-css-form [name="custom_css"]').on('input', function() { updatePreview('custom_css', $(this).val()); });
         $('#saas-profile-form [name="verified_badge"]').on('change', function() { updatePreview('verified_badge', $(this).is(':checked')); });
 
         // Global Settings Forms
-        $('#saas-profile-form, #saas-branding-form, #saas-automation-form, #saas-integrations-form, #saas-seo-form, #saas-tracking-form, #saas-account-form').on('submit', function(e) {
+        $('#saas-profile-form, #saas-branding-form, #saas-custom-css-form, #saas-automation-form, #saas-integrations-form, #saas-seo-form, #saas-tracking-form, #saas-account-form').on('submit', function(e) {
             e.preventDefault();
             var $form = $(this);
             var isProfileTab = $form.attr('id') === 'saas-profile-form';

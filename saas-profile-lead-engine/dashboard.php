@@ -214,6 +214,7 @@ class Saas_Dashboard {
                     <button class="active" data-tab="links">🔗 Blocks</button>
                     <button data-tab="profile">👤 Profile</button>
                     <button data-tab="branding">🎨 Vibe</button>
+                    <button data-tab="custom_css">✨ Custom CSS</button>
                     <button data-tab="leads">👥 Leads</button>
                     <button data-tab="analytics">📈 Stats</button>
                     <button data-tab="integrations">🔌 Sync</button>
@@ -723,12 +724,26 @@ class Saas_Dashboard {
                                     <button type="button" class="preset-btn button" data-preset="luxury">⚜️ Luxury</button>
                                 </div>
                             </div>
+                            <button type="submit" class="btn-primary">Apply Styles</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="tab-custom_css" class="saas-tab-content">
+                    <div class="dashboard-card">
+                        <h3>✨ Custom CSS</h3>
+                        <p class="field-hint">Add your own CSS to override any part of the theme. This feature allows for 100% brand alignment and is exclusive to Elite Pro users.</p>
+
+                        <form id="saas-custom-css-form">
+                            <input type="hidden" name="profile_id" value="<?php echo $profile_id; ?>">
+                            <input type="hidden" name="form_context" value="custom_css">
+
                             <div class="field <?php echo $is_pro ? '' : 'pro-gated-inline'; ?>">
-                                <label>Custom CSS (Pro)</label>
-                                <textarea name="custom_css" rows="6" placeholder="/* Custom styles for your profile */" class="font-mono text-xs"><?php echo esc_textarea(get_post_meta($profile_id, '_saas_custom_css', true)); ?></textarea>
+                                <label>Your Custom CSS</label>
+                                <textarea name="custom_css" rows="15" placeholder="/* Custom styles for your profile */" class="font-mono text-xs"><?php echo esc_textarea(get_post_meta($profile_id, '_saas_custom_css', true)); ?></textarea>
                             </div>
 
-                            <button type="submit" class="btn-primary">Apply Styles</button>
+                            <button type="submit" class="btn-primary">Save CSS Changes</button>
                         </form>
                     </div>
                 </div>
