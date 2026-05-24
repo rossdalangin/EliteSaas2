@@ -312,8 +312,8 @@ class Saas_Admin_Settings {
 
         add_settings_section(
             'saas_payment_section',
-            'Payment Gateway Configuration',
-            function() { echo '<p>Configure how you receive payments from Elite subscribers. <strong>Pro Tip:</strong> Enabling both Stripe and PayPal increases conversion by 15%.</p>'; },
+            'Strategic Payment Configuration',
+            function() { echo '<p>Configure the revenue terminal for your expert network. <strong>Tactical Note:</strong> Enabling both Stripe and PayPal protocols typically increases checkout conversion by 15%.</p>'; },
             'saas_settings'
         );
 
@@ -364,8 +364,8 @@ class Saas_Admin_Settings {
 
         add_settings_section(
             'saas_branding_section',
-            'Global Platform Branding',
-            function() { echo '<p>These settings affect the main SaaS website and the administrative dashboard. User profiles have their own independent branding.</p>'; },
+            'Global Ecosystem Branding',
+            function() { echo '<p>Configure the "Vibe" for the KnotBio ecosystem and administrative command center. Individual expert profiles maintain independent design sovereignty.</p>'; },
             'saas_settings'
         );
 

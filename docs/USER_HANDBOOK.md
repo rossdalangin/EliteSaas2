@@ -1,25 +1,26 @@
-# 📚 THE ELITE USER HANDBOOK
+# 📚 THE ELITE USER HANDBOOK (KnotBio)
 *From Zero to Digital Authority in 60 Seconds.*
 
-## WELCOME TO THE ELITE.
-Most people use "link in bio" tools as digital graveyards. They are just a messy list of buttons. You’ve just secured an **Authority Engine.** Think of it as a high-end sales gallery for your brand. This handbook will show you how to turn your traffic into leads and leads into clients.
+## WELCOME TO THE ELITE circle.
+Most people use "link in bio" tools as digital graveyards—a messy list of buttons where traffic goes to die. You’ve just deployed a **KnotBio Authority Engine.** This is a high-end conversion terminal designed to bridge the gap between social media attention and real-world revenue.
 
-## PHASE 1: THE 60-SECOND LAUNCH
-1. **Secure Your Real Estate:** Your URL (yourname) is your brand's digital home. It's the only thing you truly own online. Claim it before a competitor does.
-2. **The Wizard's Secret:** Select your niche. Let the AI build your initial bio and headline. It’s designed by expert copywriters to catch people's attention, not just describe what you do.
-3. **Template Magic:** Applying a niche template is like hiring a designer and a copywriter for free. It instantly populates your page with blocks that are proven to work.
+## PHASE 1: THE TACTICAL LAUNCH
+1. **Secure Your Real Estate:** Your username is your digital territory. Claim it immediately to establish your base of operations.
+2. **Strategic Alignment:** Use the Setup Wizard to select your professional niche. Our AI Logic Engine will generate a high-impact headline and biography designed to hook high-value leads within 3 seconds.
+3. **Template Deployment:** Applying a niche template instantly populates your engine with industry-standard blocks (FAQs, Testimonials, Calendars) that are pre-configured for maximum trust.
 
-## PHASE 2: BUILDING YOUR PATH (Not a List)
-- **The "Featured" Pulse:** Use the 'Featured' style for your most important offer. The subtle pulse is like a neon sign that says "Start Here." It can double your clicks overnight.
-- **Capture, Don't just Click:** Always have a Lead Form block near the top. In the world of business, an email address is 10x more valuable than a website click. It's the difference between a window shopper and a buyer.
-- **Smart Routing (Pro):** This is your secret weapon. It sends iPhone users to one place and Android users to another automatically. It removes the bumps in the road so your customers can buy faster.
+## PHASE 2: CONVERSION ARCHITECTURE
+- **The "Featured" Pulse:** Apply the 'Featured' pulse animation to your primary offer. This visual cue guides attention and has been shown to significantly increase click-through rates.
+- **The Lead Capture Protocol:** Never settle for a simple click. Deploy a Lead Form block above the fold. In the elite consulting economy, a name and email are 10x more valuable than a raw page view.
+- **Dynamic CSS (Pro):** For users who require absolute brand alignment, use the Custom CSS tab to override any visual element. This is your "White Label" power move.
 
-## PHASE 3: THE VIBE (Looking the Part)
-- **Luxury Mode:** If you sell high-ticket services, you need to look high-ticket. The "Luxury" theme uses "Playfair" fonts and dark gradients to make you look like the $1,000-an-hour expert you are.
-- **Verified Badge:** People buy from people they trust. Flip the "Verified Checkmark" on to build instant trust with every new visitor.
+## PHASE 3: COMMAND & CONTROL (The Vibe)
+- **Luxury & Glass Themes:** If you sell high-ticket services ($2k+), your digital identity must match your pricing. Use the "Luxury" or "Modern Glass" themes to establish premium authority.
+- **Verified Authority:** Activate the "Verified Badge" to bypass initial skepticism. This small visual signal triggers "Authority Bias" in your visitors, leading to faster conversions.
+- **Auto-Contrast Engine:** Our system automatically optimizes text legibility based on your background choices. Whether you go Midnight Neon or Clean Minimal, your message remains razor-sharp.
 
-## PHASE 4: THE EARN TAB (Own the Growth)
-Don't just use the software—own a piece of it. Share your referral link with other consultants. You'll earn **30% recurring commission** for life. Just 4 referrals and your software is free. 10 referrals and it's paying for your car.
+## PHASE 4: THE AFFILIATE FRANCHISE (The Earn Tab)
+Don't just use the platform—own the growth. share your referral link and earn **30% recurring commission** for the lifetime of every expert you refer. Just 4 referrals covers your entire Pro subscription. 10 referrals turns your KnotBio profile into a passive income stream.
 
 ---
-*Stop Listing. Start Selling. Join the Elite.*
+*Stop Building on Rented Land. Build Your Authority Engine. Join the Elite at KnotBio.com.*

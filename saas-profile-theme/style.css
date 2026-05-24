@@ -356,16 +356,42 @@ body.theme-midnight-neon .saas-link-btn:hover {
 /* --- Block Types --- */
 
 .testimonial-block {
-    background: var(--glass-bg);
+    background: var(--card-bg);
     backdrop-filter: blur(var(--glass-blur));
-    padding: 30px;
+    padding: 40px;
     border-radius: var(--radius-lg);
-    border: 1px solid var(--glass-border);
+    border: 1px solid var(--border-color);
     box-shadow: var(--shadow-md);
     text-align: left;
+    position: relative;
+    overflow: hidden;
 }
-.testimonial-block .quote { font-style: italic; color: var(--text-color); margin-bottom: 16px; font-size: 1.1rem; line-height: 1.7; }
-.testimonial-block cite { font-weight: 700; color: var(--primary-color); font-style: normal; display: block; }
+.testimonial-block .quote {
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+.testimonial-block .quote-mark {
+    font-size: 6rem;
+    color: var(--primary-color);
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    opacity: 0.1;
+    font-family: serif;
+    line-height: 1;
+}
+.testimonial-block cite {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-style: normal;
+    display: block;
+    font-size: 1.1rem;
+}
 
 .faq-block {
     background: var(--glass-bg);
@@ -2033,9 +2059,13 @@ input[type="checkbox"] {
 .pricing-card-featured-check { color: #fff; }
 .pricing-card-standard-check { color: #10b981; }
 
-.cta-button-featured { background: #fff; color: var(--primary-color); border: none; }
+.cta-button-featured { background: var(--primary-color); color: #fff; border: none; }
 .cta-button-light { border: 2px solid var(--primary-color); color: var(--primary-color); background: transparent; }
-.cta-button-dark { background: #10b981; color: #1e2329; border: none; }
+.cta-button-dark { background: #0f172a; color: #fff; border: 1px solid rgba(255,255,255,0.1); }
+
+.contrast-light .cta-button-featured { background: #fff; color: var(--primary-color); }
+.contrast-light .cta-button-light { border-color: #fff; color: #fff; }
+.contrast-light .cta-button-dark { background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2); }
 
 .iphone-preview-container {
     background: #0f172a;
@@ -2095,8 +2125,12 @@ input[type="checkbox"] {
 .benefit-check-vibrant { color: #10b981; }
 
 .cta-pro-white { background: #fff; color: var(--primary-color); border: none; }
-.cta-pro-vibrant { background: #10b981; color: #1e2329; border: none; }
+.cta-pro-vibrant { background: var(--secondary-color, #10b981); color: #fff; border: none; }
 .cta-standard-outline { border: 2px solid var(--primary-color); color: var(--primary-color); background: transparent; }
+
+.contrast-light .cta-pro-white { background: #fff; color: var(--primary-color); }
+.contrast-light .cta-pro-vibrant { background: #fff; color: var(--primary-color); }
+.contrast-light .cta-standard-outline { border-color: #fff; color: #fff; }
 
 
 .bg-grey-medium-bg { background: #ddd; }
@@ -2132,9 +2166,13 @@ input[type="checkbox"] {
 .badge-dark-gold { background: #f59e0b; }
 .badge-vibrant-green { background: #10b981; }
 
-.cta-pro-featured { background: #fff; color: var(--primary-color); border: none; }
-.cta-pro-dark-vibrant { background: #10b981; color: #1e2329; border: none; }
+.cta-pro-featured { background: var(--primary-color); color: #fff; border: none; }
+.cta-pro-dark-vibrant { background: #0f172a; color: #fff; border: 1px solid rgba(255,255,255,0.1); }
 .cta-standard-transparent { border: 2px solid var(--primary-color); color: var(--primary-color); background: transparent; }
+
+.contrast-light .cta-pro-featured { background: #fff; color: var(--primary-color); }
+.contrast-light .cta-pro-dark-vibrant { background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2); }
+.contrast-light .cta-standard-transparent { border-color: #fff; color: #fff; }
 
 .check-white { color: #fff; }
 .check-green { color: #10b981; }
@@ -2380,16 +2418,6 @@ input[type="checkbox"] {
     margin: 0 auto 40px;
 }
 
-.testimonial-block {
-    background: var(--card-bg);
-    padding: 40px;
-    border-radius: 24px;
-    border: 1px solid var(--border-color);
-    text-align: left;
-    position: relative;
-}
-.testimonial-block .quote { font-size: 1.25rem; font-style: italic; line-height: 1.6; color: var(--text-light); }
-.testimonial-block .quote-mark { font-size: 4rem; color: var(--primary-soft); position: absolute; top: 10px; left: 20px; opacity: 0.5; font-family: serif; }
 
 .elite-pricing {
     background: var(--card-bg);
@@ -2525,8 +2553,8 @@ body.theme-luxury .badge-niche { background: var(--primary-color); color: #000; 
 
 .contrast-light p, .contrast-light .headline, .contrast-light .bio, .contrast-light .btn-desc,
 .contrast-light .benefit-list li, .contrast-light details summary, .contrast-light .ms-label,
-.contrast-light .field-hint, .contrast-light small, .contrast-light cite {
-    color: rgba(255, 255, 255, 0.8) !important;
+.contrast-light .field-hint, .contrast-light small, .contrast-light cite, .contrast-light .testimonial-block .quote {
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .contrast-light .ms-bar-bg { background: rgba(255, 255, 255, 0.2); }
@@ -2541,7 +2569,7 @@ body.theme-luxury .badge-niche { background: var(--primary-color); color: #000; 
 
 .contrast-dark p, .contrast-dark .headline, .contrast-dark .bio, .contrast-dark .btn-desc,
 .contrast-dark .benefit-list li, .contrast-dark details summary, .contrast-dark .ms-label,
-.contrast-dark .field-hint, .contrast-dark small, .contrast-dark cite {
+.contrast-dark .field-hint, .contrast-dark small, .contrast-dark cite, .contrast-dark .testimonial-block .quote {
     color: #475569 !important;
 }
 

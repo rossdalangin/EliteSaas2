@@ -1646,8 +1646,8 @@ class Saas_Dashboard {
             <div class="saas-modal-content max-w-600">
                 <span class="close-modal">&times;</span>
                 <div class="wizard-step active" data-step="1">
-                    <h3>Welcome! Let's build your profile 🚀</h3>
-                    <p>What is your primary niche?</p>
+                    <h3>Welcome to the Elite Circle 🚀</h3>
+                    <p>To optimize your Authority Engine, let's start with your professional niche.</p>
                     <select id="wizard-niche" class="field">
                         <option value="servant">🏛️ Public Servant / Official</option>
                         <option value="coach">🚀 Business Coach</option>
@@ -1668,18 +1668,18 @@ class Saas_Dashboard {
                     <button class="btn-primary next-step full-width">Next Step</button>
                 </div>
                 <div class="wizard-step" data-step="2">
-                    <h3>Your Digital Identity</h3>
-                    <div class="field"><label>Your Professional Headline</label><input type="text" id="wizard-headline" placeholder="e.g. Scaling Brands with Elite Strategy"></div>
-                    <div class="field"><label>Short Bio</label><textarea id="wizard-bio" rows="3"></textarea></div>
+                    <h3>Your Strategic Identity</h3>
+                    <div class="field"><label>Professional Headline (The Hook)</label><input type="text" id="wizard-headline" placeholder="e.g. Scaling 7-Figure Brands with Elite Logic"></div>
+                    <div class="field"><label>Short Biography (The Authority)</label><textarea id="wizard-bio" rows="3" placeholder="Briefly describe your transformation..."></textarea></div>
                     <div class="flex gap-10">
                         <button class="button prev-step flex-1">Back</button>
-                        <button class="btn-primary next-step flex-2">Next Step</button>
+                        <button class="btn-primary next-step flex-2">Proceed</button>
                     </div>
                 </div>
                 <div class="wizard-step" data-step="3">
-                    <h3>Launch Ready!</h3>
-                    <p>Your profile is being optimized for your niche. Click finish to see your new dashboard.</p>
-                    <button id="wizard-finish" class="btn-primary full-width">Finish & Generate</button>
+                    <h3>Strategic Alignment Complete!</h3>
+                    <p>We are ready to generate your high-conversion assets. Your dashboard will be pre-configured with industry-standard blocks for your niche.</p>
+                    <button id="wizard-finish" class="btn-primary full-width">Generate My Elite Profile</button>
                 </div>
                 <div class="wizard-progress"><div class="progress-bar-fill"></div></div>
             </div>
@@ -1734,20 +1734,20 @@ class Saas_Dashboard {
                     <div class="flex gap-20 flex-start">
                         <div class="w-40 h-40 bg-primary color-white radius-50p flex-center flex-shrink-0 font-bold">1</div>
                         <div>
-                            <h4 class="m-0-0-5">Choose Your Subdomain</h4>
-                            <p class="m-0 text-sm color-dark">Decide what you want your link to be. Most elite creators use something like <code>link.yourdomain.com</code>, <code>bio.yourdomain.com</code>, or just <code>connect.yourdomain.com</code>.</p>
+                            <h4 class="m-0-0-5">Define Your Command Center</h4>
+                            <p class="m-0 text-sm color-dark">Secure your professional real estate. Elite consultants typically use <code>connect.yourbrand.com</code> or <code>portal.yourbrand.com</code> to establish instant authority.</p>
                         </div>
                     </div>
 
                     <div class="flex gap-20 flex-start">
                         <div class="w-40 h-40 bg-primary color-white radius-50p flex-center flex-shrink-0 font-bold">2</div>
                         <div>
-                            <h4 class="m-0-0-5">Configure DNS (CNAME)</h4>
-                            <p class="m-0 text-sm color-dark">Login to where you bought your domain (GoDaddy, Namecheap, Cloudflare, etc.). Find the <strong>DNS Settings</strong> or <strong>Manage DNS</strong> section.</p>
+                            <h4 class="m-0-0-5">Deploy DNS Protocol (CNAME)</h4>
+                            <p class="m-0 text-sm color-dark">Login to your registrar (Cloudflare, GoDaddy, etc.) and navigate to the **DNS Management** interface. You are mapping your subdomain to our high-performance edge network.</p>
                             <div class="bg-light p-15 radius-12 mt-10 border-light text-xs">
                                 <div class="mb-10"><strong>Type:</strong> CNAME</div>
-                                <div class="mb-10"><strong>Host/Name:</strong> (your subdomain, e.g. <code>bio</code>)</div>
-                                <div><strong>Value/Target:</strong> <code><?php echo parse_url(home_url(), PHP_URL_HOST); ?></code></div>
+                                <div class="mb-10"><strong>Host/Name:</strong> <code>connect</code> (or your chosen subdomain)</div>
+                                <div><strong>Points To:</strong> <code><?php echo parse_url(home_url(), PHP_URL_HOST); ?></code></div>
                             </div>
                         </div>
                     </div>

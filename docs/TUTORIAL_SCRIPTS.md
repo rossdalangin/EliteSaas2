@@ -1,55 +1,55 @@
-# Elite Tutorial & Training Scripts 📽️
+# KnotBio: Strategic Training Scripts 📽️
 
-## Video 1: "The 60-Second Elite Launch"
-**Target:** New Users.
+## Video 1: "Deployment: The 60-Second Authority Launch"
+**Target:** High-Performance Founders.
 **Script:**
-"Hey coaches, stop losing 90% of your bio traffic. Today I'm showing you how to launch your Elite Funnel in 60 seconds.
+"Attention experts: Stop driving your traffic into a 'link tree' graveyard. Today, we're deploying a tactical Authority Engine on KnotBio.
 
-[Scene: Registration Page]
-Pick your unique URL. My brand is 'EliteGrowth.'
+[Scene: Tactical Registration]
+Claim your unique URL. Secure your brand's digital real estate before a competitor does.
 
-[Scene: Setup Wizard]
-Select 'Executive Coach.' The system suggests a killer headline: 'Scaling Founders from 6 to 7 Figures.' Perfect.
+[Scene: Strategic Setup Wizard]
+Align with your niche—let's select 'Strategy Consultant.' Our logic engine generates a hook: 'Scaling 7-Figure Brands with Elite Logic.' Precise.
 
-[Scene: Dashboard]
-Click 'Finish.' Boom! My blocks are auto-populated. I've got a discovery call button, a testimonial, and a lead form.
+[Scene: Dashboard Command Center]
+Finalize and generate. Look at the alignment. Testimonials, FAQs, and Lead Terminals—all pre-configured for your niche.
 
-[Scene: Live Profile]
-This looks world-class. It’s not a link list; it’s a conversion machine. Claim your URL for free below."
+[Scene: Professional Live Profile]
+Instant authority. Glassmorphism aesthetic. This is the Elite Standard. Deploy your engine for free at KnotBio.com."
 
 ---
 
-## Video 2: "Affiliate & Earnings Walkthrough"
-**Target:** Power Users.
+## Video 2: "Passive Growth: The KnotBio Affiliate Franchise"
+**Target:** Strategic Partners.
 **Script:**
-"Want to get your Elite Pro account for free? Here’s how our affiliate system works.
+"Want to transition your KnotBio account into a passive revenue stream? Here's the protocol.
 
-[Scene: 'Earn' Tab in Dashboard]
-Every user gets a unique referral link. We pay a 30% recurring commission.
+[Scene: 'Earn' Command Center]
+You have a unique referral link. We compensate our partners with a 30% recurring commission—for the lifetime of the user.
 
-If you refer just 4 friends, your Elite Pro account is paid for—forever.
+Refer 4 peers, and your Pro subscription is covered forever. Refer 10, and you've built a passive income pillar.
 
-[Scene: Stats Table]
-You can track your active referrals and earnings right here. When you hit $50, just click 'Request Payout' and we'll send it to your PayPal.
+[Scene: Financial Intelligence Table]
+Monitor your active referrals and accruals in real-time. Reach the $50 threshold and trigger a payout directly to your base of operations.
 
-Let's grow together."
+Scale your impact. Scale your revenue."
 
 ---
 
-## Video 3: "Advanced Features: A/B Testing & Routing"
-**Target:** High-Performers.
+## Video 3: "Tactical Optimization: A/B Logic & Custom CSS"
+**Target:** Professional Engineers.
 **Script:**
-"Today we're looking at the 'IQ' of your funnel.
+"Today we optimize the conversion rate of your terminal.
 
-[Scene: Block Editor Advanced Options]
-I'm setting up a Split Test for my 'Masterclass' button.
-Variant A is 'Watch Now.'
-Variant B is 'Get Instant Access.'
+[Scene: Advanced Block Protocols]
+I'm deploying a Split Test for our primary CTA.
+Variant A: 'Access Protocol.'
+Variant B: 'Begin Transformation.'
 
-[Scene: Analytics Tab]
-Our system will track which one converts better.
+[Scene: Strategic Intelligence Tab]
+The system tracks the winner in real-time.
 
-[Scene: Routing Settings]
-Plus, I'm setting a mobile-specific URL. Mobile users go to my App, Desktop users go to my Landing Page.
+[Scene: Custom CSS Terminal]
+Need absolute brand alignment? Use the Custom CSS tab to override any design token. Font weights, glass blur intensity, button radii—you have full command.
 
-This is how you optimize traffic like an elite marketer."
+This isn't a bio tool. It's a conversion engine. Master your traffic on KnotBio."
