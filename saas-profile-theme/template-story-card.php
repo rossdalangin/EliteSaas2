@@ -6,11 +6,15 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-// Get Profile from Query Var
+// Get Profile from Query Var (Support Slug or ID)
 $slug = isset($_GET['profile']) ? $_GET['profile'] : get_query_var( 'saas_profile' );
+$profile_id_param = isset($_GET['profile_id']) ? intval($_GET['profile_id']) : 0;
 $profile = null;
 
-if ( $slug ) {
+if ($profile_id_param) {
+    $profile = get_post($profile_id_param);
+    if ($profile && $profile->post_type !== 'saas_profile') $profile = null;
+} elseif ( $slug ) {
     $profile = get_posts([
         'name'        => $slug,
         'post_type'   => 'saas_profile',
@@ -27,7 +31,7 @@ if (!$profile) {
 
 $profile_id = $profile->ID;
 $meta = saas_get_profile_meta( $profile_id );
-$bg_color = get_post_meta( $profile_id, '_saas_bg_color', true ) ?: '#6c5ce7';
+$bg_color = get_post_meta( $profile_id, '_saas_bg_color', true ) ?: '#4f46e5';
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,6 +53,7 @@ $bg_color = get_post_meta( $profile_id, '_saas_bg_color', true ) ?: '#6c5ce7';
             align-items: center; justify-content: center;
             text-align: center;
             position: relative;
+            background: linear-gradient(135deg, <?php echo $meta['theme_color']; ?> 0%, #000 100%);
         }
         .avatar {
             width: 300px; height: 300px;
@@ -93,11 +98,8 @@ $bg_color = get_post_meta( $profile_id, '_saas_bg_color', true ) ?: '#6c5ce7';
         <h1><?php echo esc_html($profile->post_title); ?></h1>
         <p class="headline"><?php echo esc_html($meta['headline']); ?></p>
 
-        <div class="qr-placeholder">
-            <!-- QR placeholder for the asset generation engine -->
-            <div style="width:100%; height:100%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#64748b; font-size:40px; font-weight:bold;">
-                SCAN ME
-            </div>
+        <div class="qr-placeholder" style="background:#fff; display:flex; align-items:center; justify-content:center;">
+            <img src="<?php echo saas_get_profile_qr_url($profile->post_name, '#000000'); ?>" style="width:100%; height:100%;">
         </div>
 
         <div class="footer-url"><?php echo parse_url(home_url(), PHP_URL_HOST); ?>/<?php echo $slug; ?></div>

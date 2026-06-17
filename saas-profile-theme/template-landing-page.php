@@ -11,7 +11,7 @@ $h_hero  = get_option('saas_home_hero');
 $h_cta   = get_option('saas_home_cta') ?: 'Get Started Free';
 $h_img   = get_option('saas_home_image');
 ?>
-<main id="landing-page" class="landing-main">
+<main id="landing-page" class="landing-main bg-color">
     <!-- Animated Gradient Background -->
     <div class="animated-mesh-bg">
         <div class="mesh-circle-1"></div>
@@ -30,57 +30,87 @@ $h_img   = get_option('saas_home_image');
         });
     </script>
 
-    <div class="landing-content">
-        <header class="landing-header mb-60 full-width">
-            <h1 class="landing-title">
-                <?php echo esc_html($h_title); ?>
-            </h1>
-            <?php if ($h_hero) : ?>
-                <p class="landing-hero-text"><?php echo esc_html($h_hero); ?></p>
-            <?php endif; ?>
-        </header>
+    <div class="landing-content mx-auto">
+        <div class="hero-grid-layout">
+            <div class="hero-text-content">
+                <div class="badge-ui mb-24">The Elite Standard 1%</div>
+                <h1 class="landing-title">
+                    <?php echo esc_html($h_title); ?>
+                </h1>
+                <?php if ($h_hero) : ?>
+                    <p class="landing-hero-text"><?php echo esc_html($h_hero); ?></p>
+                <?php endif; ?>
 
-        <!-- Social Proof Logos -->
-        <div class="trusted-by-section">
-            <p class="trusted-by-title">Trusted by innovators at</p>
-            <div class="trusted-logos-container">
-                <?php
-                $logos_json = get_option('saas_home_trusted_logos');
-                $logos = json_decode($logos_json, true) ?: [
-                    'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg',
-                    'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg',
-                    'https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg'
-                ];
-                foreach ($logos as $logo_url) : ?>
-                    <img src="<?php echo esc_url($logo_url); ?>" class="global-logo-img max-h-24" alt="Trusted Logo">
-                <?php endforeach; ?>
+                <div class="hero-claim-wrapper mt-40">
+                    <form action="<?php echo home_url('/register'); ?>" method="GET" class="hero-claim-form">
+                        <span class="hero-claim-prefix"><?php echo parse_url(home_url(), PHP_URL_HOST); ?>/</span>
+                        <input type="text" name="username" id="saas-home-username" placeholder="yourname" class="hero-claim-input">
+                        <button type="submit" class="hero-claim-btn"><?php echo esc_html($h_cta); ?></button>
+                    </form>
+                    <div id="username-status" class="status-message font-bold mt-10"></div>
+                    <p class="text-xs mt-15 color-lighter">⚡️ It takes less than 60 seconds to launch.</p>
+                </div>
+
+                <!-- Social Proof Logos -->
+                <div class="trusted-by-section mt-60">
+                    <p class="trusted-by-title">Trusted by innovators at</p>
+                    <div class="trusted-logos-container">
+                        <?php
+                        $logos_json = get_option('saas_home_trusted_logos');
+                        $logos = json_decode($logos_json, true) ?: [
+                            'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg',
+                            'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg',
+                            'https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg'
+                        ];
+                        foreach ($logos as $logo_url) : ?>
+                            <img src="<?php echo esc_url($logo_url); ?>" class="global-logo-img max-h-24" alt="Trusted Logo">
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual-content">
+                <?php if ($h_img) : ?>
+                    <div class="hero-image-perspective">
+                        <img src="<?php echo esc_url($h_img); ?>" alt="SaaS Preview" class="radius-40 shadow-preview">
+                    </div>
+                <?php else : ?>
+                    <div class="hero-image-perspective">
+                        <div class="card-white flex gap-30 text-left relative overflow-visible">
+                            <div class="absolute -top-30 -right-30 z-10">
+                                <div class="bg-vibrant-gradient p-24 radius-20 shadow-xl color-white text-center">
+                                    <div class="text-3xl font-black mb-5">4.8x</div>
+                                    <div class="text-xs font-bold opacity-80">CONVERSION LIFT</div>
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-light radius-20 p-20">
+                                <div class="mb-20 w-40 h-10 bg-grey-medium"></div>
+                                <div class="bg-white mb-20 shadow-sm radius-12 full-width h-200"></div>
+                                <div class="h-10 bg-grey-medium w-80p"></div>
+                            </div>
+                            <div class="flex-2">
+                                <div class="mb-20 h-40 bg-primary radius-10 w-60p"></div>
+                                <div class="mb-10 h-15 bg-grey-light radius-full"></div>
+                                <div class="mb-10 h-15 bg-grey-light radius-full w-80p"></div>
+                                <div class="grid-2 mt-40 gap-15">
+                                    <div class="bg-light h-80 radius-15"></div>
+                                    <div class="bg-light h-80 radius-15 shadow-accent"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
 
-        <?php if ($h_img) : ?>
-            <div class="hero-image-perspective">
-                <img src="<?php echo esc_url($h_img); ?>" alt="SaaS Preview" class="radius-24 shadow-landing-preview max-w-80p">
-            </div>
-        <?php endif; ?>
-
         <div class="landing-body text-xl color-light">
             <?php while ( have_posts() ) : the_post(); the_content(); endwhile; ?>
-
-            <div class="hero-claim-wrapper mt-40">
-                <form action="<?php echo home_url('/register'); ?>" method="GET" class="hero-claim-form max-w-500">
-                    <span class="hero-claim-prefix"><?php echo parse_url(home_url(), PHP_URL_HOST); ?>/</span>
-                    <input type="text" name="username" id="saas-home-username" placeholder="yourname" class="hero-claim-input">
-                    <button type="submit" class="hero-claim-btn"><?php echo esc_html($h_cta); ?></button>
-                </form>
-                <div id="username-status" class="status-message font-bold mt-10"></div>
-                <p class="text-xs mt-15 color-lighter">⚡️ It takes less than 60 seconds to launch.</p>
-            </div>
         </div>
     </div>
 </main>
 
 <!-- Benefits Section -->
-<section class="section-padding bg-white">
+<section class="section-padding bg-subtle">
     <div class="container-standard flex-wrap flex-center gap-60 mx-auto">
         <div class="flex-1 min-w-320">
             <h2 class="text-5xl mb-30">Stop losing traffic. Start building your list.</h2>
@@ -126,7 +156,7 @@ $h_img   = get_option('saas_home_image');
 </section>
 
 <!-- Comparison Section -->
-<section class="section-padding bg-white">
+<section class="section-padding bg-color">
     <div class="container-standard text-center mx-auto">
         <h2 class="section-title-large">Why elite creators choose us</h2>
         <div class="comparison-table-wrapper">
@@ -196,7 +226,7 @@ $h_img   = get_option('saas_home_image');
 </section>
 
 <!-- How It Works Section -->
-<section class="section-padding bg-white">
+<section class="section-padding bg-subtle">
     <div class="container-wide text-center mx-auto">
         <h2 class="section-title-large">Your elite presence in 3 simple steps</h2>
         <div class="grid-3">
@@ -277,7 +307,7 @@ $h_img   = get_option('saas_home_image');
 </section>
 
 <!-- Theme Showcase Section -->
-<section class="section-padding bg-white">
+<section class="section-padding bg-subtle">
     <div class="container-wide text-center mx-auto">
         <h2 class="section-title-large">Bespoke themes for elite brands</h2>
         <div class="grid-4">
@@ -302,7 +332,7 @@ $h_img   = get_option('saas_home_image');
 </section>
 
 <!-- Featured Profiles Section -->
-<section class="section-padding bg-white">
+<section class="section-padding bg-subtle">
     <div class="container-wide text-center mx-auto">
         <h2 class="text-4xl mb-20">Join thousands of elite professionals</h2>
         <p class="color-light text-xl mb-60">See how others are using our platform to scale their digital identity.</p>
@@ -361,7 +391,7 @@ $h_img   = get_option('saas_home_image');
 </section>
 
 <!-- Testimonials Section -->
-<section class="section-padding bg-white">
+<section class="section-padding bg-subtle">
     <div class="container-wide text-center mx-auto">
         <h2 class="section-title-large"><?php echo get_option('saas_home_testimonials_title') ?: 'What elite creators are saying'; ?></h2>
         <div class="grid-3">

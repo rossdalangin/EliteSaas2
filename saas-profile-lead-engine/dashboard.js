@@ -63,12 +63,19 @@
 
         // 3. AJAX Wrapper
         function saasFetch(action, data, $btn) {
+            // Ensure $btn is a single jQuery object even if a collection was passed
+            if ($btn && $btn.length > 1) {
+                $btn = $btn.filter('.btn-primary, [type="submit"]').first();
+                if (!$btn.length) $btn = $($btn[0]);
+            }
+
             var fd = (data instanceof FormData) ? data : new FormData();
             if (!(data instanceof FormData)) {
                 for (var key in data) {
-                    if (Array.isArray(data[key])) {
-                        for(var i=0; i<data[key].length; i++) {
-                            fd.append(key + '[]', data[key][i]);
+                    if (data[key] !== null && typeof data[key] === 'object') {
+                        // Recursively handle objects (e.g. social_links[twitter])
+                        for (var subKey in data[key]) {
+                            fd.append(key + '[' + subKey + ']', data[key][subKey]);
                         }
                     } else {
                         fd.append(key, data[key]);
@@ -78,8 +85,8 @@
             fd.append('action', action);
             fd.append('security', saas_dashboard_data.nonce);
 
-            var originalText = $btn ? $btn.text() : '';
-            if ($btn) $btn.text('Processing...').prop('disabled', true);
+            var originalText = ($btn && $btn.length) ? $btn.text() : '';
+            if ($btn && $btn.length) $btn.text('Processing...').prop('disabled', true);
 
             return $.ajax({
                 url: saas_dashboard_data.ajax_url,
@@ -89,11 +96,11 @@
                 contentType: false,
                 dataType: 'json'
             }).then(function(res) {
-                if ($btn) $btn.text(originalText).prop('disabled', false);
+                if ($btn && $btn.length) $btn.text(originalText).prop('disabled', false);
                 if (res.success) return res.data;
                 throw new Error(res.data || 'Execution failed');
             }).fail(function(err) {
-                if ($btn) $btn.text(originalText).prop('disabled', false);
+                if ($btn && $btn.length) $btn.text(originalText).prop('disabled', false);
                 alert("Error: " + (err.message || "Request failed"));
                 throw err;
             });
@@ -113,7 +120,7 @@
                     var urls = $(extraId).val().split('\n').filter(Boolean);
                     var html = '';
                     urls.forEach(function(u) {
-                        html += '<img src="' + u + '" style="width:100%; height:60px; object-fit:cover; border-radius:8px;">';
+                        html += '<div class="gallery-preview-item"><img src="' + u + '"><button type="button" class="remove-gallery-img" data-url="' + u + '">&times;</button></div>';
                     });
                     $('#saas-edit-gallery-previews').html(html);
                 }
@@ -213,7 +220,7 @@
             $('#edit-link-url-mobile').val($li.attr('data-url-mobile'));
             $('#edit-link-geo-country').val($li.attr('data-geo-country'));
             $('#edit-link-url-geo').val($li.attr('data-url-geo'));
-            $('#edit-link-custom-bg').val($li.attr('data-custom-bg') || '#6366f1');
+            $('#edit-link-custom-bg').val($li.attr('data-custom-bg') || '#4f46e5');
             $('#edit-link-custom-text').val($li.attr('data-custom-text') || '#ffffff');
             $('#edit-link-hour-from').val($li.attr('data-hour-from'));
             $('#edit-link-hour-to').val($li.attr('data-hour-to'));
@@ -323,7 +330,7 @@
         // 5. Form Submissions
         $('#saas-add-link-form').on('submit', function(e) {
             e.preventDefault();
-            saasFetch('saas_add_link', new FormData(this), $(this).find('button'))
+            saasFetch('saas_add_link', new FormData(this), $(this).find('.btn-primary'))
                 .done(function() { location.reload(); });
         });
 
@@ -349,11 +356,11 @@
         $('#saas-branding-form [name="container_shadow"]').on('change', function() { updatePreview('container_shadow', $(this).val()); });
         $('#saas-branding-form [name="font_family"]').on('change', function() { updatePreview('font_family', $(this).val()); });
         $('#saas-branding-form [name="btn_shape"]').on('change', function() { updatePreview('btn_shape', $(this).val()); });
-        $('#saas-branding-form [name="custom_css"]').on('input', function() { updatePreview('custom_css', $(this).val()); });
+        $('#saas-custom-css-form [name="custom_css"]').on('input', function() { updatePreview('custom_css', $(this).val()); });
         $('#saas-profile-form [name="verified_badge"]').on('change', function() { updatePreview('verified_badge', $(this).is(':checked')); });
 
         // Global Settings Forms
-        $('#saas-profile-form, #saas-branding-form, #saas-automation-form, #saas-integrations-form, #saas-seo-form, #saas-tracking-form, #saas-account-form').on('submit', function(e) {
+        $('#saas-profile-form, #saas-branding-form, #saas-custom-css-form, #saas-automation-form, #saas-integrations-form, #saas-seo-form, #saas-tracking-form, #saas-account-form').on('submit', function(e) {
             e.preventDefault();
             var $form = $(this);
             var isProfileTab = $form.attr('id') === 'saas-profile-form';
@@ -361,7 +368,7 @@
             var newSlug = isProfileTab ? $form.find('[name="profile_slug"]').val() : null;
             var action = isAccountTab ? 'saas_save_account' : 'saas_save_profile';
 
-            saasFetch(action, new FormData(this), $form.find('button'))
+            saasFetch(action, new FormData(this), $form.find('.btn-primary'))
                 .done(function(msg) {
                     alert(msg);
                     var frame = document.getElementById('saas-preview-frame');
@@ -434,7 +441,7 @@
                 message: $form.find('textarea').val(),
                 subject: $form.find('[name="subject"]').val() || 'Support Request'
             };
-            saasFetch('saas_send_message', data, $form.find('button')).done(function(msg) {
+            saasFetch('saas_send_message', data, $form.find('.btn-primary')).done(function(msg) {
                 alert(msg);
                 $form.find('textarea, input[type="text"]').val('');
                 if($form.closest('.saas-modal').length) {
@@ -447,7 +454,7 @@
         // Payout Request
         $('#saas-payout-request-form').on('submit', function(e) {
             e.preventDefault();
-            saasFetch('saas_request_payout', new FormData(this), $(this).find('button')).done(function(msg) {
+            saasFetch('saas_request_payout', new FormData(this), $(this).find('.btn-primary')).done(function(msg) {
                 alert(msg);
                 location.reload();
             });
@@ -481,9 +488,9 @@
             var p = $(this).data('preset');
             var $form = $('#saas-branding-form');
             var presets = {
-                midnight: { theme: 'dark', bg_type: 'flat', bg_value: '#0f172a', accent: '#6366f1', shadow: 'soft', font: "'Inter', sans-serif" },
+                midnight: { theme: 'dark', bg_type: 'flat', bg_value: '#0f172a', accent: '#4f46e5', shadow: 'soft', font: "'Inter', sans-serif" },
                 glassy: { theme: 'light', bg_type: 'gradient', bg_value: 'linear-gradient(135deg, #e0e7ff 0%, #ffffff 100%)', accent: '#4f46e5', shadow: 'soft', font: "'Inter', sans-serif" },
-                vibrant: { theme: 'vibrant', bg_type: 'gradient', bg_value: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)', accent: '#ffffff', shadow: 'hard', font: "'Montserrat', sans-serif" },
+                vibrant: { theme: 'vibrant', bg_type: 'gradient', bg_value: 'linear-gradient(135deg, #4f46e5 0%, #a855f7 100%)', accent: '#ffffff', shadow: 'hard', font: "'Montserrat', sans-serif" },
                 minimal: { theme: 'light', bg_type: 'flat', bg_value: '#ffffff', accent: '#000000', shadow: 'none', font: "'Inter', sans-serif" },
                 luxury: { theme: 'luxury', bg_type: 'flat', bg_value: '#000000', accent: '#d4af37', shadow: 'soft', font: "'Playfair Display', serif" }
             };
@@ -566,17 +573,27 @@
             }).on('select', function() {
                 if (isGallery) {
                     var selection = custom_uploader.state().get('selection');
-                    var urls = [];
-                    var html = '';
+                    var targetInput = (target === 'gallery-add') ? '#saas-add-extra-field' : '#edit-link-extra';
+                    var currentUrls = $(targetInput).val().split('\n').filter(Boolean);
+                    var newHtml = '';
+
                     selection.map(function(attachment) {
                         attachment = attachment.toJSON();
-                        urls.push(attachment.url);
-                        html += '<img src="' + attachment.url + '" style="width:100%; height:60px; object-fit:cover; border-radius:8px;">';
+                        if (currentUrls.indexOf(attachment.url) === -1) {
+                            currentUrls.push(attachment.url);
+                        }
                     });
+
+                    currentUrls.forEach(function(u) {
+                        newHtml += '<div class="gallery-preview-item"><img src="' + u + '"><button type="button" class="remove-gallery-img" data-url="' + u + '">&times;</button></div>';
+                    });
+
                     var targetPreviews = (target === 'gallery-add') ? '#saas-gallery-previews' : '#saas-edit-gallery-previews';
-                    var targetInput = (target === 'gallery-add') ? '#saas-add-extra-field' : '#edit-link-extra';
-                    $(targetPreviews).html(html);
-                    $(targetInput).val(urls.join('\n'));
+                    $(targetPreviews).html(newHtml);
+                    $(targetInput).val(currentUrls.join('\n'));
+
+                    // Smooth scroll to new images
+                    $(targetPreviews).animate({ scrollTop: $(targetPreviews)[0].scrollHeight }, 500);
                 } else {
                     var attachment = custom_uploader.state().get('selection').first().toJSON();
                     if (target === 'profile-image') {
@@ -610,6 +627,32 @@
             var old = $btn.text();
             $btn.text('HTML Copied! ✅');
             setTimeout(function() { $btn.text(old); }, 2000);
+        });
+
+        // Removal Logic for Gallery Images
+        $(document).on('click', '.remove-gallery-img', function(e) {
+            e.preventDefault();
+            var url = $(this).data('url');
+            var $item = $(this).closest('.gallery-preview-item');
+            var $wrap = $(this).closest('.grid-gallery');
+            var targetInputId = $wrap.attr('id') === 'saas-gallery-previews' ? '#saas-add-extra-field' : '#edit-link-extra';
+            var $input = $(targetInputId);
+
+            var urls = $input.val().split('\n').filter(Boolean);
+            var filtered = urls.filter(function(u) { return u !== url; });
+
+            $input.val(filtered.join('\n'));
+            $item.fadeOut(300, function() { $(this).remove(); });
+        });
+
+        // Clear All Gallery Images
+        $(document).on('click', '.clear-gallery', function(e) {
+            e.preventDefault();
+            if(!confirm('Clear all images in this gallery?')) return;
+            var targetPreviewId = '#' + $(this).data('target');
+            var targetInputId = targetPreviewId === '#saas-gallery-previews' ? '#saas-add-extra-field' : '#edit-link-extra';
+            $(targetPreviewId).html('');
+            $(targetInputId).val('');
         });
 
         // 11. Lead Management (Search)
@@ -652,7 +695,7 @@
         // Update Lead Details
         $(document).on('submit', '#saas-update-lead-form', function(e) {
             e.preventDefault();
-            saasFetch('saas_update_lead', new FormData(this), $(this).find('button')).done(function() {
+            saasFetch('saas_update_lead', new FormData(this), $(this).find('.btn-primary')).done(function() {
                 location.reload();
             });
         });
@@ -661,7 +704,7 @@
         $(document).on('submit', '#saas-email-lead-form', function(e) {
             e.preventDefault();
             var $form = $(this);
-            saasFetch('saas_email_lead', new FormData(this), $form.find('button')).done(function(msg) {
+            saasFetch('saas_email_lead', new FormData(this), $form.find('.btn-primary')).done(function(msg) {
                 alert(msg);
                 $form.find('textarea').val('');
             });
@@ -756,6 +799,29 @@
             });
         }
 
+        function saasUpdateGalleryInput(previewId) {
+            var inputId = previewId === '#saas-gallery-previews' ? '#saas-add-extra-field' : '#edit-link-extra';
+            var urls = [];
+            $(previewId + ' .gallery-preview-item img').each(function() {
+                urls.push($(this).attr('src'));
+            });
+            $(inputId).val(urls.join('\n'));
+        }
+
+        if ($('#saas-gallery-previews').length && typeof Sortable !== 'undefined') {
+            new Sortable(document.getElementById('saas-gallery-previews'), {
+                animation: 150,
+                onEnd: function() { saasUpdateGalleryInput('#saas-gallery-previews'); }
+            });
+        }
+
+        if ($('#saas-edit-gallery-previews').length && typeof Sortable !== 'undefined') {
+            new Sortable(document.getElementById('saas-edit-gallery-previews'), {
+                animation: 150,
+                onEnd: function() { saasUpdateGalleryInput('#saas-edit-gallery-previews'); }
+            });
+        }
+
         // 13. Charts (Analytics)
         if ($('#saas-analytics-chart').length && typeof Chart !== 'undefined' && typeof saas_chart_data !== 'undefined') {
             new Chart(document.getElementById('saas-analytics-chart'), {
@@ -763,7 +829,7 @@
                 data: {
                     labels: saas_chart_data.labels.length ? saas_chart_data.labels : ['No Data'],
                     datasets: [
-                        { label: 'Views', data: saas_chart_data.views.length ? saas_chart_data.views : [0], borderColor: '#6366f1', backgroundColor: 'rgba(99, 102, 241, 0.05)', fill: true, tension: 0.4 },
+                        { label: 'Views', data: saas_chart_data.views.length ? saas_chart_data.views : [0], borderColor: '#4f46e5', backgroundColor: 'rgba(79, 70, 229, 0.05)', fill: true, tension: 0.4 },
                         { label: 'Clicks', data: saas_chart_data.clicks.length ? saas_chart_data.clicks : [0], borderColor: '#10b981', fill: false, tension: 0.4 }
                     ]
                 },
@@ -779,7 +845,7 @@
                     datasets: [{
                         label: 'Total Clicks',
                         data: [saas_ab_data.a, saas_ab_data.b],
-                        backgroundColor: ['#6366f1', '#10b981'],
+                        backgroundColor: ['#4f46e5', '#10b981'],
                         borderRadius: 10
                     }]
                 },

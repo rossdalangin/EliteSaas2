@@ -77,7 +77,7 @@ if ( ! function_exists( 'saas_get_profile_meta' ) ) {
         return [
             'bio'          => get_post_meta( $profile_id, '_saas_bio', true ),
             'headline'     => get_post_meta( $profile_id, '_saas_headline', true ),
-            'theme_color'  => get_post_meta( $profile_id, '_saas_theme_color', true ) ?: '#6c5ce7',
+            'theme_color'  => get_post_meta( $profile_id, '_saas_theme_color', true ) ?: '#4f46e5',
             'social_links' => get_post_meta( $profile_id, '_saas_social_links', true ) ?: [],
             'phone'        => get_post_meta( $profile_id, '_saas_phone', true ),
             'avatar_id'    => get_post_thumbnail_id( $profile_id ),
@@ -183,7 +183,8 @@ function saas_get_default_templates() {
         'coach' => [
             'headline' => 'Helping you double your revenue in 90 days. 🚀',
             'bio' => 'Certified high-performance coach. I work with CEOs and founders to scale their impact.',
-            'color' => '#6c5ce7', 'theme' => 'modern-glass', 'shadow' => 'soft',
+            'color' => '#4f46e5', 'theme' => 'modern-glass', 'shadow' => 'soft',
+            'bg_type' => 'gradient', 'bg_color' => '#eef2ff', 'bg_gradient' => 'linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%)',
             'links' => [
                 ['title' => '👉 Free Strategy Session', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['title' => 'Watch Case Study', 'url' => 'https://youtube.com', 'type' => 'video'],
@@ -194,7 +195,8 @@ function saas_get_default_templates() {
         'business' => [
             'headline' => 'Innovative Solutions for Global Enterprise. 🏢',
             'bio' => 'Streamlining operations and driving growth through technology.',
-            'color' => '#0073aa', 'theme' => 'modern-glass', 'shadow' => 'soft',
+            'color' => '#1e293b', 'theme' => 'light', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#f8fafc',
             'links' => [
                 ['title' => 'Book a Consultation', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['title' => 'Our Core Services', 'url' => '#', 'type' => 'pricing', 'extra' => "$199/hr\nStrategy Audit\nProcess Automation\nCustom Dev"],
@@ -205,7 +207,8 @@ function saas_get_default_templates() {
         'startup' => [
             'headline' => 'Disrupting the Status Quo with Elite Innovation. 🚀',
             'bio' => 'We build scalable solutions for the modern world. Backed by top-tier VCs.',
-            'color' => '#6c5ce7', 'theme' => 'dark', 'shadow' => 'soft',
+            'color' => '#06b6d4', 'theme' => 'dark', 'shadow' => 'soft',
+            'bg_type' => 'mesh', 'bg_color' => '#0f172a',
             'links' => [
                 ['title' => 'Join our Beta', 'url' => '#', 'type' => 'lead_form'],
                 ['title' => 'Watch Pitch Deck', 'url' => 'https://youtube.com', 'type' => 'video'],
@@ -215,7 +218,8 @@ function saas_get_default_templates() {
         'wellness' => [
             'headline' => 'Holistic Wellness for the Modern Professional. 🌿',
             'bio' => 'Mind, body, and spirit alignment. Certified wellness coach and nutritionist.',
-            'color' => '#00b894', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#10b981', 'theme' => 'light', 'shadow' => 'soft',
+            'bg_type' => 'gradient', 'bg_color' => '#f0fdf4', 'bg_gradient' => 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
             'links' => [
                 ['title' => 'Free Meditation Session', 'url' => '#', 'type' => 'button', 'style' => 'glow'],
                 ['title' => 'Wellness Retreats', 'url' => '#', 'type' => 'pricing', 'extra' => "$1,500+\n3 Days / 2 Nights\nAll Inclusive\nPersonalized Plan"],
@@ -225,7 +229,8 @@ function saas_get_default_templates() {
         'photography' => [
             'headline' => 'Capturing Moments, Telling Stories. 📸',
             'bio' => 'Award-winning lifestyle and commercial photographer based in NYC.',
-            'color' => '#2d3436', 'theme' => 'light', 'shadow' => 'hard',
+            'color' => '#18181b', 'theme' => 'light', 'shadow' => 'hard',
+            'bg_type' => 'flat', 'bg_color' => '#ffffff',
             'links' => [
                 ['title' => 'View Portfolio', 'url' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/400?text=Wedding\nhttps://via.placeholder.com/400?text=Nature"],
                 ['title' => 'Book a Shoot', 'url' => '#', 'type' => 'calendar'],
@@ -235,7 +240,8 @@ function saas_get_default_templates() {
         'agency' => [
             'headline' => 'Scaling Brands through Performance Marketing. 🏢',
             'bio' => 'We build high-performance funnels that drive revenue for elite founders.',
-            'color' => '#111827', 'theme' => 'dark', 'shadow' => 'soft',
+            'color' => '#4f46e5', 'theme' => 'dark', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#0f172a',
             'links' => [
                 ['title' => 'Get a Free Quote', 'url' => '#', 'type' => 'lead_form'],
                 ['title' => 'Our Pricing Models', 'url' => '#', 'type' => 'pricing', 'extra' => "$2,500+\nFull CRM Sync\nScale Strategy"],
@@ -245,7 +251,8 @@ function saas_get_default_templates() {
         'realtor' => [
             'headline' => 'Bespoke Advisory for Elite Homeowners. 🏡',
             'bio' => 'Specializing in off-market luxury listings. Member of the Top 0.1% Global Network.',
-            'color' => '#2d3436', 'theme' => 'dark', 'shadow' => 'none',
+            'color' => '#0f172a', 'theme' => 'luxury', 'shadow' => 'none',
+            'bg_type' => 'flat', 'bg_color' => '#ffffff',
             'links' => [
                 ['title' => 'New Off-Market Listings', 'url' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/800x600?text=Penthouse+A\nhttps://via.placeholder.com/800x600?text=Coastal+Villa"],
                 ['title' => 'Request Private Showing', 'url' => '#', 'type' => 'lead_form'],
@@ -256,7 +263,8 @@ function saas_get_default_templates() {
         'saas' => [
             'headline' => 'Software that Scales with Your Ambition. 💻',
             'bio' => 'Building the next generation of digital tools for elite teams. Fast, secure, and intuitive.',
-            'color' => '#4834d4', 'theme' => 'dark', 'shadow' => 'soft',
+            'color' => '#6366f1', 'theme' => 'midnight-neon', 'shadow' => 'soft',
+            'bg_type' => 'mesh', 'bg_color' => '#020617',
             'links' => [
                 ['title' => 'Start Your Free Trial', 'url' => '#', 'type' => 'button', 'style' => 'glow'],
                 ['title' => 'Watch Product Demo', 'url' => 'https://youtube.com', 'type' => 'video'],
@@ -267,7 +275,8 @@ function saas_get_default_templates() {
         'fitness' => [
             'headline' => 'Transform Your Body, Elevate Your Life. 🏋️',
             'bio' => 'Certified Elite Trainer. Helping high-performers build sustainable fitness habits that last.',
-            'color' => '#ff4757', 'theme' => 'vibrant', 'shadow' => 'hard',
+            'color' => '#ef4444', 'theme' => 'vibrant', 'shadow' => 'hard',
+            'bg_type' => 'flat', 'bg_color' => '#ffffff',
             'links' => [
                 ['title' => 'Apply for 1-on-1 Coaching', 'url' => '#', 'type' => 'lead_form'],
                 ['title' => 'Free 7-Day Meal Plan', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
@@ -278,7 +287,8 @@ function saas_get_default_templates() {
         'medical' => [
             'headline' => 'Modern Care, Compassionate Service. 🩺',
             'bio' => 'Full-service medical clinic specializing in preventative wellness and elite diagnostic care.',
-            'color' => '#1e90ff', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#2563eb', 'theme' => 'light', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#f0f9ff',
             'links' => [
                 ['title' => 'Book Appointment', 'url' => '#', 'type' => 'calendar'],
                 ['title' => 'Patient Portal Login', 'url' => '#', 'type' => 'button'],
@@ -290,6 +300,7 @@ function saas_get_default_templates() {
             'headline' => 'Bespoke Private Advisory. ⚜️',
             'bio' => 'Curating exclusive opportunities for the discerning individual.',
             'color' => '#d4af37', 'theme' => 'luxury', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#0a0a0a',
             'links' => [
                 ['title' => 'Inquire Privately', 'url' => '#', 'type' => 'lead_form'],
                 ['title' => 'Exclusive Asset Portfolio', 'url' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/800x600?text=Asset+1\nhttps://via.placeholder.com/800x600?text=Asset+2"],
@@ -301,6 +312,7 @@ function saas_get_default_templates() {
             'headline' => 'Shop My Top Tech & Setup Finds 🛍️',
             'bio' => 'Sharing the best tech deals and office aesthetic finds. Check my links for exclusive discounts!',
             'color' => '#ff0050', 'theme' => 'vibrant', 'shadow' => 'hard',
+            'bg_type' => 'gradient', 'bg_color' => '#ffffff', 'bg_gradient' => 'linear-gradient(135deg, #ffffff 0%, #fce7f3 100%)',
             'links' => [
                 ['title' => 'My Amazon Storefront', 'url' => '#', 'type' => 'button', 'style' => 'rainbow'],
                 ['title' => 'Flash Sale Ending Soon! ⏳', 'url' => '#', 'type' => 'countdown', 'extra' => date('Y-m-d H:i', strtotime('+12 hours'))],
@@ -311,7 +323,8 @@ function saas_get_default_templates() {
         'influencer' => [
             'headline' => 'Daily Tech Inspo & Lifestyle Hacks. 📸',
             'bio' => 'Sharing the journey with 1M+ followers. Check my links for exclusive gear deals!',
-            'color' => '#f8a5c2', 'theme' => 'vibrant', 'shadow' => 'hard',
+            'color' => '#ec4899', 'theme' => 'vibrant', 'shadow' => 'hard',
+            'bg_type' => 'gradient', 'bg_color' => '#ffffff', 'bg_gradient' => 'linear-gradient(135deg, #ffffff 0%, #fdf2f8 100%)',
             'links' => [
                 ['title' => 'My Amazon Finds', 'url' => '#', 'type' => 'button', 'style' => 'rainbow'],
                 ['title' => 'Latest YouTube Video', 'url' => '#', 'type' => 'video'],
@@ -322,7 +335,8 @@ function saas_get_default_templates() {
         'artist' => [
             'headline' => 'Visual Storytelling through Digital Art. 🎨',
             'bio' => 'Independent designer creating immersive visual experiences for forward-thinking brands.',
-            'color' => '#f472b6', 'theme' => 'vibrant', 'shadow' => 'hard',
+            'color' => '#8b5cf6', 'theme' => 'vibrant', 'shadow' => 'hard',
+            'bg_type' => 'flat', 'bg_color' => '#f5f3ff',
             'links' => [
                 ['title' => 'Portfolio Gallery', 'url' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/400\nhttps://via.placeholder.com/401"],
                 ['title' => 'Project Inquiry', 'url' => '#', 'type' => 'lead_form'],
@@ -332,7 +346,8 @@ function saas_get_default_templates() {
         'podcast' => [
             'headline' => 'Deep Dives into the Elite Mindset. 🎙️',
             'bio' => 'New episodes every Tuesday. We interview the world\'s top 1% to deconstruct their success.',
-            'color' => '#6c5ce7', 'theme' => 'dark', 'shadow' => 'soft',
+            'color' => '#4f46e5', 'theme' => 'dark', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#0f172a',
             'links' => [
                 ['title' => 'Listen on Spotify', 'url' => '#', 'type' => 'button', 'style' => 'glow'],
                 ['title' => 'Watch on YouTube', 'url' => 'https://youtube.com', 'type' => 'video'],
@@ -343,7 +358,8 @@ function saas_get_default_templates() {
         'consultant' => [
             'headline' => 'Strategic Advisory for Scaling Founders. 🧠',
             'bio' => 'I help businesses streamline operations and maximize efficiency through data-driven strategies.',
-            'color' => '#4834d4', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#312e81', 'theme' => 'light', 'shadow' => 'soft',
+            'bg_type' => 'gradient', 'bg_color' => '#f8fafc', 'bg_gradient' => 'linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%)',
             'links' => [
                 ['title' => 'Book Audit Call', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['title' => 'Service Menu', 'url' => '#', 'type' => 'pricing', 'extra' => "Operations Audit\nGrowth Strategy\nTeam Training"],
@@ -353,7 +369,8 @@ function saas_get_default_templates() {
         'lawyer' => [
             'headline' => 'Strategic Legal Advocacy for Elite Clients. ⚖️',
             'bio' => 'Providing sophisticated representation that honors your unique goals.',
-            'color' => '#1e3799', 'theme' => 'light', 'shadow' => 'hard',
+            'color' => '#1e3a8a', 'theme' => 'light', 'shadow' => 'hard',
+            'bg_type' => 'flat', 'bg_color' => '#f8fafc',
             'links' => [
                 ['title' => 'Schedule Case Review', 'url' => '#', 'type' => 'lead_form'],
                 ['title' => 'Practice Areas', 'url' => '#', 'type' => 'pricing', 'extra' => "Litigation\nCorporate Law\nIP Protection"],
@@ -363,7 +380,8 @@ function saas_get_default_templates() {
         'author' => [
             'headline' => 'Exploring the Intersection of Tech & Humanity. ✍️',
             'bio' => 'Bestselling Author of "The Elite Mindset". Writing at the frontiers of personal growth.',
-            'color' => '#4b6584', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#334155', 'theme' => 'light', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#ffffff',
             'links' => [
                 ['title' => '📘 Buy My Latest Book', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['title' => 'Weekly Newsletter', 'url' => '#', 'type' => 'newsletter'],
@@ -374,7 +392,8 @@ function saas_get_default_templates() {
         'doctor' => [
             'headline' => 'Compassionate Care, Precision Medicine. 🩺',
             'bio' => 'Advancing the future of medicine through patient-centered care.',
-            'color' => '#0097e6', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#2563eb', 'theme' => 'light', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#f0f9ff',
             'links' => [
                 ['title' => 'Book Appointment', 'url' => '#', 'type' => 'button', 'style' => 'glow'],
                 ['title' => 'Patient Portal', 'url' => '#', 'type' => 'button'],
@@ -384,7 +403,8 @@ function saas_get_default_templates() {
         'servant' => [
             'headline' => 'Dedicated to Progress & Community. 🏛️',
             'bio' => 'Serving as your advocate in public office. Transparency and Integrity.',
-            'color' => '#eb4d4b', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#dc2626', 'theme' => 'light', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#fef2f2',
             'links' => [
                 ['title' => 'Join My Newsletter', 'url' => '#', 'type' => 'newsletter'],
                 ['title' => 'Community Update Video', 'url' => '#', 'type' => 'video'],
@@ -395,7 +415,8 @@ function saas_get_default_templates() {
         'course' => [
             'headline' => 'Master Your Craft with Elite Systems. 🎓',
             'bio' => 'Practical, results-driven courses for high-ticket consultants and coaches.',
-            'color' => '#0984e3', 'theme' => 'light', 'shadow' => 'hard',
+            'color' => '#4f46e5', 'theme' => 'light', 'shadow' => 'hard',
+            'bg_type' => 'gradient', 'bg_color' => '#f5f3ff', 'bg_gradient' => 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)',
             'links' => [
                 ['title' => 'Enroll in Masterclass', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['title' => 'Course Curriculum', 'url' => '#', 'type' => 'pricing', 'extra' => "12 Modules\nWeekly Group Coaching\nPrivate Community\nLifetime Access"],
@@ -405,7 +426,8 @@ function saas_get_default_templates() {
         'shop' => [
             'headline' => 'Curated Gear for the Elite Creator. 🛒',
             'bio' => 'Minimalist essentials designed to elevate your workspace and productivity.',
-            'color' => '#2d3436', 'theme' => 'vibrant', 'shadow' => 'soft',
+            'color' => '#18181b', 'theme' => 'vibrant', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#ffffff',
             'links' => [
                 ['title' => 'Browse Best Sellers', 'url' => '#', 'type' => 'button', 'style' => 'rainbow'],
                 ['title' => 'Elite Mechanical Keyboard', 'url' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/400?text=Keyboard+A\nhttps://via.placeholder.com/400?text=Keyboard+B"],
@@ -415,7 +437,8 @@ function saas_get_default_templates() {
         'charity' => [
             'headline' => 'Building a Brighter Future Together. ❤️',
             'bio' => 'Empowering communities through sustainable impact and transparent giving.',
-            'color' => '#00b894', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#059669', 'theme' => 'light', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#f0fdf4',
             'links' => [
                 ['title' => 'Support Our Mission', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['title' => 'See Our Impact (2023)', 'url' => '#', 'type' => 'milestone', 'extra' => 'Impact:1.2M+ Lives'],
@@ -427,6 +450,7 @@ function saas_get_default_templates() {
             'headline' => 'Inspiring Transformation through Keynotes. 🎙️',
             'bio' => 'Helping organizations navigate change and build resilient cultures. Global Keynote Speaker.',
             'color' => '#d4af37', 'theme' => 'luxury', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#0a0a0a',
             'links' => [
                 ['title' => 'Watch Highlight Reel', 'url' => '#', 'type' => 'video'],
                 ['title' => 'Inquire for Speaking', 'url' => '#', 'type' => 'lead_form'],
@@ -436,7 +460,8 @@ function saas_get_default_templates() {
         'trainer' => [
             'headline' => 'Elite Performance Coaching. 🏋️‍♀️',
             'bio' => 'Building resilient bodies and minds. 10+ years experience in professional athletics.',
-            'color' => '#f0932b', 'theme' => 'vibrant', 'shadow' => 'hard',
+            'color' => '#ea580c', 'theme' => 'vibrant', 'shadow' => 'hard',
+            'bg_type' => 'gradient', 'bg_color' => '#fff7ed', 'bg_gradient' => 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)',
             'links' => [
                 ['title' => 'Start Your Transformation', 'url' => '#', 'type' => 'lead_form'],
                 ['title' => 'Training Programs', 'url' => '#', 'type' => 'pricing', 'extra' => "Custom Workout\nMeal Plan\nWeekly Check-ins"],
@@ -444,9 +469,10 @@ function saas_get_default_templates() {
             ]
         ],
         'interior_design' => [
-            'headline' => 'Elevating Your Living Space. 🛋️',
+            'headline' => 'Elevating Your Living Space.  Couch 🛋️',
             'bio' => 'Bespoke interior design for modern homes. Creating functional beauty.',
-            'color' => '#7ed6df', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#0891b2', 'theme' => 'light', 'shadow' => 'soft',
+            'bg_type' => 'gradient', 'bg_color' => '#ecfeff', 'bg_gradient' => 'linear-gradient(135deg, #ecfeff 0%, #cffafe 100%)',
             'links' => [
                 ['title' => 'View Portfolio', 'url' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/400?text=LivingRoom\nhttps://via.placeholder.com/400?text=Kitchen"],
                 ['title' => 'Book a Consultation', 'url' => '#', 'type' => 'calendar'],
@@ -456,7 +482,8 @@ function saas_get_default_templates() {
         'yoga' => [
             'headline' => 'Find Your Inner Balance. 🧘',
             'bio' => 'Vinyasa and Yin yoga for all levels. Join me on the mat.',
-            'color' => '#be2edd', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#7c3aed', 'theme' => 'light', 'shadow' => 'soft',
+            'bg_type' => 'gradient', 'bg_color' => '#f5f3ff', 'bg_gradient' => 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)',
             'links' => [
                 ['title' => 'Join My Next Class', 'url' => '#', 'type' => 'calendar'],
                 ['title' => 'Watch Guided Flow', 'url' => 'https://youtube.com', 'type' => 'video'],
@@ -466,7 +493,8 @@ function saas_get_default_templates() {
         'coffee_shop' => [
             'headline' => 'Crafting the Perfect Brew. ☕',
             'bio' => 'Locally roasted beans, artisan pastries, and a warm community vibe.',
-            'color' => '#6d4c41', 'theme' => 'light', 'shadow' => 'hard',
+            'color' => '#78350f', 'theme' => 'light', 'shadow' => 'hard',
+            'bg_type' => 'flat', 'bg_color' => '#fffbeb',
             'links' => [
                 ['title' => 'Our Menu', 'url' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/400?text=LatteArt\nhttps://via.placeholder.com/400?text=Pastries"],
                 ['title' => 'Order for Pickup', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
@@ -476,7 +504,8 @@ function saas_get_default_templates() {
         'non_profit' => [
             'headline' => 'Powering Change, Together. 🤝',
             'bio' => 'Working towards a sustainable future through community-led initiatives.',
-            'color' => '#27ae60', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#059669', 'theme' => 'light', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#f0fdf4',
             'links' => [
                 ['title' => 'Support Our Cause', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['title' => 'Our Impact Report', 'url' => '#', 'type' => 'milestone', 'extra' => 'Donated:$500k+'],
@@ -486,7 +515,8 @@ function saas_get_default_templates() {
         'travel' => [
             'headline' => 'Exploring the World, One City at a Time. ✈️',
             'bio' => 'Full-time traveler and content creator. Sharing the best hidden gems and travel tips.',
-            'color' => '#f9ca24', 'theme' => 'vibrant', 'shadow' => 'soft',
+            'color' => '#ca8a04', 'theme' => 'vibrant', 'shadow' => 'soft',
+            'bg_type' => 'gradient', 'bg_color' => '#fefce8', 'bg_gradient' => 'linear-gradient(135deg, #fefce8 0%, #fef9c3 100%)',
             'links' => [
                 ['title' => 'My Travel Guides', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
                 ['title' => 'Latest Vlog: Bali', 'url' => 'https://youtube.com', 'type' => 'video'],
@@ -497,7 +527,8 @@ function saas_get_default_templates() {
         'chef' => [
             'headline' => 'Private Dining & Culinary Excellence. 👨‍🍳',
             'bio' => 'Bespoke culinary experiences for your home. Seasonal, local, and delicious.',
-            'color' => '#eb4d4b', 'theme' => 'light', 'shadow' => 'hard',
+            'color' => '#991b1b', 'theme' => 'light', 'shadow' => 'hard',
+            'bg_type' => 'flat', 'bg_color' => '#fff1f2',
             'links' => [
                 ['title' => 'Inquire for Private Event', 'url' => '#', 'type' => 'lead_form'],
                 ['title' => 'My Signature Dishes', 'url' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/400?text=Dish1\nhttps://via.placeholder.com/400?text=Dish2"],
@@ -507,7 +538,8 @@ function saas_get_default_templates() {
         'makeup' => [
             'headline' => 'Enhancing Your Natural Beauty. 💄',
             'bio' => 'Professional makeup artist for weddings, events, and editorials.',
-            'color' => '#ff9ff3', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#db2777', 'theme' => 'light', 'shadow' => 'soft',
+            'bg_type' => 'gradient', 'bg_color' => '#fdf2f8', 'bg_gradient' => 'linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%)',
             'links' => [
                 ['title' => 'Book Makeup Service', 'url' => '#', 'type' => 'calendar'],
                 ['title' => 'Portfolio Gallery', 'url' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/400?text=Bridal\nhttps://via.placeholder.com/400?text=Editorial"],
@@ -517,7 +549,8 @@ function saas_get_default_templates() {
         'web3' => [
             'headline' => 'Building the Future of the Web. 🌐',
             'bio' => 'NFT Collector, DeFi enthusiast, and Web3 developer. Exploring the decentralized world.',
-            'color' => '#4834d4', 'theme' => 'dark', 'shadow' => 'soft',
+            'color' => '#4338ca', 'theme' => 'dark', 'shadow' => 'soft',
+            'bg_type' => 'mesh', 'bg_color' => '#020617',
             'links' => [
                 ['title' => 'View My NFT Collection', 'url' => '#', 'type' => 'button', 'style' => 'glow'],
                 ['title' => 'Join the DAO Discord', 'url' => '#', 'type' => 'button', 'style' => 'featured'],
@@ -527,7 +560,8 @@ function saas_get_default_templates() {
         'gaming' => [
             'headline' => 'Level Up Your Gameplay. 🎮',
             'bio' => 'Pro gamer and streamer. Building an elite community of competitive players.',
-            'color' => '#6ab04c', 'theme' => 'dark', 'shadow' => 'hard',
+            'color' => '#16a34a', 'theme' => 'dark', 'shadow' => 'hard',
+            'bg_type' => 'flat', 'bg_color' => '#064e3b',
             'links' => [
                 ['title' => 'Watch Me Live on Twitch', 'url' => '#', 'type' => 'button', 'style' => 'glow'],
                 ['title' => 'My Gaming Setup', 'url' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/400?text=PC\nhttps://via.placeholder.com/400?text=Peripherals"],
@@ -537,7 +571,8 @@ function saas_get_default_templates() {
         'personal' => [
             'headline' => 'Sharing My Journey & Ideas. ✨',
             'bio' => 'Thinker, dreamer, and digital nomad. Exploring the intersection of design and technology.',
-            'color' => '#3498db', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#2563eb', 'theme' => 'light', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#f0f9ff',
             'links' => [
                 ['title' => 'Read My Blog', 'url' => '#', 'type' => 'button'],
                 ['title' => 'Current Projects', 'url' => '#', 'type' => 'milestone', 'extra' => 'Learning:React'],
@@ -547,7 +582,8 @@ function saas_get_default_templates() {
         'mobile_app' => [
             'headline' => 'The App That Changes Everything. 📱',
             'bio' => 'Download our latest mobile experience. Optimized for speed and productivity.',
-            'color' => '#55efc4', 'theme' => 'vibrant', 'shadow' => 'hard',
+            'color' => '#059669', 'theme' => 'vibrant', 'shadow' => 'hard',
+            'bg_type' => 'flat', 'bg_color' => '#ffffff',
             'links' => [
                 ['title' => 'Download on App Store', 'url' => '#', 'type' => 'button', 'style' => 'glow'],
                 ['title' => 'Get it on Play Store', 'url' => '#', 'type' => 'button'],
@@ -557,7 +593,8 @@ function saas_get_default_templates() {
         'webinar' => [
             'headline' => 'Unlock the Secrets to High-Ticket Sales. 🎤',
             'bio' => 'Limited-time free training. Learn the exact framework we use to close $10k+ deals.',
-            'color' => '#d63031', 'theme' => 'dark', 'shadow' => 'soft',
+            'color' => '#991b1b', 'theme' => 'dark', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#450a0a',
             'links' => [
                 ['title' => 'Register for Webinar', 'url' => '#', 'type' => 'lead_form'],
                 ['title' => 'Webinar Starts In...', 'url' => '#', 'type' => 'countdown', 'extra' => date('Y-m-d H:i', strtotime('+2 hours'))],
@@ -567,7 +604,8 @@ function saas_get_default_templates() {
         'musician' => [
             'headline' => 'Sounds of the New Era. 🎵',
             'bio' => 'Independent artist and producer. New album "Elite Vibes" out now on all platforms.',
-            'color' => '#fdcb6e', 'theme' => 'vibrant', 'shadow' => 'hard',
+            'color' => '#d97706', 'theme' => 'vibrant', 'shadow' => 'hard',
+            'bg_type' => 'gradient', 'bg_color' => '#fffbeb', 'bg_gradient' => 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)',
             'links' => [
                 ['title' => 'Listen on Spotify', 'url' => '#', 'type' => 'button', 'style' => 'rainbow'],
                 ['title' => 'New Music Video', 'url' => 'https://youtube.com', 'type' => 'video'],
@@ -577,7 +615,8 @@ function saas_get_default_templates() {
         'model' => [
             'headline' => 'High-Fashion & Commercial Talent. 👗',
             'bio' => 'Represented by Elite Agency. Based in Milan/Paris/NYC. Let\'s create magic.',
-            'color' => '#e84393', 'theme' => 'luxury', 'shadow' => 'soft',
+            'color' => '#be185d', 'theme' => 'luxury', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#ffffff',
             'links' => [
                 ['title' => 'Modeling Portfolio', 'url' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/400?text=Runway\nhttps://via.placeholder.com/400?text=Editorial"],
                 ['title' => 'Bookings & Inquiry', 'url' => '#', 'type' => 'lead_form'],
@@ -587,7 +626,8 @@ function saas_get_default_templates() {
         'dentist' => [
             'headline' => 'Bespoke Smiles, Modern Care. 🦷',
             'bio' => 'Advanced cosmetic and restorative dentistry. Experience the difference of elite care.',
-            'color' => '#81ecec', 'theme' => 'light', 'shadow' => 'soft',
+            'color' => '#0891b2', 'theme' => 'light', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#f0f9ff',
             'links' => [
                 ['title' => 'Schedule Appointment', 'url' => '#', 'type' => 'calendar'],
                 ['title' => 'Our Smile Gallery', 'url' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/400?text=Smile1\nhttps://via.placeholder.com/400?text=Smile2"],
@@ -597,7 +637,8 @@ function saas_get_default_templates() {
         'gym' => [
             'headline' => 'Where Elite Performance Begins. 🏢',
             'bio' => '24/7 access, state-of-the-art equipment, and professional personal trainers.',
-            'color' => '#2d3436', 'theme' => 'dark', 'shadow' => 'hard',
+            'color' => '#18181b', 'theme' => 'dark', 'shadow' => 'hard',
+            'bg_type' => 'flat', 'bg_color' => '#09090b',
             'links' => [
                 ['title' => 'Claim Free 7-Day Pass', 'url' => '#', 'type' => 'lead_form'],
                 ['title' => 'Membership Plans', 'url' => '#', 'type' => 'pricing', 'extra' => "$49/mo\nAll Classes\nSauna Access"],
@@ -607,7 +648,8 @@ function saas_get_default_templates() {
         'architecture' => [
             'headline' => 'Designing the Future Landscapes. 📐',
             'bio' => 'Award-winning architectural firm specializing in sustainable luxury residential projects.',
-            'color' => '#636e72', 'theme' => 'luxury', 'shadow' => 'soft',
+            'color' => '#475569', 'theme' => 'luxury', 'shadow' => 'soft',
+            'bg_type' => 'flat', 'bg_color' => '#ffffff',
             'links' => [
                 ['title' => 'View Projects Portfolio', 'url' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/400?text=ModernVilla\nhttps://via.placeholder.com/400?text=EcoOffice"],
                 ['title' => 'Inquire for New Build', 'url' => '#', 'type' => 'lead_form'],
@@ -615,4 +657,20 @@ function saas_get_default_templates() {
             ]
         ],
     ];
+}
+
+/**
+ * Determine if a color is light or dark for contrast
+ */
+function saas_get_contrast_color( $hexcolor ) {
+    $hexcolor = str_replace('#', '', $hexcolor);
+    if (empty($hexcolor)) return 'dark';
+    if (strlen($hexcolor) == 3) {
+        $hexcolor = $hexcolor[0].$hexcolor[0].$hexcolor[1].$hexcolor[1].$hexcolor[2].$hexcolor[2];
+    }
+    $r = hexdec(substr($hexcolor, 0, 2));
+    $g = hexdec(substr($hexcolor, 2, 2));
+    $b = hexdec(substr($hexcolor, 4, 2));
+    $yiq = (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+    return ($yiq >= 128) ? 'dark' : 'light';
 }

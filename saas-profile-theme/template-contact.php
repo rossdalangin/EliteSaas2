@@ -8,9 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 get_header();
 ?>
 
-<main id="contact-page" class="site-main">
+<main id="contact-page" class="site-main bg-color">
     <section class="landing-content pt-100">
-        <div class="contact-container bg-white radius-xl shadow-xl">
+        <div class="contact-container bg-subtle radius-lg shadow-xl">
             <h1 class="text-6xl font-black mb-16">Get in Touch</h1>
             <p class="text-xl mb-40 color-light">Have questions? We are here to help you scale.</p>
 

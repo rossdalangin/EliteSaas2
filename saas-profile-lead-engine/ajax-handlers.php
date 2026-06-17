@@ -144,6 +144,11 @@ function saas_ajax_save_profile() {
         if (isset($_POST['phone'])) update_post_meta($profile_id, '_saas_phone', sanitize_text_field($_POST['phone']));
         if (isset($_POST['company'])) update_post_meta($profile_id, '_saas_company', sanitize_text_field($_POST['company']));
 
+        if (isset($_POST['social_links']) && is_array($_POST['social_links'])) {
+            $social_links = array_map('esc_url_raw', $_POST['social_links']);
+            update_post_meta($profile_id, '_saas_social_links', $social_links);
+        }
+
         if ($is_pro) {
             if (isset($_POST['custom_domain'])) update_post_meta($profile_id, '_saas_custom_domain', sanitize_text_field($_POST['custom_domain']));
             if (isset($_POST['profile_password'])) update_post_meta($profile_id, '_saas_profile_password', sanitize_text_field($_POST['profile_password']));
@@ -181,11 +186,9 @@ function saas_ajax_save_profile() {
         if (isset($_POST['btn_shape'])) update_post_meta($profile_id, '_saas_btn_shape', sanitize_text_field($_POST['btn_shape']));
 
         if ($is_pro) {
-            if (isset($_POST['custom_css'])) update_post_meta($profile_id, '_saas_custom_css', $_POST['custom_css']);
             update_post_meta($profile_id, '_saas_hide_branding', isset($_POST['hide_branding']) ? '1' : '0');
         } else {
             // Force disable pro-only styles for free users
-            delete_post_meta($profile_id, '_saas_custom_css');
             update_post_meta($profile_id, '_saas_hide_branding', '0');
         }
 
@@ -204,6 +207,18 @@ function saas_ajax_save_profile() {
         }
 
         update_post_meta($profile_id, '_saas_social_proof', isset($_POST['social_proof']) ? '1' : '0');
+    }
+
+    // CUSTOM CSS CONTEXT
+    if ($context === 'custom_css') {
+        $payments = new Saas_Payments();
+        $is_pro = $payments->is_pro_user($user_id);
+
+        if ($is_pro) {
+            if (isset($_POST['custom_css'])) update_post_meta($profile_id, '_saas_custom_css', $_POST['custom_css']);
+        } else {
+            delete_post_meta($profile_id, '_saas_custom_css');
+        }
     }
 
     // QR CONTEXT
@@ -242,6 +257,12 @@ function saas_ajax_save_profile() {
         if (isset($_POST['bio'])) update_post_meta($profile_id, '_saas_bio', sanitize_textarea_field($_POST['bio']));
         if (isset($_POST['niche'])) update_post_meta($profile_id, '_saas_niche', sanitize_text_field($_POST['niche']));
         if (isset($_POST['theme_color'])) update_post_meta($profile_id, '_saas_theme_color', sanitize_hex_color($_POST['theme_color']));
+        if (isset($_POST['profile_theme'])) update_post_meta($profile_id, '_saas_profile_theme', sanitize_text_field($_POST['profile_theme']));
+
+        if (isset($_POST['social_links']) && is_array($_POST['social_links'])) {
+            $social_links = array_map('esc_url_raw', $_POST['social_links']);
+            update_post_meta($profile_id, '_saas_social_links', $social_links);
+        }
     }
 
     // SEO CONTEXT
@@ -473,6 +494,10 @@ function saas_ajax_apply_template() {
             update_post_meta($profile_id, '_saas_theme_color', $set['color']);
             update_post_meta($profile_id, '_saas_profile_theme', $set['theme']);
             update_post_meta($profile_id, '_saas_container_shadow', $set['shadow']);
+
+            if (isset($set['bg_type'])) update_post_meta($profile_id, '_saas_bg_type', $set['bg_type']);
+            if (isset($set['bg_color'])) update_post_meta($profile_id, '_saas_bg_color', $set['bg_color']);
+            if (isset($set['bg_gradient'])) update_post_meta($profile_id, '_saas_bg_gradient', $set['bg_gradient']);
         }
 
         foreach ( $set['links'] as $index => $b ) {
@@ -826,8 +851,8 @@ function saas_ajax_generate_samples() {
     // Ensure content hub options are populated with at least some data if empty
     if (!get_option('saas_templates')) {
         $default_tpls = [
-            'coach' => ['headline' => 'Scale Your Impact 🚀', 'bio' => 'Certified high-performance coach.', 'color' => '#6c5ce7', 'theme' => 'light', 'shadow' => 'soft', 'links' => [['title' => 'Book Strategy Session', 'url' => '#', 'type' => 'button', 'style' => 'featured']]],
-            'business' => ['headline' => 'Enterprise Solutions 🏢', 'bio' => 'Driving growth through tech.', 'color' => '#0073aa', 'theme' => 'light', 'shadow' => 'hard', 'links' => [['title' => 'Our Services', 'url' => '#', 'type' => 'pricing', 'extra' => "$99/mo\nSupport\nUpdates"]]]
+            'coach' => ['headline' => 'Scale Your Impact 🚀', 'bio' => 'Certified high-performance coach.', 'color' => '#4f46e5', 'theme' => 'light', 'shadow' => 'soft', 'links' => [['title' => 'Book Strategy Session', 'url' => '#', 'type' => 'button', 'style' => 'featured']]],
+            'business' => ['headline' => 'Enterprise Solutions 🏢', 'bio' => 'Driving growth through tech.', 'color' => '#4f46e5', 'theme' => 'light', 'shadow' => 'hard', 'links' => [['title' => 'Our Services', 'url' => '#', 'type' => 'pricing', 'extra' => "$99/mo\nSupport\nUpdates"]]]
         ];
         update_option('saas_templates', $default_tpls);
     }
@@ -842,55 +867,217 @@ function saas_ajax_generate_samples() {
     $all_templates = get_option('saas_templates');
     $samples = [];
 
-    if ($all_templates) {
-        foreach($all_templates as $id => $tpl) {
-            $samples[] = [
-                'title' => 'Elite ' . ucfirst($id),
-                'headline' => $tpl['headline'],
-                'bio' => $tpl['bio'],
-                'color' => $tpl['color'],
-                'theme' => $tpl['theme'],
-                'shadow' => $tpl['shadow'],
-                'links' => array_map(function($l) {
-                    return ['t' => $l['title'], 'u' => $l['url'], 'type' => $l['type'], 'style' => $l['style'] ?? 'regular', 'extra' => $l['extra'] ?? ''];
-                }, $tpl['links'])
-            ];
-        }
-    } else {
-        // High-quality fallback defaults
-        $samples = [
-            [
-                'title' => 'Executive Performance Coach',
-                'headline' => 'Helping Founders Scale from 6 to 7 Figures 🚀',
-                'bio' => 'Ex-Google Exec turned Strategic Coach. I help high-ticket service providers automate their acquisition and double their profit margins.',
-                'color' => '#6c5ce7', 'theme' => 'light', 'shadow' => 'soft',
-                'links' => [
-                    ['t' => '👉 Free Strategy Session', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
-                    ['t' => 'Masterclass: Scaling Systems', 'u' => 'https://youtube.com', 'type' => 'video'],
-                    ['t' => 'Consulting Packages', 'u' => '#', 'type' => 'pricing', 'extra' => "$2,500/mo\nBi-weekly Calls\nSlack Support\nResource Library"],
-                ]
-            ],
-            [
-                'title' => 'Bespoke Private Advisory',
-                'headline' => 'Own Your Future. Protect Your Legacy. ⚜️',
-                'bio' => 'Specializing in off-market acquisitions and private advisory for high-net-worth individuals. Excellence at every touchpoint.',
-                'color' => '#d4af37', 'theme' => 'luxury', 'shadow' => 'soft',
-                'links' => [
-                    ['t' => 'New Asset Portfolio', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://via.placeholder.com/800x600?text=Penthouse+A\nhttps://via.placeholder.com/800x600?text=Coastal+Villa"],
-                    ['t' => 'Inquire Privately', 'u' => '#', 'type' => 'lead_form'],
-                    ['t' => 'Save VCard to Phone', 'u' => home_url('/?saas_action=vcard'), 'type' => 'button', 'style' => 'rainbow'],
-                ]
+    // Massive Library of Industry-Leading Sample Profiles (Maximize Block Usage)
+    $samples = [
+        // 1. COACH: Tony Robbins (Authority Master)
+        [
+            'title' => 'Tony Robbins',
+            'headline' => 'Transform Your Life & Business 🚀',
+            'bio' => "The world's #1 life and business strategist. Author of 6 international bestsellers. Philanthropist. Entrepreneur. I help people bridge the gap between where they are and where they want to be.",
+            'color' => '#1e293b', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'coach',
+            'bg_type' => 'gradient', 'bg_color' => '#ffffff', 'bg_gradient' => 'linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%)',
+            'links' => [
+                ['t' => '👉 Join the Unleash the Power Within Event', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Watch: The Power of Identity', 'u' => 'https://www.youtube.com/watch?v=k-S6rD8f8-Y', 'type' => 'video'],
+                ['t' => 'Elite Platinum Partnership', 'u' => '#', 'type' => 'pricing', 'extra' => "$85,000/yr\nWorld-class Networking\nPrivate Events\nStrategic Coaching"],
+                ['t' => 'Client Breakthrough', 'u' => '#', 'type' => 'testimonial', 'extra' => "Tony's strategies changed my business and my life forever. I am a different person."],
+                ['t' => 'Success Milestone', 'u' => '#', 'type' => 'milestone', 'extra' => "Global Impact:50M+"],
+                ['t' => 'Common Questions', 'u' => '#', 'type' => 'faq', 'extra' => "Is this for beginners?:Yes, we have programs for all levels.\nWhat is the guarantee?:We offer a 100% satisfaction guarantee."],
+                ['t' => 'Free Strategy Call', 'u' => '#', 'type' => 'calendar'],
+                ['t' => 'Get Daily Motivation', 'u' => '#', 'type' => 'newsletter'],
             ]
-        ];
-    }
+        ],
+        // 2. CREATOR: GaryVee (Attention Engine)
+        [
+            'title' => 'Gary Vaynerchuk',
+            'headline' => 'CEO of VaynerMedia & Creator of VeeFriends 📈',
+            'bio' => "Serial entrepreneur, investor, and creator. Helping you understand where the consumer attention is going and how to exploit it. Don't overthink, just execute.",
+            'color' => '#4f46e5', 'theme' => 'vibrant', 'shadow' => 'hard', 'niche' => 'creator',
+            'bg_type' => 'flat', 'bg_color' => '#ffffff',
+            'links' => [
+                ['t' => 'Get the VeeFriends Series 2', 'u' => '#', 'type' => 'button', 'style' => 'rainbow'],
+                ['t' => 'DailyVee: My Life as a CEO', 'u' => 'https://www.youtube.com/watch?v=G8v8N-C-Vl8', 'type' => 'video'],
+                ['t' => 'VeeFriends Collection', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d\nhttps://images.unsplash.com/photo-1622547748225-3fc4abd2cca0"],
+                ['t' => 'Join the GaryVee Discord', 'u' => '#', 'type' => 'social_icons', 'extra' => "instagram:#\ntiktok:#\nyoutube:#\ntwitter:#"],
+                ['t' => 'Limited Edition NFT Drop', 'u' => '#', 'type' => 'countdown', 'extra' => date('Y-m-d H:i', strtotime('+24 hours'))],
+                ['t' => 'Inquire for Speaking', 'u' => '#', 'type' => 'lead_form'],
+            ]
+        ],
+        // 3. PODCASTER: Joe Rogan
+        [
+            'title' => 'Joe Rogan Experience',
+            'headline' => "The World's Most Powerful Podcast 🎙️",
+            'bio' => "Long-form conversations about life, science, culture, and comedy. Exploring the fringes of human knowledge.",
+            'color' => '#000000', 'theme' => 'dark', 'shadow' => 'soft', 'niche' => 'podcast',
+            'links' => [
+                ['t' => 'Listen Now on Spotify', 'u' => 'https://open.spotify.com/show/4rllRUbsu9hyZ2S6xyYpUv', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Watch Recent Clips', 'u' => 'https://www.youtube.com/watch?v=5jZ379X-G_M', 'type' => 'video'],
+                ['t' => 'Upcoming Comedy Dates', 'u' => '#', 'type' => 'faq', 'extra' => "Austin, TX - Dec 15:Sold Out\nLas Vegas, NV - Jan 10:Available"],
+                ['t' => 'Connect on Social', 'u' => '#', 'type' => 'social_icons', 'extra' => "instagram:#\ntwitter:#\nfacebook:#"],
+            ]
+        ],
+        // 4. INFOPRENEUR: Dan Koe (Digital Kingdom)
+        [
+            'title' => 'Dan Koe Strategy',
+            'headline' => 'Synthesizing Business & Philosophy 🏰',
+            'bio' => "Synthesizing business, personal growth, and self-improvement for the modern polymath. Build your digital kingdom through creative work.",
+            'color' => '#0f172a', 'theme' => 'light', 'shadow' => 'none', 'niche' => 'infopreneur',
+            'bg_type' => 'flat', 'bg_color' => '#f8fafc',
+            'links' => [
+                ['t' => 'The 2-Hour Writer Course', 'u' => '#', 'type' => 'product', 'extra' => "$150"],
+                ['t' => 'Weekly Synthesis Letter', 'u' => '#', 'type' => 'newsletter'],
+                ['t' => 'The Modern Polymath Roadmap', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Success Milestone', 'u' => '#', 'type' => 'milestone', 'extra' => "Students:15200"],
+                ['t' => 'Inside the Digital Kingdom', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1499750310107-5fef28a66643\nhttps://images.unsplash.com/photo-1488190211105-8b0e65b80b4e"],
+                ['t' => 'Frequently Asked', 'u' => '#', 'type' => 'faq', 'extra' => "How to start?:Pick a niche.\nHow to scale?:Iterate."],
+            ]
+        ],
+        // 5. AGENCY: Ogilvy (Creative Authority)
+        [
+            'title' => 'Ogilvy & Mather Elite',
+            'headline' => 'The Original Performance Agency 🚀',
+            'bio' => "We sell, or else. David Ogilvy's legacy of excellence applied to modern tactical marketing and brand development. We don't just build brands; we build businesses.",
+            'color' => '#be123c', 'theme' => 'light', 'shadow' => 'hard', 'niche' => 'agency',
+            'links' => [
+                ['t' => 'View Our Global Case Studies', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Request a Strategic Audit', 'u' => '#', 'type' => 'lead_form'],
+                ['t' => 'The Agency Pricing Model', 'u' => '#', 'type' => 'pricing', 'extra' => "Retainer-Based\nPerformance-Linked\nFull-Service Media"],
+                ['t' => 'Brand Authority Index', 'u' => '#', 'type' => 'milestone', 'extra' => "Market Dominance:88"],
+                ['t' => 'Case Study Gallery', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1460925895917-afdab827c52f\nhttps://images.unsplash.com/photo-1551288049-bebda4e38f71"],
+                ['t' => 'Client Quote', 'u' => '#', 'type' => 'testimonial', 'extra' => "Ogilvy understands the science of advertising better than anyone else."],
+            ]
+        ],
+        // 6. FASHION: Vogue (Global Luxury)
+        [
+            'title' => 'Vogue Elite Digital',
+            'headline' => 'The Authority on Fashion & Culture ⚜️',
+            'bio' => "Defining the zeitgeist since 1892. Redefining digital luxury and editorial excellence for the modern era. Your daily dose of fashion inspiration.",
+            'color' => '#111111', 'theme' => 'luxury', 'shadow' => 'soft', 'niche' => 'fashion',
+            'links' => [
+                ['t' => 'Spring/Summer 2026 Collection', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1539109132314-347752418b3b\nhttps://images.unsplash.com/photo-1490481651871-ab68de25d43d\nhttps://images.unsplash.com/photo-1496747611176-843222e1e57c"],
+                ['t' => 'Watch: Inside the Met Gala', 'u' => 'https://www.youtube.com/watch?v=12345', 'type' => 'video'],
+                ['t' => 'Join Vogue Club', 'u' => '#', 'type' => 'pricing', 'extra' => "$24/mo\nExclusive Events\nDigital Archive\nMember-only Content"],
+                ['t' => 'Luxury Lifestyle FAQ', 'u' => '#', 'type' => 'faq', 'extra' => "How to contribute?:Submit via our portal.\nWhere to buy?:Official stores only."],
+                ['t' => 'Exclusive Event Access', 'u' => '#', 'type' => 'lead_form'],
+            ]
+        ],
+        // 7. EDUCATOR: Huberman Lab (Neural Optimization)
+        [
+            'title' => 'Huberman Lab',
+            'headline' => 'Science-Based Tools for Daily Life 🧠',
+            'bio' => "Dr. Andrew Huberman, Professor at Stanford. I share low-cost/zero-cost tools for health, performance, and well-being based on the latest neuroscience.",
+            'color' => '#0c4a6e', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'education',
+            'links' => [
+                ['t' => 'Protocol: Neural Optimization', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Join the Neural Newsletter', 'u' => '#', 'type' => 'newsletter'],
+                ['t' => 'Science of Sleep Masterclass', 'u' => 'https://www.youtube.com/watch?v=nm1TxQj9IsQ', 'type' => 'video'],
+                ['t' => 'Optimize Your Day', 'u' => '#', 'type' => 'milestone', 'extra' => "Focus Reached:95"],
+                ['t' => 'Supplements I Use', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1584017945516-9072ddc14769\nhttps://images.unsplash.com/photo-1584308666744-24d5c474f2ae"],
+                ['t' => 'Huberman Lab FAQ', 'u' => '#', 'type' => 'faq', 'extra' => "How often are episodes?:Weekly.\nIs there a transcript?:Yes, on our site."],
+            ]
+        ],
+        // 8. BRAND: Apple (Design Authority)
+        [
+            'title' => 'Apple Elite Digital',
+            'headline' => 'Think Different. Build Better. 💻',
+            'bio' => "Designing products that empower humanity. Excellence in engineering. Perfection in design. Privacy by default. Experience the future of technology.",
+            'color' => '#111111', 'theme' => 'light', 'shadow' => 'none', 'niche' => 'brand',
+            'links' => [
+                ['t' => 'The New Era of iPhone', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1510557880182-3d4d3cba3f21\nhttps://images.unsplash.com/photo-1556656793-062ff98782ee"],
+                ['t' => 'MacBook Pro Performance', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+                ['t' => 'Watch the Keynote', 'u' => 'https://www.youtube.com/watch?v=12345', 'type' => 'video'],
+                ['t' => 'Privacy Architecture', 'u' => '#', 'type' => 'button', 'style' => 'regular'],
+                ['t' => 'Apple Care Support', 'u' => '#', 'type' => 'faq', 'extra' => "What is covered?:Accidental damage.\nHow to claim?:Visit an Apple Store."],
+            ]
+        ],
+        // 9. BEAUTY: Kylie Cosmetics (Glow Expert)
+        [
+            'title' => 'Kylie Elite Beauty',
+            'headline' => 'Define Your Look. Own Your Power. ✨',
+            'bio' => "Revolutionary beauty products designed to make you feel confident and unstoppable. Clean. Vegan. High Performance. Join the beauty revolution.",
+            'color' => '#fbcfe8', 'theme' => 'vibrant', 'shadow' => 'soft', 'niche' => 'beauty',
+            'links' => [
+                ['t' => 'Shop the Matte Lip Kit', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Tutorial: 5-Min Glow Up', 'u' => 'https://www.youtube.com/watch?v=12345', 'type' => 'video'],
+                ['t' => 'Best Sellers Gallery', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1512496015851-a90fb38ba796\nhttps://images.unsplash.com/photo-1522335789203-aabd1fc54bc9"],
+                ['t' => 'Join the Beauty Circle', 'u' => '#', 'type' => 'newsletter'],
+                ['t' => 'Flash Sale Ending Soon! ⏳', 'u' => '#', 'type' => 'countdown', 'extra' => date('Y-m-d H:i', strtotime('+12 hours'))],
+                ['t' => 'Beauty Tips FAQ', 'u' => '#', 'type' => 'faq', 'extra' => "Cruelty-free?:100% Yes.\nShipping?:Worldwide available."],
+            ]
+        ],
+        // 10. PUBLISHER: Morning Brew (Business News Authority)
+        [
+            'title' => 'Morning Brew Elite',
+            'headline' => 'Business News, Actually Fun. ☕',
+            'bio' => "The daily newsletter that makes you smarter in 5 minutes. Join 4M+ readers and stay ahead of the business world with our curated insights.",
+            'color' => '#fef08a', 'theme' => 'light', 'shadow' => 'hard', 'niche' => 'publisher',
+            'links' => [
+                ['t' => 'Subscribe to the Daily Brew', 'u' => '#', 'type' => 'newsletter'],
+                ['t' => 'Our Reader Satisfaction', 'u' => '#', 'type' => 'milestone', 'extra' => "Retention:94"],
+                ['t' => 'Partner With Us', 'u' => '#', 'type' => 'lead_form'],
+                ['t' => 'Latest Edition Preview', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1504711434969-e33886168f5c\nhttps://images.unsplash.com/photo-1503694978374-8a2fa686963a"],
+                ['t' => 'Watch: Brew Breakdown', 'u' => 'https://www.youtube.com/watch?v=12345', 'type' => 'video'],
+            ]
+        ],
+        // 11. SMALL BUSINESS: Elite Bistro (Local Authority)
+        [
+            'title' => 'The Elite Bistro',
+            'headline' => 'Farm-to-Table Excellence 🍽️',
+            'bio' => "Experience the finest locally-sourced ingredients. An intimate atmosphere for the discerning palate. Located in the heart of the city.",
+            'color' => '#1e3a8a', 'theme' => 'luxury', 'shadow' => 'soft', 'niche' => 'small-business',
+            'links' => [
+                ['t' => 'Reserve Your Table Now', 'u' => '#', 'type' => 'calendar'],
+                ['t' => 'Our Tasting Menu', 'u' => '#', 'type' => 'pricing', 'extra' => "$120/pp\n7 Courses\nWine Pairing\nChef Interaction"],
+                ['t' => 'View Our Atmosphere', 'u' => '#', 'type' => 'image_gallery', 'extra' => "https://images.unsplash.com/photo-1517248135467-4c7ed9d42339\nhttps://images.unsplash.com/photo-1414235077428-338989a2e8c0"],
+                ['t' => 'Watch Our Story', 'u' => 'https://www.youtube.com/watch?v=12345', 'type' => 'video'],
+                ['t' => 'Common Inquiries', 'u' => '#', 'type' => 'faq', 'extra' => "Dress Code?:Smart Casual.\nParking?:Valet available."],
+                ['t' => 'Join the Supper Club', 'u' => '#', 'type' => 'newsletter'],
+            ]
+        ],
+        // 12. FREELANCER: Alex Designer (Creative Expert)
+        [
+            'title' => 'Elite Product Design',
+            'headline' => 'Solving Problems Through Visual Craft 🎨',
+            'bio' => "Ex-FAANG Senior Designer. I help startups build scalable design systems and intuitive user experiences that convert high-value leads.",
+            'color' => '#475569', 'theme' => 'light', 'shadow' => 'soft', 'niche' => 'freelancer',
+            'links' => [
+                ['t' => 'View My Behance Portfolio', 'u' => '#', 'type' => 'button', 'style' => 'featured'],
+                ['t' => 'Book a Design Consultation', 'u' => '#', 'type' => 'calendar'],
+                ['t' => 'Design Packages', 'u' => '#', 'type' => 'pricing', 'extra' => "$2,500/V1\nFull Prototyping\nDesign System\nDeveloper Handoff"],
+                ['t' => 'Client Success Story', 'u' => '#', 'type' => 'testimonial', 'extra' => "Alex completely transformed our app. Conversion went up 40% in two weeks. Highly recommended."],
+                ['t' => 'Current Workload', 'u' => '#', 'type' => 'milestone', 'extra' => "Available:20%"],
+                ['t' => 'Common Project FAQ', 'u' => '#', 'type' => 'faq', 'extra' => "How long for a V1?:Typically 4 weeks.\nDo you handle code?:Yes, React/Vue support included."],
+                ['t' => 'Inquire for Custom Work', 'u' => '#', 'type' => 'lead_form'],
+            ]
+        ]
+    ];
 
     foreach ($samples as $s) {
+        // Cleanup existing profiles with the same name to prevent duplicates
+        $existing = get_posts([
+            'post_type'   => 'saas_profile',
+            'title'       => $s['title'],
+            'post_status' => 'any',
+            'numberposts' => -1,
+            'fields'      => 'ids'
+        ]);
+        foreach ($existing as $ex_id) {
+            $links = get_posts(['post_type' => 'saas_link', 'meta_key' => '_saas_profile_id', 'meta_value' => $ex_id, 'fields' => 'ids', 'numberposts' => -1]);
+            foreach ($links as $l_id) wp_delete_post($l_id, true);
+            wp_delete_post($ex_id, true);
+        }
+
         $p_id = wp_insert_post(['post_type' => 'saas_profile', 'post_title' => $s['title'], 'post_status' => 'publish', 'post_author' => $user_id]);
         update_post_meta($p_id, '_saas_headline', $s['headline']);
         update_post_meta($p_id, '_saas_bio', $s['bio']);
         update_post_meta($p_id, '_saas_theme_color', $s['color']);
         update_post_meta($p_id, '_saas_profile_theme', $s['theme']);
         update_post_meta($p_id, '_saas_container_shadow', $s['shadow']);
+        update_post_meta($p_id, '_saas_niche', $s['niche']);
+
+        if (isset($s['bg_type'])) update_post_meta($p_id, '_saas_bg_type', $s['bg_type']);
+        if (isset($s['bg_color'])) update_post_meta($p_id, '_saas_bg_color', $s['bg_color']);
+        if (isset($s['bg_gradient'])) update_post_meta($p_id, '_saas_bg_gradient', $s['bg_gradient']);
 
         foreach ($s['links'] as $idx => $l) {
             $l_id = wp_insert_post([

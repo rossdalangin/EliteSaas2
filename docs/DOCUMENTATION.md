@@ -1,35 +1,35 @@
-# SaaS Documentation & Setup Guide
+# KnotBio: Strategic Technical Documentation
 
-## 1. Installation (Developer)
-1. **Plugin Setup:** Upload the `plugin/` folder contents as a new WordPress plugin. Activate it.
-2. **Database:** Upon activation, the `wp_saas_analytics` table will be created automatically.
-3. **Theme Setup:** Upload the `theme/` folder as a new theme and activate it.
-4. **Permalinks:** Set Permalinks to "Post name" in WP Settings.
+## 1. Tactical Installation (Developer)
+1. **Engine Core:** Deploy the `saas-profile-lead-engine/` directory as a WordPress plugin.
+2. **Design Layer:** Deploy `saas-profile-theme/` as the active WordPress theme.
+3. **Database Protocol:** On activation, the `wp_saas_analytics` table initializes automatically to handle high-frequency data ingestion.
+4. **Link Architecture:** Set WordPress Permalinks to "Post name" for clean URL mapping.
 
-## 2. Admin Manual
-- **User Management:** Standard WP Users interface.
-- **Payment Setup:** Navigate to SaaS Settings (to be added to WP Admin menu) to enter Stripe/PayPal API keys.
-- **Global Branding:** Upload a global logo for the login and dashboard pages.
+## 2. Command Operations (Admin)
+- **Global Settings:** Configure Stripe/PayPal gateways and platform-wide CSS in **SaaS Settings**.
+- **Content Hub:** Manage niche-specific templates and training assets via the JSON logic center.
+- **Financial Intel:** Monitor revenue streams and process affiliate obligations in the **Finances** tab.
+- **License Factory:** Generate ELITE activation keys for strategic partnerships.
 
-## 3. User Onboarding Guide
-1. **Signup:** Register on the landing page.
-2. **Claim Profile:** Choose your unique `/username`.
-3. **Build Profile:** Upload your photo, write a headline and bio.
-4. **Add Links:** Put in your portfolio, social links, or latest project.
-5. **Activate Lead Gen:** Turn on the "Work With Me" form.
-6. **Share:** Copy your profile link and paste it into your Instagram/TikTok bio.
-7. **Track:** Check the Analytics tab to see who is visiting and clicking.
-8. **Secure Content:** Protect exclusive links with passwords to gate high-value content.
-9. **Export Data:** Download your leads and analytics as CSV for external processing.
+## 3. The Authority Blueprint (User Journey)
+1. **Strategic Deployment:** Access the Setup Wizard to align your profile with your industry niche.
+2. **Brand Harmonization:** Upload professional assets and configure the "Vibe" (Luxury, Modern Glass, etc.).
+3. **Conversion Blocks:** Deploy FAQ, Testimonial, and Milestone blocks to establish instant social proof.
+4. **Lead Terminal:** Activate the Lead Generation form to capture high-intent data.
+5. **Custom CSS Overrides (Pro):** Use the dedicated tab for absolute brand precision.
+6. **Command & Control:** Monitor real-time clicks and view-to-lead conversion rates in the **Stats** tab.
 
-## 4. Security & Performance
-- **Link Protection:** Password-protected links use server-side AJAX verification to prevent exposure of passwords in frontend code.
-- **Analytics:** High-performance custom table structure ensures fast tracking even at scale (1M+ events).
-- **Isolation:** Multi-tenant architecture ensures data privacy between users.
+## 4. Advanced System Logic
+- **YIQ Auto-Contrast:** The engine calculates background intensity to automatically optimize text legibility across all components.
+- **AJAX Security:** All protected links and data transmissions use server-side verification with nonces to prevent intrusion.
+- **Recursive Prevention:** Integrated logic prevents recursive iframe loading for calendar and external embeds.
+- **Multi-tenant isolation:** Data schemas ensure strict isolation between consultant profiles and strategic data.
 
-## 5. Scaling Plan (Future Roadmap)
-- **Whitelabel Domains:** Allow Pro users to map their own custom domains (e.g., `links.sarah.com`).
-- **NFC Support:** Full integration with NFC hardware providers.
-- **Advanced CRM:** Integration with HubSpot, Mailchimp, and Zapier.
-- **Team Plans:** Allow companies to manage 100+ employee profile pages.
-- **Multi-language:** Dynamic profile translation based on geo-location.
+## 5. Deployment & Beyond
+- **Custom Domain Protocol:** Pro users can map subdomains (CNAME) for professional brand alignment.
+- **NFC Integration:** Native support for NFC taps with dedicated tracking source codes (`?src=nfc`).
+- **Whitelabel Mastery:** Complete removal of platform branding for Agency-tier users.
+
+---
+*Built for the Elite. Engineered for Conversion. KnotBio.com*

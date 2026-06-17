@@ -218,13 +218,13 @@ class Saas_Admin_Settings {
                             datasets: [{
                                 label: "Views",
                                 data: ' . json_encode($views ?: [0,0,0,0,0,0,0]) . ',
-                                borderColor: "#6c5ce7",
+                                borderColor: "#4f46e5",
                                 fill: true,
                                 tension: 0.4
                             }, {
                                 label: "Clicks",
                                 data: ' . json_encode($clicks ?: [0,0,0,0,0,0,0]) . ',
-                                borderColor: "#39e09b",
+                                borderColor: "#10b981",
                                 tension: 0.4
                             }]
                         },
@@ -312,8 +312,8 @@ class Saas_Admin_Settings {
 
         add_settings_section(
             'saas_payment_section',
-            'Payment Gateway Configuration',
-            function() { echo '<p>Configure how you receive payments from Elite subscribers. <strong>Pro Tip:</strong> Enabling both Stripe and PayPal increases conversion by 15%.</p>'; },
+            'Strategic Payment Configuration',
+            function() { echo '<p>Configure the revenue terminal for your expert network. <strong>Tactical Note:</strong> Enabling both Stripe and PayPal protocols typically increases checkout conversion by 15%.</p>'; },
             'saas_settings'
         );
 
@@ -364,8 +364,8 @@ class Saas_Admin_Settings {
 
         add_settings_section(
             'saas_branding_section',
-            'Global Platform Branding',
-            function() { echo '<p>These settings affect the main SaaS website and the administrative dashboard. User profiles have their own independent branding.</p>'; },
+            'Global Ecosystem Branding',
+            function() { echo '<p>Configure the "Vibe" for the KnotBio ecosystem and administrative command center. Individual expert profiles maintain independent design sovereignty.</p>'; },
             'saas_settings'
         );
 
@@ -680,7 +680,7 @@ class Saas_Admin_Settings {
     public function render_user_columns( $val, $column, $user_id ) {
         if ( $column === 'saas_plan' ) {
             $plan = get_user_meta($user_id, '_saas_subscription_plan', true) ?: 'Free';
-            $color = ($plan === 'pro') ? '#39e09b' : '#666';
+            $color = ($plan === 'pro') ? '#10b981' : '#666';
             return '<strong style="color:'.$color.';">'.strtoupper($plan).'</strong>';
         }
         if ( $column === 'saas_earnings' ) {
@@ -967,9 +967,40 @@ class Saas_Admin_Settings {
                                     <textarea name="comparison_json" rows="8" class="large-text" style="width:100%; font-family:monospace;"><?php echo esc_textarea(json_encode(json_decode(get_option('saas_home_comparison_json')), JSON_PRETTY_PRINT)); ?></textarea>
                                 </div>
                                 <div class="field" style="margin-top:20px;">
-                                    <label><strong>Pricing Strategy (JSON)</strong></label>
-                                    <p class="description">Manage price points, features, and plan CTAs.</p>
-                                    <textarea name="pricing_json" rows="8" class="large-text" style="width:100%; font-family:monospace;"><?php echo esc_textarea(json_encode(json_decode(get_option('saas_home_pricing_json')), JSON_PRETTY_PRINT)); ?></textarea>
+                                    <label><strong>Elite Pricing Manager</strong></label>
+                                    <p class="description">Manage price points, features, and plan CTAs. Changes are auto-synced to JSON.</p>
+                                    <div id="saas-pricing-repeater" style="background:#f8fafc; padding:15px; border-radius:12px; border:1px solid #e2e8f0;">
+                                        <div class="pricing-rows-container">
+                                            <?php
+                                            $current_plans = json_decode(get_option('saas_home_pricing_json'), true) ?: [];
+                                            foreach($current_plans as $index => $plan):
+                                            ?>
+                                            <div class="pricing-row" style="background:#fff; padding:15px; border-radius:10px; border:1px solid #eee; margin-bottom:15px; position:relative;">
+                                                <button type="button" class="remove-pricing-row" style="position:absolute; top:10px; right:10px; background:#fee2e2; color:#ef4444; border:none; border-radius:5px; cursor:pointer; padding:5px 10px;">&times;</button>
+                                                <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:10px;">
+                                                    <input type="text" class="plan-name" placeholder="Plan Name" value="<?php echo esc_attr($plan['name']); ?>" style="width:100%;">
+                                                    <input type="text" class="plan-price" placeholder="Price (e.g. $19)" value="<?php echo esc_attr($plan['price']); ?>" style="width:100%;">
+                                                    <input type="text" class="plan-period" placeholder="Period (e.g. /mo)" value="<?php echo esc_attr($plan['period']); ?>" style="width:100%;">
+                                                </div>
+                                                <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:10px;">
+                                                    <input type="text" class="plan-cta" placeholder="CTA Text" value="<?php echo esc_attr($plan['cta']); ?>" style="width:100%;">
+                                                    <input type="text" class="plan-link" placeholder="CTA Link" value="<?php echo esc_attr($plan['link']); ?>" style="width:100%;">
+                                                    <select class="plan-style" style="width:100%;">
+                                                        <option value="light" <?php selected($plan['style'], 'light'); ?>>Light</option>
+                                                        <option value="featured" <?php selected($plan['style'], 'featured'); ?>>Featured (Vibrant)</option>
+                                                    </select>
+                                                </div>
+                                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:10px;">
+                                                    <input type="text" class="plan-slug" placeholder="Plan Slug (e.g. pro, agency, free)" value="<?php echo esc_attr($plan['slug'] ?? ''); ?>" style="width:100%;">
+                                                    <input type="text" class="plan-badge" placeholder="Badge (Optional)" value="<?php echo esc_attr($plan['badge'] ?? ''); ?>" style="width:100%;">
+                                                </div>
+                                                <textarea class="plan-features" placeholder="Features (one per line)" style="width:100%; height:60px;"><?php echo esc_textarea(implode("\n", $plan['features'])); ?></textarea>
+                                            </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                        <button type="button" id="add-pricing-row" class="button button-secondary" style="width:100%; margin-top:10px;">+ Add New Plan</button>
+                                        <textarea name="pricing_json" id="pricing-json-sync" style="display:none;"><?php echo esc_textarea(json_encode($current_plans)); ?></textarea>
+                                    </div>
                                 </div>
                                 <div class="field" style="margin-top:20px;">
                                     <label><strong>Features Grid (JSON)</strong></label>
@@ -1064,6 +1095,62 @@ class Saas_Admin_Settings {
                 $('#json-kb').val(JSON.stringify(list, null, 4));
                 $('#new-kb-title, #new-kb-url').val('');
                 alert('Added! Click "Save All" to commit changes.');
+            });
+
+            function syncPricing() {
+                var plans = [];
+                $('.pricing-row').each(function() {
+                    var features = $(this).find('.plan-features').val().split('\n').filter(line => line.trim() !== "");
+                    plans.push({
+                        slug: $(this).find('.plan-slug').val(),
+                        name: $(this).find('.plan-name').val(),
+                        price: $(this).find('.plan-price').val(),
+                        period: $(this).find('.plan-period').val(),
+                        cta: $(this).find('.plan-cta').val(),
+                        link: $(this).find('.plan-link').val(),
+                        style: $(this).find('.plan-style').val(),
+                        badge: $(this).find('.plan-badge').val(),
+                        features: features
+                    });
+                });
+                $('#pricing-json-sync').val(JSON.stringify(plans));
+            }
+
+            $('#add-pricing-row').on('click', function() {
+                var rowHtml = `<div class="pricing-row" style="background:#fff; padding:15px; border-radius:10px; border:1px solid #eee; margin-bottom:15px; position:relative;">
+                    <button type="button" class="remove-pricing-row" style="position:absolute; top:10px; right:10px; background:#fee2e2; color:#ef4444; border:none; border-radius:5px; cursor:pointer; padding:5px 10px;">&times;</button>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:10px;">
+                        <input type="text" class="plan-name" placeholder="Plan Name" value="" style="width:100%;">
+                        <input type="text" class="plan-price" placeholder="Price (e.g. $19)" value="" style="width:100%;">
+                        <input type="text" class="plan-period" placeholder="Period (e.g. /mo)" value="" style="width:100%;">
+                    </div>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:10px;">
+                        <input type="text" class="plan-cta" placeholder="CTA Text" value="" style="width:100%;">
+                        <input type="text" class="plan-link" placeholder="CTA Link" value="" style="width:100%;">
+                        <select class="plan-style" style="width:100%;">
+                            <option value="light">Light</option>
+                            <option value="featured">Featured (Vibrant)</option>
+                        </select>
+                    </div>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:10px;">
+                        <input type="text" class="plan-slug" placeholder="Plan Slug (e.g. pro, agency, free)" value="" style="width:100%;">
+                        <input type="text" class="plan-badge" placeholder="Badge (Optional)" value="" style="width:100%;">
+                    </div>
+                    <textarea class="plan-features" placeholder="Features (one per line)" style="width:100%; height:60px;"></textarea>
+                </div>`;
+                $('.pricing-rows-container').append(rowHtml);
+                syncPricing();
+            });
+
+            $(document).on('click', '.remove-pricing-row', function() {
+                if(confirm('Remove this plan?')) {
+                    $(this).closest('.pricing-row').remove();
+                    syncPricing();
+                }
+            });
+
+            $(document).on('change keyup', '.pricing-row input, .pricing-row textarea, .pricing-row select', function() {
+                syncPricing();
             });
         });
 
@@ -1199,7 +1286,7 @@ class Saas_Admin_Settings {
                 </div>
                 <div style="background:#fff; padding:20px; border-radius:12px; border:1px solid #ddd;">
                     <small style="text-transform:uppercase; color:#64748b; font-weight:700; letter-spacing:1px;">Affiliate Obligations</small>
-                    <div style="font-size:2rem; font-weight:900; color:#6c5ce7;">$<?php echo number_format($obligations, 2); ?></div>
+                    <div style="font-size:2rem; font-weight:900; color:#4f46e5;">$<?php echo number_format($obligations, 2); ?></div>
                 </div>
                 <div style="background:#fff; padding:20px; border-radius:12px; border:1px solid #ddd;">
                     <small style="text-transform:uppercase; color:#64748b; font-weight:700; letter-spacing:1px;">Net Profit (Est)</small>
@@ -1650,11 +1737,11 @@ class Saas_Admin_Settings {
                                     <div style="margin-top:15px;">
                                         <div style="margin-bottom:10px;">
                                             <div style="display:flex; justify-content:space-between; margin-bottom:5px;"><small>Mobile</small> <small>72%</small></div>
-                                            <div style="height:8px; background:#f1f5f9; border-radius:10px;"><div style="width:72%; height:100%; background:#6c5ce7; border-radius:10px;"></div></div>
+                                            <div style="height:8px; background:#f1f5f9; border-radius:10px;"><div style="width:72%; height:100%; background:#4f46e5; border-radius:10px;"></div></div>
                                         </div>
                                         <div style="margin-bottom:10px;">
                                             <div style="display:flex; justify-content:space-between; margin-bottom:5px;"><small>Desktop</small> <small>24%</small></div>
-                                            <div style="height:8px; background:#f1f5f9; border-radius:10px;"><div style="width:24%; height:100%; background:#39e09b; border-radius:10px;"></div></div>
+                                            <div style="height:8px; background:#f1f5f9; border-radius:10px;"><div style="width:24%; height:100%; background:#10b981; border-radius:10px;"></div></div>
                                         </div>
                                         <div>
                                             <div style="display:flex; justify-content:space-between; margin-bottom:5px;"><small>Tablet</small> <small>4%</small></div>
@@ -1709,7 +1796,7 @@ class Saas_Admin_Settings {
                 <div id="tab-home-editor" class="tab-content" style="display:none; padding:20px; background:#fff; border:1px solid #ddd;">
                     <h3>Elite Sales Copy Setup</h3>
                     <p>Populate your homepage with professional copy designed by elite marketers.</p>
-                    <a href="<?php echo admin_url('admin-post.php?action=saas_populate_pro_content'); ?>" class="button button-primary" style="background:#39e09b; border-color:#39e09b; color:#1e2329;">🔥 Apply Pro Sales Copy Now</a>
+                    <a href="<?php echo admin_url('admin-post.php?action=saas_populate_pro_content'); ?>" class="button button-primary" style="background:#10b981; border-color:#10b981; color:#fff;">🔥 Apply Pro Sales Copy Now</a>
                     <hr>
                     <p>Use the General Settings tab to manually edit homepage titles, descriptions, and JSON content.</p>
                 </div>
@@ -1827,13 +1914,13 @@ class Saas_Admin_Settings {
                             datasets: [{
                                 label: 'New Profiles Created',
                                 data: <?php echo json_encode($growth_counts ?: [0, 0, 0, 0, 0, 0]); ?>,
-                                borderColor: '#6c5ce7',
-                                backgroundColor: 'rgba(108, 92, 231, 0.1)',
+                                borderColor: '#4f46e5',
+                                backgroundColor: 'rgba(79, 70, 229, 0.1)',
                                 borderWidth: 3,
                                 fill: true,
                                 tension: 0.4,
                                 pointBackgroundColor: '#fff',
-                                pointBorderColor: '#6c5ce7',
+                                pointBorderColor: '#4f46e5',
                                 pointRadius: 5
                             }]
                         },

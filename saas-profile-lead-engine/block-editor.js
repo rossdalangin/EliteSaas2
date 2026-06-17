@@ -52,7 +52,7 @@ registerBlockType('saas/lead-form-block', {
         const options = profiles.map(p => ({ label: p.title.rendered, value: p.id }));
 
         return (
-            <div style={{ padding: '20px', border: '1px solid #39e09b', borderRadius: '8px' }}>
+            <div style={{ padding: '20px', border: '1px solid #10b981', borderRadius: '8px' }}>
                 <h4>SaaS Lead Capture Form</h4>
                 <div style={{ marginBottom: '15px' }}>
                     <label style={{ display: 'block', marginBottom: '5px' }}>Form Title</label>

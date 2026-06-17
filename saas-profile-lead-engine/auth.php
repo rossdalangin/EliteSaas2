@@ -43,18 +43,18 @@ class Saas_Auth {
         // Simple registration form
         ob_start();
         ?>
-        <div class="saas-auth-card" style="max-width:400px; margin:60px auto; background:#fff; padding:40px; border-radius:24px; box-shadow:0 15px 40px rgba(0,0,0,0.05); border:1px solid #eee;">
-            <h2 style="text-align:center; margin-bottom:30px;"><?php echo get_option('saas_register_title') ?: 'Create Your Elite Account'; ?></h2>
+        <div class="saas-auth-card" style="max-width:440px; margin:60px auto; background:rgba(255,255,255,0.8); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding:48px; border-radius:28px; box-shadow:0 20px 25px -5px rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.4);">
+            <h2 style="text-align:center; margin-bottom:32px; font-weight:900; letter-spacing:-0.05em;"><?php echo get_option('saas_register_title') ?: 'Create Your Elite Account'; ?></h2>
             <form id="saas-registration-form" method="post" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>">
                 <?php wp_nonce_field( 'saas_register_nonce', 'saas_register_security' ); ?>
                 <input type="hidden" name="action" value="saas_register_user">
                 <input type="hidden" name="target_plan" value="<?php echo esc_attr($plan); ?>">
-                <div class="field" style="margin-bottom:15px;"><input type="text" name="user_login" placeholder="Pick a Username" value="<?php echo esc_attr($requested_username); ?>" required style="width:100%; padding:12px; border-radius:10px; border:1px solid #ddd;"></div>
-                <div class="field" style="margin-bottom:15px;"><input type="email" name="user_email" placeholder="Email Address" required style="width:100%; padding:12px; border-radius:10px; border:1px solid #ddd;"></div>
-                <div class="field" style="margin-bottom:15px;"><input type="password" name="user_pass" placeholder="Create Password" required style="width:100%; padding:12px; border-radius:10px; border:1px solid #ddd;"></div>
-                <div class="field" style="margin-bottom:20px;"><input type="text" name="coupon_code" placeholder="Coupon Code (Optional)" style="width:100%; padding:12px; border-radius:10px; border:1px solid #ddd;"></div>
-                <p><button type="submit" class="btn-primary" style="width:100%;">Create Account & Continue</button></p>
-                <p style="text-align:center; margin-top:20px; font-size:0.9rem;">Already have an account? <a href="<?php echo home_url('/login'); ?>" style="color:var(--primary); font-weight:700;">Login</a></p>
+                <div class="field" style="margin-bottom:16px;"><input type="text" name="user_login" placeholder="Pick a Username" value="<?php echo esc_attr($requested_username); ?>" required style="width:100%; padding:14px 18px; border-radius:14px; border:1px solid #e2e8f0; font-family:inherit; font-size:0.95rem;"></div>
+                <div class="field" style="margin-bottom:16px;"><input type="email" name="user_email" placeholder="Email Address" required style="width:100%; padding:14px 18px; border-radius:14px; border:1px solid #e2e8f0; font-family:inherit; font-size:0.95rem;"></div>
+                <div class="field" style="margin-bottom:16px;"><input type="password" name="user_pass" placeholder="Create Password" required style="width:100%; padding:14px 18px; border-radius:14px; border:1px solid #e2e8f0; font-family:inherit; font-size:0.95rem;"></div>
+                <div class="field" style="margin-bottom:24px;"><input type="text" name="coupon_code" placeholder="Coupon Code (Optional)" style="width:100%; padding:14px 18px; border-radius:14px; border:1px solid #e2e8f0; font-family:inherit; font-size:0.95rem;"></div>
+                <p><button type="submit" class="btn-primary" style="width:100%; background:#4f46e5; color:#fff; padding:16px; border:none; border-radius:14px; font-weight:700; cursor:pointer; font-size:1rem; transition:all 0.2s;">Create Account & Continue</button></p>
+                <p style="text-align:center; margin-top:24px; font-size:0.9rem; color:#64748b;">Already have an account? <a href="<?php echo home_url('/login'); ?>" style="color:#4f46e5; font-weight:700; text-decoration:none;">Login</a></p>
             </form>
         </div>
         <?php

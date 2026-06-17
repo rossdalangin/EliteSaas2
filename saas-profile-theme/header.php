@@ -47,6 +47,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Montserrat:wght@400;700;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <?php if (!get_query_var('saas_profile')) : ?>
+        <title><?php wp_title('|', true, 'right'); ?></title>
+        <meta name="description" content="<?php bloginfo('description'); ?>">
+        <link rel="canonical" href="<?php echo esc_url(home_url(add_query_arg([], $GLOBALS['wp']->request))); ?>">
+    <?php endif; ?>
+
     <?php wp_head(); ?>
     <?php if(!empty($global_favicon) && !get_query_var('saas_profile')) : ?>
         <link rel="icon" href="<?php echo esc_url($global_favicon); ?>">

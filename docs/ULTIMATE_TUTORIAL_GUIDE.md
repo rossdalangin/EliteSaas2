@@ -1,35 +1,34 @@
-# 📖 ULTIMATE TUTORIAL GUIDE: MASTER YOUR ENGINE
+# 📖 KnotBio TACTICAL GUIDE: MASTERING THE ENGINE
 
-## 1. THE 60-SECOND SETUP WIZARD
-Getting started is like paint-by-numbers. We've done the heavy lifting for you.
-- **Select Niche:** Pick your industry. This loads proven headlines and bios.
-- **Headline Magic:** Use our "Authority Hooks" to grab attention instantly.
-- **Bio Blueprint:** Describe your results, not just your time in the business.
+## 1. STRATEGIC DEPLOYMENT WIZARD
+Deployment is engineered for speed and precision. We have automated the complex architecture for you.
+- **Protocol Selection:** Select your industry niche. This initializes proven Authority Hooks and professional Biographies.
+- **Authority Hooks:** Use the suggested headlines to trigger immediate psychological engagement.
+- **Conversion Blueprint:** Focus on the *Transformation* you provide, rather than raw features.
 
-## 2. SMART ROUTING: THE SILENT SALESMAN
-Stop sending iPhone users to the Play Store. It kills conversion.
-- **Go to Block Settings:** Look for "Smart Routing."
-- **Set Destination A (iOS):** Add your Apple-specific link.
-- **Set Destination B (Android):** Add your Google-specific link.
-- **The Result:** A perfect experience for 100% of your mobile traffic.
+## 2. STRATEGIC EDGE ROUTING
+Remove friction from the buyer's journey. Optimizing for device OS is a prerequisite for elite conversion.
+- **Block Protocols:** Access "Advanced Options" on any block.
+- **iOS/Android Mapping:** Set device-specific destinations (e.g., App Store vs. Play Store).
+- **Tactical Result:** A frictionless experience for 100% of your incoming mobile traffic.
 
-## 3. NFC CARDS: NETWORKING FROM THE FUTURE
-Your physical card should be a bridge to your digital home.
-- **Setup Your Card:** Sync your Elite Profile to any NFC-enabled card in the dashboard.
-- **The Magic Tap:** Tap your card to a prospect's phone.
-- **Instant Save:** Your full contact info (vCard) and case studies are saved in their contacts forever. No more lost paper cards.
+## 3. NFC ELITE CONNECTIVITY
+Transition real-world encounters into permanent digital connections.
+- **NFC Provisioning:** Program your hardware to point to your KnotBio URL with the `?src=nfc` parameter for tracking.
+- **The Magic Tap:** Execute a tap on a prospect's device.
+- **vCard Exchange:** Your professional contact data and primary conversion blocks are saved instantly to their base of operations.
 
-## 4. A/B TESTING: SCALE WITH DATA, NOT GUESSES
-Stop arguing about which headline is better. Let the traffic decide.
-- **Enable Testing:** Toggle A/B testing on any button block.
-- **Create Variant B:** Change the text or the link.
-- **Check the Winner:** Our system tracks the clicks and shows you which one wins with mathematical precision.
+## 4. A/B LOGIC: DATA-DRIVEN SCALING
+Eliminate guesswork. Allow the market to dictate your messaging strategy.
+- **Enable Split Logic:** Toggle A/B testing on any high-impact button.
+- **Deploy Variant B:** Test a different hook or destination URL.
+- **Statistical Intel:** Monitor the Stats tab to identify the winner with mathematical certainty.
 
-## 5. LEAD GENERATION CRM
-Your bio link is a bucket, not a sieve. Catch every drop of traffic.
-- **Add Form Block:** Place it near the top of your profile.
-- **Connect Webhooks:** Send your leads to HubSpot, Mailchimp, or your email instantly.
-- **Automation:** Set up an auto-responder so every lead gets a warm welcome the second they inquire.
+## 5. THE LEAD CAPTURE TERMINAL
+Your Authority Engine is a vacuum for high-intent data. Capture every opportunity.
+- **Terminal Deployment:** Place a Lead Form block above the fold for maximum visibility.
+- **CRM Integration:** Sync leads to HubSpot, Mailchimp, or Zapier via our secure API protocols.
+- **Auto-Responder Logic:** Configure an immediate welcome message to build authority while your lead is still hot.
 
 ---
-*Follow the path. Build the empire.*
+*Follow the protocol. Build your empire. KnotBio.com*

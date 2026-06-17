@@ -19,25 +19,64 @@ $h_img   = get_option('saas_home_image');
         <div class="mesh-circle-2"></div>
     </div>
 
-    <div class="landing-content">
+    <div class="landing-content mx-auto">
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); the_content(); endwhile; endif; ?>
 
-        <h1 class="landing-title">
-            <?php echo esc_html($h_title); ?>
-        </h1>
-        <p class="landing-hero-text">
-            <?php echo esc_html($h_hero); ?>
-        </p>
+        <div class="hero-grid-layout">
+            <div class="hero-text-content">
+                <div class="badge-ui mb-24">The Elite Standard 1%</div>
+                <h1 class="landing-title">
+                    <?php echo esc_html($h_title); ?>
+                </h1>
+                <p class="landing-hero-text">
+                    <?php echo esc_html($h_hero); ?>
+                </p>
 
-        <div class="cta-actions">
-            <div class="hero-claim-wrapper">
-                <form action="<?php echo home_url('/register'); ?>" method="GET" class="hero-claim-form">
-                    <span class="hero-claim-prefix"><?php echo parse_url(home_url(), PHP_URL_HOST); ?>/</span>
-                    <input type="text" name="username" id="saas-home-username" placeholder="yourname" class="hero-claim-input">
-                    <button type="submit" class="hero-claim-btn"><?php echo esc_html($h_cta); ?></button>
-                </form>
-                <div id="username-status" class="status-message color-primary"></div>
-                <p class="hero-claim-subtext">No credit card required. Setup in minutes.</p>
+                <div class="cta-actions">
+                    <div class="hero-claim-wrapper">
+                        <form action="<?php echo home_url('/register'); ?>" method="GET" class="hero-claim-form">
+                            <span class="hero-claim-prefix"><?php echo parse_url(home_url(), PHP_URL_HOST); ?>/</span>
+                            <input type="text" name="username" id="saas-home-username" placeholder="yourname" class="hero-claim-input">
+                            <button type="submit" class="hero-claim-btn"><?php echo esc_html($h_cta); ?></button>
+                        </form>
+                        <div id="username-status" class="status-message color-primary"></div>
+                        <p class="hero-claim-subtext">No credit card required. Setup in minutes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual-content">
+                <?php if ($h_img) : ?>
+                    <div class="hero-image-perspective">
+                        <img src="<?php echo esc_url($h_img); ?>" alt="Product Preview" class="radius-40 shadow-preview" loading="lazy">
+                    </div>
+                <?php else : ?>
+                    <!-- Default Dashboard Preview Mockup -->
+                    <div class="hero-image-perspective">
+                        <div class="card-white flex gap-30 text-left relative overflow-visible">
+                            <div class="absolute -top-30 -right-30 z-10">
+                                <div class="bg-vibrant-gradient p-24 radius-20 shadow-xl color-white text-center">
+                                    <div class="text-3xl font-black mb-5">4.8x</div>
+                                    <div class="text-xs font-bold opacity-80">CONVERSION LIFT</div>
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-light radius-20 p-20">
+                                <div class="mb-20 w-40 h-10 bg-grey-medium"></div>
+                                <div class="bg-white mb-20 shadow-sm radius-12 full-width h-200"></div>
+                                <div class="h-10 bg-grey-medium w-80p"></div>
+                            </div>
+                            <div class="flex-2">
+                                <div class="mb-20 h-40 bg-primary radius-10 w-60p"></div>
+                                <div class="mb-10 h-15 bg-grey-light radius-full"></div>
+                                <div class="mb-10 h-15 bg-grey-light radius-full w-80p"></div>
+                                <div class="grid-2 mt-40 gap-15">
+                                    <div class="bg-light h-80 radius-15"></div>
+                                    <div class="bg-light h-80 radius-15 shadow-accent"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -53,36 +92,10 @@ $h_img   = get_option('saas_home_image');
                     'https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg'
                 ];
                 foreach ($logos as $logo_url) : ?>
-                    <img src="<?php echo esc_url($logo_url); ?>" class="trusted-logo" alt="Partner Logo">
+                    <img src="<?php echo esc_url($logo_url); ?>" class="trusted-logo" alt="Partner Logo" loading="lazy">
                 <?php endforeach; ?>
             </div>
         </div>
-
-        <?php if ($h_img) : ?>
-            <div class="hero-image-perspective">
-                <img src="<?php echo esc_url($h_img); ?>" alt="Product Preview" class="radius-40 shadow-preview max-w-80p">
-            </div>
-        <?php else : ?>
-            <!-- Default Dashboard Preview Mockup -->
-            <div class="hero-image-perspective container-standard mx-auto">
-                <div class="card-white flex gap-30 text-left">
-                    <div class="flex-1 bg-light radius-20 p-20">
-                        <div class="mb-20 w-40 h-10 bg-grey-medium"></div>
-                        <div class="bg-white mb-20 shadow-sm radius-12 full-width h-200"></div>
-                        <div class="h-10 bg-grey-medium w-80p"></div>
-                    </div>
-                    <div class="flex-2">
-                        <div class="mb-20 h-40 bg-primary radius-10 w-60p"></div>
-                        <div class="mb-10 h-15 bg-grey-light radius-full"></div>
-                        <div class="mb-10 h-15 bg-grey-light radius-full w-80p"></div>
-                        <div class="grid-2 mt-40 gap-15">
-                            <div class="bg-light h-80 radius-15"></div>
-                            <div class="bg-light h-80 radius-15"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php endif; ?>
     </div>
 </main>
 
@@ -118,7 +131,7 @@ $h_img   = get_option('saas_home_image');
     <div class="container-wide text-center">
         <h2 class="section-title-large">The only link hub with an <span class="text-gradient-primary">IQ</span>.</h2>
 
-        <div class="feature-grid-3 mb-80 text-left flex-center">
+        <div class="feature-grid-3 mb-80 text-left">
             <div class="feature-card-light hover-lift">
                 <div class="flex gap-12 mb-24">
                     <span class="badge-ui">Smart Routing</span>
@@ -153,7 +166,7 @@ $h_img   = get_option('saas_home_image');
 </section>
 
 <!-- How It Works Section -->
-<section class="section-padding bg-white">
+<section class="section-padding bg-subtle">
     <div class="container-wide text-center">
         <h2 class="section-title-large">Your elite presence in 3 simple steps</h2>
         <div class="grid-3">
@@ -177,24 +190,24 @@ $h_img   = get_option('saas_home_image');
 </section>
 
 <!-- Theme Showcase Section -->
-<section class="section-padding bg-light">
+<section class="section-padding bg-color">
     <div class="container-wide text-center">
         <h2 class="section-title-large">Bespoke themes for elite brands</h2>
         <div class="grid-4">
-            <div class="p-30 bg-white radius-24 border-light">
-                <div class="bg-light mb-20 flex-center font-black color-light shadow-sm radius-12 h-200">Light Mode</div>
+            <div class="theme-showcase-card is-light">
+                <div class="theme-preview-box">Light Mode</div>
                 <h4 class="mb-0">Clean & Professional</h4>
             </div>
-            <div class="p-30 bg-dark radius-24 color-white border-slate-800">
-                <div class="mb-20 flex-center font-black color-lighter shadow-lg radius-12 h-200 bg-card">Dark Mode</div>
+            <div class="theme-showcase-card is-dark">
+                <div class="theme-preview-box">Dark Mode</div>
                 <h4 class="mb-0">Modern & Bold</h4>
             </div>
-            <div class="p-30 bg-primary-gradient radius-24 color-white border-glass">
-                <div class="mb-20 flex-center font-black color-white shadow-md radius-12 h-200 bg-glass-overlay">Vibrant</div>
+            <div class="theme-showcase-card is-vibrant">
+                <div class="theme-preview-box">Vibrant</div>
                 <h4 class="mb-0">Energetic & Fun</h4>
             </div>
-            <div class="p-30 bg-dark radius-24 color-gold border-gold">
-                <div class="mb-20 flex-center font-black shadow-md radius-12 color-gold h-200 bg-luxury-inner">Luxury</div>
+            <div class="theme-showcase-card is-luxury">
+                <div class="theme-preview-box">Luxury</div>
                 <h4 class="mb-0">Premium & Elite</h4>
             </div>
         </div>
@@ -202,7 +215,7 @@ $h_img   = get_option('saas_home_image');
 </section>
 
 <!-- Featured Profiles Section -->
-<section class="section-padding bg-white">
+<section class="section-padding bg-subtle">
     <div class="container-wide text-center">
         <h2 class="text-4xl mb-20">Join thousands of elite professionals</h2>
         <p class="color-light text-xl mb-60">See how others are using our platform to scale their digital identity.</p>
@@ -250,7 +263,7 @@ $h_img   = get_option('saas_home_image');
 <?php
 $comparison_json = get_option('saas_home_comparison_json');
 if ($comparison_json) : ?>
-<section class="section-padding bg-white">
+<section class="section-padding bg-color">
     <div class="container-standard text-center mx-auto">
         <h2 class="section-title-large">Why elite creators choose us</h2>
         <div class="comparison-table-wrapper">
@@ -305,7 +318,7 @@ if ($comparison_json) : ?>
 </section>
 
 <!-- Pricing Section -->
-<section class="pricing-section bg-white section-padding">
+<section class="pricing-section bg-subtle section-padding">
     <div class="container-standard text-center mx-auto">
         <h2 class="text-4xl mb-60"><?php echo get_option('saas_pricing_title') ?: 'Simple, Transparent Pricing'; ?></h2>
         <div class="grid-3 align-stretch">
@@ -326,10 +339,12 @@ if ($comparison_json) : ?>
                 ]
             ];
             foreach ($plans as $p) :
-                $is_featured = ($p['style'] === 'featured');
+                $is_featured = (isset($p['style']) && $p['style'] === 'featured');
+                $cta_text = $p['cta'] ?? 'Get Started';
+                $cta_link = $p['link'] ?? '/register';
             ?>
-                <div class="pricing-plan-card <?php echo $is_featured ? 'is-featured' : 'is-light'; ?> relative">
-                    <?php if (isset($p['badge'])) : ?>
+                <div class="pricing-plan-card <?php echo $is_featured ? 'is-featured' : 'is-light'; ?> relative flex-column">
+                    <?php if (!empty($p['badge'])) : ?>
                         <div class="badge-pro-price demo-card-badge-static"><?php echo esc_html($p['badge']); ?></div>
                     <?php endif; ?>
                     <h3 class="mb-0"><?php echo esc_html($p['name']); ?></h3>
@@ -339,8 +354,8 @@ if ($comparison_json) : ?>
                             <li class="mb-10">✓ <?php echo esc_html($f); ?></li>
                         <?php endforeach; ?>
                     </ul>
-                    <a href="<?php echo home_url($p['link']); ?>" class="saas-link-btn font-bold btn-pricing-cta">
-                        <?php echo esc_html($p['cta']); ?>
+                    <a href="<?php echo home_url($cta_link); ?>" class="saas-link-btn font-bold btn-pricing-cta <?php echo $is_featured ? 'style-featured' : ''; ?>">
+                        <?php echo esc_html($cta_text); ?>
                     </a>
                 </div>
             <?php endforeach; ?>
@@ -355,7 +370,7 @@ if ($comparison_json) : ?>
             <?php
             $founder_img = get_option('saas_home_founder_image');
             if ($founder_img) : ?>
-                <img src="<?php echo esc_url($founder_img); ?>" class="mx-auto shadow-md radius-full full-size-cover founder-avatar avatar-fixed-80 border-white-4">
+                <img src="<?php echo esc_url($founder_img); ?>" class="mx-auto shadow-md radius-full full-size-cover founder-avatar avatar-fixed-80 border-white-4" loading="lazy">
             <?php else : ?>
                 <div class="mx-auto shadow-md bg-primary radius-full founder-avatar-placeholder avatar-fixed-80 border-white-4"></div>
             <?php endif; ?>
@@ -404,7 +419,7 @@ if ($comparison_json) : ?>
 </section>
 
 <!-- FAQ Section -->
-<section class="section-padding bg-white">
+<section class="section-padding bg-subtle">
     <div class="container-narrow mx-auto">
         <h2 class="text-center text-4xl mb-60">Common Questions</h2>
         <?php

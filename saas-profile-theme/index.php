@@ -43,6 +43,7 @@ if ( ! $profile ) {
 $profile_id = $profile->ID;
 $user_id = $profile->post_author;
 $meta = saas_get_profile_meta( $profile_id );
+$niche = get_post_meta($profile_id, '_saas_niche', true) ?: 'general';
 
 // Check Pro Status (Unified License Check)
 $is_pro = saas_is_profile_licensed($profile_id);
@@ -87,6 +88,7 @@ include __DIR__ . '/header.php';
             elseif ($shadow_style === 'hard') echo '8px 8px 0px #333';
             else echo 'none';
         ?>;
+        --primary-btn-text: <?php echo (saas_get_contrast_color($meta['theme_color']) === 'dark') ? '#0f172a' : '#ffffff'; ?>;
     }
     <?php
     $custom_css = get_post_meta($profile_id, '_saas_custom_css', true);
@@ -114,7 +116,10 @@ include __DIR__ . '/header.php';
     </script>
 <?php endif; ?>
 
-<div id="profile-container">
+<?php
+$global_contrast = saas_get_contrast_color($bg_color);
+?>
+<div id="profile-container" class="mx-auto niche-<?php echo esc_attr($niche); ?> contrast-<?php echo $global_contrast; ?>">
     <!-- Cover Banner -->
     <?php
     $cover_id = get_post_meta($profile_id, '_saas_cover_id', true);
@@ -129,10 +134,10 @@ include __DIR__ . '/header.php';
         <?php if ( has_post_thumbnail( $profile_id ) ) : ?>
             <?php echo get_the_post_thumbnail( $profile_id, 'thumbnail' ); ?>
         <?php else : ?>
-            <img src="https://via.placeholder.com/150" alt="Avatar">
+            <img src="https://via.placeholder.com/150" alt="Avatar" loading="lazy">
         <?php endif; ?>
-        <h1>
-            <?php echo esc_html( $profile->post_title ); ?>
+        <h1 class="text-4xl font-black mb-10 tracking-tight">
+            <?php echo esc_html( get_the_author_meta( 'display_name', $profile->post_author ) ); ?>
             <?php
                 $is_verified = $is_pro && get_post_meta($profile_id, '_saas_verified_badge', true);
                 $badge_class = 'verified-badge' . ($is_verified ? '' : ' display-none');
@@ -140,8 +145,22 @@ include __DIR__ . '/header.php';
             <span class="<?php echo $badge_class; ?>" title="Verified Professional">✨</span>
         </h1>
         <p class="headline"><?php echo esc_html( $meta['headline'] ); ?></p>
+        <?php if (!empty($meta['niche'])) : ?>
+            <span class="badge-niche mb-20"><?php echo esc_html(ucfirst($meta['niche'])); ?></span>
+        <?php endif; ?>
         <p class="bio"><?php echo nl2br( esc_html( $meta['bio'] ) ); ?></p>
     </header>
+
+    <?php
+    // Featured Component (Elite Pro Feature)
+    $featured_video = get_post_meta($profile_id, '_saas_featured_video', true);
+    if ($is_pro && $featured_video) : ?>
+        <div class="featured-media-wrapper mb-40 animate-fadein">
+            <div class="video-embed shadow-xl radius-24 overflow-hidden">
+                <?php echo wp_oembed_get( $featured_video ); ?>
+            </div>
+        </div>
+    <?php endif; ?>
 
     <!-- Dynamic Blocks Engine -->
     <div class="blocks-container">
@@ -154,7 +173,11 @@ include __DIR__ . '/header.php';
             $custom_bg = get_post_meta($block->ID, '_saas_custom_bg', true);
             $custom_text = get_post_meta($block->ID, '_saas_custom_text', true);
             $block_style_attr = '';
-            if ($custom_bg) $block_style_attr .= "background-color: $custom_bg; ";
+            $contrast_class = '';
+            if ($custom_bg) {
+                $block_style_attr .= "background-color: $custom_bg; ";
+                $contrast_class = 'contrast-' . saas_get_contrast_color($custom_bg);
+            }
             if ($custom_text) $block_style_attr .= "color: $custom_text; ";
 
             if (!$is_preview) {
@@ -173,7 +196,7 @@ include __DIR__ . '/header.php';
                 }
             }
             ?>
-            <div class="saas-block block-<?php echo esc_attr($type); ?> style-<?php echo esc_attr($style); ?> animate-<?php echo esc_attr($animation); ?>" data-block-id="<?php echo $block->ID; ?>" style="animation-delay: <?php echo $index * 0.1; ?>s; <?php echo $block_style_attr; ?>">
+            <div class="saas-block block-<?php echo esc_attr($type); ?> style-<?php echo esc_attr($style); ?> animate-<?php echo esc_attr($animation); ?> <?php echo $contrast_class; ?>" data-block-id="<?php echo $block->ID; ?>" style="animation-delay: <?php echo $index * 0.1; ?>s;">
                 <?php if ($type === 'button') :
                     $has_pass = !empty(get_post_meta($block->ID, '_saas_link_password', true));
                     $ab_title_b = get_post_meta($block->ID, '_saas_ab_title_b', true);
@@ -203,7 +226,7 @@ include __DIR__ . '/header.php';
                         <?php
                         $thumb_id = get_post_meta($block->ID, '_saas_link_image_id', true);
                         if ($thumb_id) : ?>
-                            <img src="<?php echo esc_url(wp_get_attachment_thumb_url($thumb_id)); ?>" class="btn-thumb">
+                            <img src="<?php echo esc_url(wp_get_attachment_thumb_url($thumb_id)); ?>" class="btn-thumb" loading="lazy">
                         <?php endif; ?>
                         <div class="btn-text-wrapper">
                             <span class="btn-label"><?php echo esc_html( $block->post_title ); ?> <?php if($has_pass) echo '🔒'; ?></span>
@@ -219,13 +242,17 @@ include __DIR__ . '/header.php';
                         <?php echo wp_oembed_get( $url ); ?>
                     </div>
                 <?php elseif ($type === 'testimonial') : ?>
-                    <div class="testimonial-block">
-                        <div class="quote-mark">“</div>
-                        <p class="quote">"<?php echo esc_html( get_post_meta($block->ID, '_saas_testimonial_text', true) ); ?>"</p>
-                        <cite>— <?php echo esc_html( $block->post_title ); ?></cite>
-                        <?php if ($url && $url !== '#') : ?>
-                            <a href="<?php echo esc_url($url); ?>" class="testimonial-link" target="_blank">View Case Study ↗</a>
-                        <?php endif; ?>
+                    <div class="testimonial-block shadow-sm">
+                        <div class="testimonial-content">
+                            <div class="quote-mark">“</div>
+                            <p class="quote"><?php echo esc_html( get_post_meta($block->ID, '_saas_testimonial_text', true) ); ?></p>
+                            <div class="testimonial-author mt-20">
+                                <strong class="display-block color-dark"><?php echo esc_html( $block->post_title ); ?></strong>
+                                <?php if ($url && $url !== '#') : ?>
+                                    <a href="<?php echo esc_url($url); ?>" class="testimonial-link text-xs font-bold color-primary mt-5 display-block" target="_blank">View Success Story →</a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </div>
                 <?php elseif ($type === 'faq') : ?>
                     <details class="faq-block">
@@ -233,30 +260,34 @@ include __DIR__ . '/header.php';
                         <p><?php echo esc_html( get_post_meta($block->ID, '_saas_faq_answer', true) ); ?></p>
                     </details>
                 <?php elseif ($type === 'pricing') : ?>
-                    <div class="pricing-card">
-                        <h3><?php echo esc_html( $block->post_title ); ?></h3>
-                        <div class="price"><?php echo esc_html( get_post_meta($block->ID, '_saas_price', true) ); ?></div>
-                        <ul>
-                            <?php
-                            $features = get_post_meta($block->ID, '_saas_features', true) ?: [];
-                            foreach ($features as $feature) : ?>
-                                <li>✓ <?php echo esc_html($feature); ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <a href="<?php echo esc_url($url); ?>" class="saas-link-btn">Select Plan</a>
+                    <div class="pricing-card elite-pricing shadow-lg" style="<?php echo $block_style_attr; ?>">
+                        <div class="p-40">
+                            <h3 class="text-2xl mb-10"><?php echo esc_html( $block->post_title ); ?></h3>
+                            <div class="price text-5xl font-black mb-30"><?php echo esc_html( get_post_meta($block->ID, '_saas_price', true) ); ?></div>
+                            <ul class="benefit-list mb-40 text-left">
+                                <?php
+                                $features = get_post_meta($block->ID, '_saas_features', true) ?: [];
+                                foreach ($features as $feature) : ?>
+                                    <li class="mb-12 flex gap-12"><span>✓</span> <span><?php echo esc_html($feature); ?></span></li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <a href="<?php echo esc_url( $url ); ?>" class="saas-link-btn style-featured full-width">Secure Access Now</a>
+                        </div>
                     </div>
                 <?php elseif ($type === 'image_gallery') : ?>
                     <div class="image-gallery-block">
-                        <h3><?php echo esc_html($block->post_title); ?></h3>
+                        <h3 class="mb-24"><?php echo esc_html($block->post_title); ?></h3>
                         <div class="gallery-grid">
                             <?php
                             $images = get_post_meta($block->ID, '_saas_gallery_images', true) ?: [];
                             foreach ($images as $img_url) : ?>
-                                <img src="<?php echo esc_url($img_url); ?>" alt="Gallery Image">
+                                <div class="gallery-item shadow-sm">
+                                    <img src="<?php echo esc_url($img_url); ?>" alt="Gallery Image" loading="lazy">
+                                </div>
                             <?php endforeach; ?>
                         </div>
                     </div>
-                <?php elseif ($type === 'calendar') : ?>
+                <?php elseif ($type === 'calendar' && !empty($url) && $url !== '#') : ?>
                     <div class="calendar-block">
                         <h3><?php echo esc_html($block->post_title); ?></h3>
                         <div class="calendar-embed">
@@ -378,7 +409,8 @@ include __DIR__ . '/header.php';
 
     <div class="sticky-cta">
         <a href="<?php echo home_url('/?saas_action=vcard&profile=' . $profile_id); ?>" class="save-contact-btn">
-            💾 Save Contact Info
+            <span class="text-xl">💾</span>
+            <span>Exchange Digital Card</span>
         </a>
     </div>
 
@@ -443,6 +475,7 @@ include __DIR__ . '/header.php';
     <!-- Mobile Navigation Bar -->
     <nav class="profile-bottom-nav">
         <a href="#profile-container" title="Top">🏠</a>
+        <a href="<?php echo home_url('/?saas_action=vcard&profile=' . $profile_id); ?>" class="nav-vcard" title="Save Contact">👤</a>
         <a href="mailto:<?php echo get_the_author_meta('user_email', $user_id); ?>" title="Email">✉️</a>
         <a href="<?php echo home_url('/register'); ?>" title="Create Yours">➕</a>
         <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" title="Share">📤</a>

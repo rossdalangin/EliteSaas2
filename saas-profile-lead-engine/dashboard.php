@@ -214,6 +214,7 @@ class Saas_Dashboard {
                     <button class="active" data-tab="links">🔗 Blocks</button>
                     <button data-tab="profile">👤 Profile</button>
                     <button data-tab="branding">🎨 Vibe</button>
+                    <button data-tab="custom_css">✨ Custom CSS</button>
                     <button data-tab="leads">👥 Leads</button>
                     <button data-tab="analytics">📈 Stats</button>
                     <button data-tab="integrations">🔌 Sync</button>
@@ -283,8 +284,12 @@ class Saas_Dashboard {
                                     </div>
 
                                     <div id="saas-gallery-selector-wrap" class="display-none mb-20 p-15 bg-main border-light radius-12">
-                                        <label class="display-block mb-10">Gallery Images</label>
-                                        <div id="saas-gallery-previews" class="grid-gallery gap-10 mb-10"></div>
+                                        <div class="flex-between mb-10">
+                                            <label class="mb-0">Gallery Images</label>
+                                            <button type="button" class="clear-gallery button text-xs p-2-8 color-danger border-none bg-transparent" data-target="saas-gallery-previews">Clear All</button>
+                                        </div>
+                                        <div id="saas-gallery-previews" class="grid-gallery mb-10"></div>
+                                        <p class="text-xs color-muted mb-10 text-center">💡 Drag images to reorder them.</p>
                                         <button type="button" class="button select-media full-width" data-target="gallery-add">📸 Select Gallery Images</button>
                                     </div>
 
@@ -377,8 +382,12 @@ class Saas_Dashboard {
                                     <div class="field"><label id="edit-label-extra">Description / Extra Content</label><textarea name="extra" id="edit-link-extra" rows="3"></textarea></div>
 
                                     <div id="saas-edit-gallery-selector-wrap" class="display-none mb-20 p-15 bg-main border-light radius-12">
-                                        <label class="display-block mb-10">Gallery Images</label>
-                                        <div id="saas-edit-gallery-previews" class="grid-gallery gap-10 mb-10"></div>
+                                        <div class="flex-between mb-10">
+                                            <label class="mb-0">Gallery Images</label>
+                                            <button type="button" class="clear-gallery button text-xs p-2-8 color-danger border-none bg-transparent" data-target="saas-edit-gallery-previews">Clear All</button>
+                                        </div>
+                                        <div id="saas-edit-gallery-previews" class="grid-gallery mb-10"></div>
+                                        <p class="text-xs color-muted mb-10 text-center">💡 Drag images to reorder them.</p>
                                         <button type="button" class="button select-media full-width" data-target="gallery-edit">📸 Select Gallery Images</button>
                                     </div>
 
@@ -652,7 +661,7 @@ class Saas_Dashboard {
                             <div class="field" id="saas-bg-value-wrapper">
                                 <label id="saas-bg-value-label">Background Value</label>
                                 <input type="text" name="bg_value" id="saas-bg-value-input" value="<?php echo esc_attr($profile_bg_val ?: '#f3f3f1'); ?>">
-                                <p class="field-hint">Flat: #f3f3f1 | Gradient: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%)</p>
+                                <p class="field-hint">Flat: #f3f3f1 | Gradient: linear-gradient(135deg, #4f46e5 0%, #a29bfe 100%)</p>
                             </div>
 
                             <div class="field">
@@ -715,12 +724,26 @@ class Saas_Dashboard {
                                     <button type="button" class="preset-btn button" data-preset="luxury">⚜️ Luxury</button>
                                 </div>
                             </div>
+                            <button type="submit" class="btn-primary">Apply Styles</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="tab-custom_css" class="saas-tab-content">
+                    <div class="dashboard-card">
+                        <h3>✨ Custom CSS</h3>
+                        <p class="field-hint">Add your own CSS to override any part of the theme. This feature allows for 100% brand alignment and is exclusive to Elite Pro users.</p>
+
+                        <form id="saas-custom-css-form">
+                            <input type="hidden" name="profile_id" value="<?php echo $profile_id; ?>">
+                            <input type="hidden" name="form_context" value="custom_css">
+
                             <div class="field <?php echo $is_pro ? '' : 'pro-gated-inline'; ?>">
-                                <label>Custom CSS (Pro)</label>
-                                <textarea name="custom_css" rows="6" placeholder="/* Custom styles for your profile */" class="font-mono text-xs"><?php echo esc_textarea(get_post_meta($profile_id, '_saas_custom_css', true)); ?></textarea>
+                                <label>Your Custom CSS</label>
+                                <textarea name="custom_css" rows="15" placeholder="/* Custom styles for your profile */" class="font-mono text-xs"><?php echo esc_textarea(get_post_meta($profile_id, '_saas_custom_css', true)); ?></textarea>
                             </div>
 
-                            <button type="submit" class="btn-primary">Apply Styles</button>
+                            <button type="submit" class="btn-primary">Save CSS Changes</button>
                         </form>
                     </div>
                 </div>
@@ -1347,76 +1370,57 @@ class Saas_Dashboard {
                         </div>
 
                         <div class="grid-3 gap-30 mt-30">
-                            <div class="plan-card bg-white p-32 radius-24 border-light relative overflow-hidden">
-                                <h4 class="text-lg m-0 color-muted">Free Plan</h4>
-                                <div class="text-4xl font-black m-16-0">$0<small class="text-base">/forever</small></div>
-                                <ul class="benefit-list mb-24 lh-2-2 text-sm text-left">
-                                    <li>✓ 1 Profile</li>
-                                    <li>✓ Standard Blocks</li>
-                                    <li>✓ Basic Analytics</li>
-                                    <li>✗ Custom Domains</li>
-                                    <li>✗ Pro Backgrounds</li>
-                                    <li>✗ Tracking Pixels</li>
+                            <?php
+                            $pricing_json = get_option('saas_home_pricing_json');
+                            $plans = json_decode($pricing_json, true) ?: [];
+                            foreach ($plans as $p) :
+                                $p_slug = $p['slug'] ?? 'free';
+                                $is_pro_plan = ($p_slug === 'pro');
+                                $is_agency_plan = ($p_slug === 'agency');
+                                $is_free_plan = ($p_slug === 'free');
+
+                                $card_class = "plan-card p-32 radius-24 relative overflow-hidden";
+                                if ($is_pro_plan) $card_class .= " bg-primary-soft border-primary-2";
+                                elseif ($is_agency_plan) $card_class .= " bg-dark-inner border-slate-800 color-white";
+                                else $card_class .= " bg-white border-light";
+
+                                $current_user_plan = get_user_meta($user_id, '_saas_subscription_plan', true) ?: 'free';
+                                $is_current = ($current_user_plan === $p_slug);
+                            ?>
+                            <div class="<?php echo $card_class; ?>">
+                                <?php if (isset($p['badge'])) : ?>
+                                    <div class="pos-absolute-tr-rotate <?php echo $is_agency_plan ? 'bg-accent color-dark' : 'bg-primary color-white'; ?> p-5-40 text-xs font-bold"><?php echo esc_html($p['badge']); ?></div>
+                                <?php endif; ?>
+                                <h4 class="text-2xl m-0 <?php echo $is_pro_plan ? 'color-primary' : ($is_agency_plan ? 'color-accent' : 'color-muted'); ?>"><?php echo esc_html($p['name']); ?></h4>
+                                <div class="text-4xl font-black m-16-0"><?php echo esc_html($p['price']); ?><small class="text-base"><?php echo esc_html($p['period']); ?></small></div>
+                                <ul class="benefit-list mb-24 lh-2-2 text-sm text-left <?php echo $is_agency_plan ? 'color-white-70' : ''; ?>">
+                                    <?php foreach ($p['features'] as $f) : ?>
+                                        <li>✓ <?php echo esc_html($f); ?></li>
+                                    <?php endforeach; ?>
                                 </ul>
-                                <button class="button full-width pointer-events-none opacity-60">Current Plan</button>
+
+                                <?php if ($is_current) : ?>
+                                    <div class="color-secondary font-bold mb-15">✓ Your <?php echo esc_html($p['name']); ?> subscription is active</div>
+                                    <?php if (!$is_free_plan) : ?>
+                                        <button id="saas-cancel-sub" class="button full-width color-danger <?php echo $is_agency_plan ? 'bg-transparent' : ''; ?>">Cancel Subscription</button>
+                                    <?php else: ?>
+                                        <button class="button full-width pointer-events-none opacity-60">Current Plan</button>
+                                    <?php endif; ?>
+                                <?php else : ?>
+                                    <div class="payment-options flex flex-column gap-10">
+                                        <?php
+                                        $gateway_mode = $payments->get_active_gateway();
+                                        $btn_color_class = $is_agency_plan ? 'bg-accent color-dark' : ($is_pro_plan ? '' : 'bg-secondary');
+                                        if ($gateway_mode === 'stripe' || $gateway_mode === 'user_select') : ?>
+                                            <button class="btn-primary saas-checkout-btn full-width <?php echo $btn_color_class; ?>" data-gateway="stripe" data-plan="<?php echo esc_attr($p_slug); ?>">Upgrade with Stripe</button>
+                                        <?php endif; ?>
+                                        <?php if ($gateway_mode === 'paypal' || $gateway_mode === 'user_select') : ?>
+                                            <button class="btn-primary saas-checkout-btn full-width bg-paypal" data-gateway="paypal" data-plan="<?php echo esc_attr($p_slug); ?>">Upgrade with PayPal</button>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
-
-                            <div class="plan-card bg-primary-soft p-32 radius-24 border-primary-2 relative overflow-hidden">
-                                <div class="pos-absolute-tr-rotate bg-primary color-white p-5-40 text-xs font-bold">POPULAR</div>
-                                <h4 class="text-2xl m-0 color-primary">Elite Pro</h4>
-                                <div class="text-4xl font-black m-16-0">$19<small class="text-base">/mo</small></div>
-                                <ul class="benefit-list mb-24 lh-2-2 text-sm text-left">
-                                    <li>✓ Unlimited Profiles</li>
-                                    <li>✓ All Premium Blocks</li>
-                                    <li>✓ Real-time Deep Analytics</li>
-                                    <li>✓ Custom Domain Mapping</li>
-                                    <li>✓ Remove All Branding</li>
-                                </ul>
-                            <?php if ($is_pro && get_user_meta($user_id, '_saas_subscription_plan', true) === 'pro') :
-                                $expiry = get_user_meta($user_id, '_saas_subscription_expiry', true);
-                                ?>
-                                <div class="color-secondary font-bold mb-15">✓ Your elite subscription is active</div>
-                                <button id="saas-cancel-sub" class="button full-width color-danger">Cancel Subscription</button>
-                            <?php elseif (!$is_pro) : ?>
-                                <div class="payment-options flex flex-column gap-10">
-                                    <?php
-                                    $gateway_mode = $payments->get_active_gateway();
-                                    if ($gateway_mode === 'stripe' || $gateway_mode === 'user_select') : ?>
-                                        <button class="btn-primary saas-checkout-btn full-width" data-gateway="stripe" data-plan="pro">Upgrade with Stripe</button>
-                                    <?php endif; ?>
-                                    <?php if ($gateway_mode === 'paypal' || $gateway_mode === 'user_select') : ?>
-                                        <button class="btn-primary saas-checkout-btn full-width bg-paypal">Upgrade with PayPal</button>
-                                    <?php endif; ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-
-                        <div class="plan-card bg-dark-inner p-32 radius-24 border-slate-800 relative overflow-hidden color-white">
-                                <div class="pos-absolute-tr-rotate bg-accent color-dark p-5-40 text-xs font-bold">MAX SCALE</div>
-                                <h4 class="text-2xl m-0 color-accent">Agency Unlimited</h4>
-                                <div class="text-4xl font-black m-16-0">$49<small class="text-base">/mo</small></div>
-                                <ul class="benefit-list mb-24 lh-2-2 text-sm text-left color-white-70">
-                                    <li>✓ Everything in Pro</li>
-                                    <li>✓ Unlimited Sub-accounts</li>
-                                    <li>✓ API & Webhook Access</li>
-                                    <li>✓ White-label Client Funnels</li>
-                                    <li>✓ Dedicated Account Manager</li>
-                                </ul>
-                            <?php if ($is_pro && get_user_meta($user_id, '_saas_subscription_plan', true) === 'agency') : ?>
-                                <div class="color-secondary font-bold mb-15">✓ Your agency subscription is active</div>
-                                <button id="saas-cancel-sub" class="button full-width color-danger bg-transparent">Cancel Subscription</button>
-                            <?php elseif (!$is_pro || get_user_meta($user_id, '_saas_subscription_plan', true) === 'pro') : ?>
-                                <div class="payment-options flex flex-column gap-10">
-                                    <?php
-                                    $gateway_mode = $payments->get_active_gateway();
-                                    if ($gateway_mode === 'stripe' || $gateway_mode === 'user_select') : ?>
-                                        <button class="btn-primary saas-checkout-btn full-width bg-accent color-dark" data-gateway="stripe" data-plan="agency">Upgrade to Agency (Stripe)</button>
-                                    <?php endif; ?>
-                                    <?php if ($gateway_mode === 'paypal' || $gateway_mode === 'user_select') : ?>
-                                        <button class="btn-primary saas-checkout-btn full-width bg-paypal">Upgrade to Agency (PayPal)</button>
-                                    <?php endif; ?>
-                                </div>
-                            <?php endif; ?>
+                            <?php endforeach; ?>
                         </div>
                     </div>
 
@@ -1642,8 +1646,8 @@ class Saas_Dashboard {
             <div class="saas-modal-content max-w-600">
                 <span class="close-modal">&times;</span>
                 <div class="wizard-step active" data-step="1">
-                    <h3>Welcome! Let's build your profile 🚀</h3>
-                    <p>What is your primary niche?</p>
+                    <h3>Welcome to the Elite Circle 🚀</h3>
+                    <p>To optimize your Authority Engine, let's start with your professional niche.</p>
                     <select id="wizard-niche" class="field">
                         <option value="servant">🏛️ Public Servant / Official</option>
                         <option value="coach">🚀 Business Coach</option>
@@ -1664,18 +1668,18 @@ class Saas_Dashboard {
                     <button class="btn-primary next-step full-width">Next Step</button>
                 </div>
                 <div class="wizard-step" data-step="2">
-                    <h3>Your Digital Identity</h3>
-                    <div class="field"><label>Your Professional Headline</label><input type="text" id="wizard-headline" placeholder="e.g. Scaling Brands with Elite Strategy"></div>
-                    <div class="field"><label>Short Bio</label><textarea id="wizard-bio" rows="3"></textarea></div>
+                    <h3>Your Strategic Identity</h3>
+                    <div class="field"><label>Professional Headline (The Hook)</label><input type="text" id="wizard-headline" placeholder="e.g. Scaling 7-Figure Brands with Elite Logic"></div>
+                    <div class="field"><label>Short Biography (The Authority)</label><textarea id="wizard-bio" rows="3" placeholder="Briefly describe your transformation..."></textarea></div>
                     <div class="flex gap-10">
                         <button class="button prev-step flex-1">Back</button>
-                        <button class="btn-primary next-step flex-2">Next Step</button>
+                        <button class="btn-primary next-step flex-2">Proceed</button>
                     </div>
                 </div>
                 <div class="wizard-step" data-step="3">
-                    <h3>Launch Ready!</h3>
-                    <p>Your profile is being optimized for your niche. Click finish to see your new dashboard.</p>
-                    <button id="wizard-finish" class="btn-primary full-width">Finish & Generate</button>
+                    <h3>Strategic Alignment Complete!</h3>
+                    <p>We are ready to generate your high-conversion assets. Your dashboard will be pre-configured with industry-standard blocks for your niche.</p>
+                    <button id="wizard-finish" class="btn-primary full-width">Generate My Elite Profile</button>
                 </div>
                 <div class="wizard-progress"><div class="progress-bar-fill"></div></div>
             </div>
@@ -1730,20 +1734,20 @@ class Saas_Dashboard {
                     <div class="flex gap-20 flex-start">
                         <div class="w-40 h-40 bg-primary color-white radius-50p flex-center flex-shrink-0 font-bold">1</div>
                         <div>
-                            <h4 class="m-0-0-5">Choose Your Subdomain</h4>
-                            <p class="m-0 text-sm color-dark">Decide what you want your link to be. Most elite creators use something like <code>link.yourdomain.com</code>, <code>bio.yourdomain.com</code>, or just <code>connect.yourdomain.com</code>.</p>
+                            <h4 class="m-0-0-5">Define Your Command Center</h4>
+                            <p class="m-0 text-sm color-dark">Secure your professional real estate. Elite consultants typically use <code>connect.yourbrand.com</code> or <code>portal.yourbrand.com</code> to establish instant authority.</p>
                         </div>
                     </div>
 
                     <div class="flex gap-20 flex-start">
                         <div class="w-40 h-40 bg-primary color-white radius-50p flex-center flex-shrink-0 font-bold">2</div>
                         <div>
-                            <h4 class="m-0-0-5">Configure DNS (CNAME)</h4>
-                            <p class="m-0 text-sm color-dark">Login to where you bought your domain (GoDaddy, Namecheap, Cloudflare, etc.). Find the <strong>DNS Settings</strong> or <strong>Manage DNS</strong> section.</p>
+                            <h4 class="m-0-0-5">Deploy DNS Protocol (CNAME)</h4>
+                            <p class="m-0 text-sm color-dark">Login to your registrar (Cloudflare, GoDaddy, etc.) and navigate to the **DNS Management** interface. You are mapping your subdomain to our high-performance edge network.</p>
                             <div class="bg-light p-15 radius-12 mt-10 border-light text-xs">
                                 <div class="mb-10"><strong>Type:</strong> CNAME</div>
-                                <div class="mb-10"><strong>Host/Name:</strong> (your subdomain, e.g. <code>bio</code>)</div>
-                                <div><strong>Value/Target:</strong> <code><?php echo parse_url(home_url(), PHP_URL_HOST); ?></code></div>
+                                <div class="mb-10"><strong>Host/Name:</strong> <code>connect</code> (or your chosen subdomain)</div>
+                                <div><strong>Points To:</strong> <code><?php echo parse_url(home_url(), PHP_URL_HOST); ?></code></div>
                             </div>
                         </div>
                     </div>

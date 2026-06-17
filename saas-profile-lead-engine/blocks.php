@@ -56,9 +56,17 @@ function saas_render_profile_block( $attributes ) {
     // Simplified embed rendering (reuse theme logic if possible)
     ob_start();
     ?>
-    <div class="saas-profile-embed" style="border:1px solid #ddd; padding:20px; border-radius:12px;">
-        <h3><?php echo esc_html($profile->post_title); ?></h3>
-        <a href="<?php echo home_url('/' . $profile->post_name); ?>" class="saas-link-btn" style="display:inline-block; padding:10px 20px; background:#0073aa; color:#fff; text-decoration:none; border-radius:6px;">View Full Profile</a>
+    <div class="saas-profile-embed card-white flex-between flex-center p-24">
+        <div class="flex-center gap-20">
+            <div class="radius-full overflow-hidden w-64 h-64 bg-light flex-center text-2xl">
+                <?php echo has_post_thumbnail($profile_id) ? get_the_post_thumbnail($profile_id, 'thumbnail', ['class' => 'full-width full-height object-cover']) : '👤'; ?>
+            </div>
+            <div>
+                <h3 class="mb-0 text-xl font-black"><?php echo esc_html($profile->post_title); ?></h3>
+                <p class="mb-0 text-sm color-primary font-bold">Elite Digital Identity</p>
+            </div>
+        </div>
+        <a href="<?php echo home_url('/' . $profile->post_name); ?>" class="saas-link-btn" style="width: auto !important; padding: 12px 24px !important;">View Profile →</a>
     </div>
     <?php
     return ob_get_clean();
@@ -74,21 +82,22 @@ function saas_render_lead_form_block( $attributes ) {
 
     ob_start();
     ?>
-    <section class="saas-block block-lead-form saas-embedded-lead-form" style="padding:40px; background:#f9f9f9; border-radius:24px; border:1px solid #eee;">
-        <h3 style="margin-top:0;"><?php echo esc_html( $title ); ?></h3>
-        <form class="saas-dynamic-form" data-block-id="embedded">
+    <section class="saas-block block-lead-form saas-embedded-lead-form card-white p-48 text-center max-w-600 mx-auto">
+        <h2 class="text-4xl font-black mb-10"><?php echo esc_html( $title ); ?></h2>
+        <p class="color-light mb-32">Ready to scale? Send a direct inquiry below.</p>
+        <form class="saas-dynamic-form text-left" data-block-id="embedded">
             <input type="hidden" name="profile_id" value="<?php echo $profile_id; ?>">
             <input type="hidden" name="security" value="<?php echo wp_create_nonce('saas_lead_nonce'); ?>">
-            <div style="display:none;"><input type="text" name="saas_honeypot"></div>
-            <div class="input-group" style="margin-bottom:15px;">
-                <input type="text" name="name" placeholder="Your Name" required style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd;">
+            <div class="display-none"><input type="text" name="saas_honeypot"></div>
+            <div class="mb-16">
+                <input type="text" name="name" placeholder="Your Name" required class="saas-input">
             </div>
-            <div class="input-group" style="margin-bottom:15px;">
-                <input type="email" name="email" placeholder="Your Email" required style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd;">
+            <div class="mb-16">
+                <input type="email" name="email" placeholder="Your Email" required class="saas-input">
             </div>
-            <button type="submit" style="width:100%; padding:15px; background:#6c5ce7; color:#fff; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Submit Request</button>
+            <button type="submit" class="saas-link-btn style-featured font-black">Submit Inquiry →</button>
         </form>
-        <div class="lead-feedback" style="margin-top:15px; font-weight:bold;"></div>
+        <div class="lead-feedback mt-20 font-bold color-success"></div>
     </section>
     <?php
     return ob_get_clean();
